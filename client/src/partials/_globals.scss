@@ -1,0 +1,59 @@
+@import "./typography";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  // font-family: "Bebas Neue", cursive;
+  font-family: "Montserrat", sans-serif;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: #f7f8f9;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+}
+
+input {
+  border: none;
+  outline: none;
+  overflow: auto;
+  font-family: "Titillium Web", sans-serif;
+}
+
+address {
+  font-style: normal;
+}
+
+button {
+  font-family: "Titillium Web", sans-serif;
+}

@@ -1,0 +1,53 @@
+@use '../../partials/globals' as *;
+@use '../../partials/variables';
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+
+.landingPage {
+  background: url("../../assets/images/heros/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .cards {
+    padding: 5vw 3vw;
+    .card {
+      height: 60rem;
+      width: 31rem;
+      margin: 0 auto;
+      border: 1px solid $primary-cloud;
+      border-radius: 8px;
+
+      .img {
+        height: 80%;
+        width: 100%;
+
+        &__img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
+        }
+      }
+
+      .info {
+        background-color: $background-grey;
+        height: 20%;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        @include flex-center;
+        flex-direction: column;
+
+        &__title {
+          @include M-bebas-header;
+        }
+
+        &__price {
+          @include M-bebas-header;
+          color: $primary-dark-blue;
+        }
+      }
+    }
+  }
+}
