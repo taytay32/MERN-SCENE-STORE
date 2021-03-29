@@ -16,6 +16,15 @@
   color: $primary-red;
 }
 
+@mixin M-montserrat-header {
+  font-family: "Montserrat";
+  letter-spacing: 0.2rem;
+  font-size: 1.5rem;
+  letter-spacing: 0;
+  font-weight: bold;
+  color: $primary-dark-blue;
+}
+
 @mixin M-subheader {
   font-size: 2rem;
   line-height: 28px;

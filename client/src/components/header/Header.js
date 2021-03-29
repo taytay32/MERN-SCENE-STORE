@@ -6,10 +6,10 @@ import "./Header.scss";
 const Header = () => {
   return (
     <header className="header">
-      <div className="logo">
+      <Link to="/" className="logo">
         <img src={logo} alt="" className="logo__logo" />
         <h1 className="logo__title">.STORE</h1>
-      </div>
+      </Link>
       <div className="links">
         <div className="links__wrap">
           <Link className="links__wrap__link" to="/cart">

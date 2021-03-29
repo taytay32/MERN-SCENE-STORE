@@ -1,20 +1,19 @@
 import React from "react";
+
 import "./LandingPage.scss";
-import merch from "../../assets/images/merch/hoodie-pam.jpeg";
+
+import data from "../../data";
+import Product from "../../components/product/Product";
 
 const LandingPage = () => {
+  console.log(data);
   return (
     <section className="landingPage">
+      <h1 className="landingPage__title">PRODUCTS</h1>
       <div className="cards">
-        <div className="card">
-          <div className="img">
-            <img src={merch} alt="" className="img__img" />
-          </div>
-          <div className="info">
-            <h2 className="info__title">Crow Hoodie</h2>
-            <p className="info__price">$20</p>
-          </div>
-        </div>
+        {data.products.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
       </div>
     </section>
   );
