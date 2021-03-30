@@ -11,19 +11,21 @@
 
   .title {
     padding: 2rem;
+    padding-top: 3rem;
     @include M-bebas-header;
     @include flex-center;
     color: white;
   }
 
   .img {
-    height: 35rem;
-    width: 31rem;
+    height: 40rem;
+    width: 30rem;
     margin: 0 auto;
     box-shadow: 0rem 0rem 5px $primary-dark-blue;
     border-radius: 8px;
     background-color: white;
     margin-bottom: 3rem;
+    padding: 0 2rem;
 
     &__img {
       height: 100%;
@@ -93,5 +95,29 @@
         color: $primary-dark-blue;
       }
     }
+  }
+}
+
+.sizenqty {
+  display: flex;
+  align-items: center;
+  @include M-montserrat-header;
+  padding: 1.5rem 0;
+
+  .qtyWrap {
+    align-items: center;
+    width: 50%;
+  }
+  .select {
+    width: 4rem;
+    height: 3rem;
+  }
+
+  .lab {
+    margin-right: 1rem;
+  }
+
+  .sizeWrap {
+    margin-left: auto;
   }
 }
