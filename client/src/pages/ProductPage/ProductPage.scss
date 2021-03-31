@@ -49,10 +49,48 @@
       text-align: center;
     }
 
-    &__description {
+    &__description,
+    &__release,
+    &__art {
       @include M-montserrat-header;
       text-align: center;
     }
+
+    .trackFlex {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+
+      margin-top: 1rem;
+
+      &__title {
+        @include M-bebas-header;
+        margin-right: 1rem;
+      }
+
+      &__tracklist {
+        &__track {
+          @include M-montserrat-header;
+          font-size: 1.2rem;
+          padding: 0.2rem 0;
+        }
+      }
+      &__trackLength {
+        &__length {
+          @include M-montserrat-header;
+          font-size: 1.2rem;
+          padding: 0.2rem 0;
+        }
+      }
+    }
+
+    // &__tracklist {
+    //   @include M-montserrat-header;
+
+    //   &__track {
+    //     padding: 0.2rem 0;
+    //   }
+    // }
   }
 
   .details {
@@ -101,6 +139,7 @@
 .sizenqty {
   display: flex;
   align-items: center;
+
   @include M-montserrat-header;
   padding: 1.5rem 0;
 
@@ -109,6 +148,7 @@
     width: 50%;
   }
   .select {
+    @include M-montserrat-header;
     width: 4rem;
     height: 3rem;
   }

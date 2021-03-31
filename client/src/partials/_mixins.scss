@@ -66,3 +66,14 @@
   color: $primary-black;
   font-weight: normal;
 }
+
+@mixin button {
+  @include M-bebas-header;
+  width: 100%;
+  height: 5rem;
+  background-color: $primary-yellow;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: $primary-dark-blue;
+}

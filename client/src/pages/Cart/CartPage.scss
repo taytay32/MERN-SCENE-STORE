@@ -1,0 +1,108 @@
+@use '../../partials/globals' as *;
+@use '../../partials/variables';
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+
+.cart {
+  background: url("../../assets/images/heros/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 3rem;
+
+  min-height: 100%;
+
+  .emptyCart {
+    @include M-montserrat-header;
+    margin-bottom: 2rem;
+    background-color: $background-grey;
+    @include flex-center;
+    padding: 2rem;
+
+    &__p {
+      margin-right: 3rem;
+    }
+  }
+  &__title {
+    @include flex-center;
+    @include M-bebas-header;
+    color: white;
+    padding: 1rem 0;
+  }
+
+  .items {
+    .item {
+      width: 30rem;
+      box-shadow: 0rem 0rem 5px $primary-dark-blue;
+      border-radius: 8px;
+      background-color: white;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+
+      .infoWrap {
+        background-color: $background-grey;
+
+        padding-bottom: 2rem;
+      }
+
+      &__img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+
+      &__title {
+        @include M-bebas-header;
+        @include flex-center;
+        padding-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      &__price {
+        @include M-bebas-header;
+        color: $primary-dark-blue;
+        @include flex-center;
+      }
+
+      &__selects {
+        @include flex-center;
+        justify-content: space-between;
+        width: 15rem;
+        margin: 0rem auto;
+      }
+
+      &__select {
+        @include M-montserrat-header;
+        padding-left: 0.3rem;
+        width: 4rem;
+        height: 3rem;
+      }
+
+      &__delete {
+        &__btn {
+          @include button;
+        }
+      }
+    }
+  }
+
+  .summary {
+    width: 30rem;
+    box-shadow: 0rem 0rem 5px $primary-dark-blue;
+    border-radius: 8px;
+    background-color: white;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+
+    &__title {
+      @include M-montserrat-header;
+      @include flex-center;
+      margin-bottom: 1rem;
+    }
+
+    &__button {
+      @include button;
+    }
+  }
+}

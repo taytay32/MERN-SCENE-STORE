@@ -51,7 +51,37 @@ const ProductPage = (props) => {
             <div className="description">
               <p className="description__price">${product.price}</p>
               <p className="description__description">{product.description}</p>
+              {product.type === "music" && (
+                <>
+                  <p className="description__release">
+                    Released: {product.releaseDate}
+                  </p>
+
+                  <div className="trackFlex">
+                    <h2 className="trackFlex__title">Tracklist</h2>
+                    <ul className="trackFlex__tracklist">
+                      {product.trackList.map((track) => {
+                        return (
+                          <li className="trackFlex__tracklist__track">
+                            {track}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    <ul className="trackFlex__trackLength">
+                      {product.trackLength.map((track) => {
+                        return (
+                          <li className="trackFlex__trackLength__length">
+                            {track}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </>
+              )}
             </div>
+
             <div className="details">
               <div className="status">
                 <h2 className="status__title">Status</h2>
@@ -83,22 +113,29 @@ const ProductPage = (props) => {
                         ))}
                       </select>
                     </div>
-                    <div className="sizeWrap">
-                      <label className="lab" htmlFor="size">
-                        SIZE
-                      </label>
-                      <select
-                        className="select"
-                        name="size"
-                        value={size}
-                        onChange={(e) => setSize(e.target.value)}
-                      >
-                        <option name="size">S</option>
-                        <option name="size">M</option>
-                        <option name="size">L</option>
-                        <option name="size">XL</option>
-                      </select>
-                    </div>
+                    {product.type === "apparel" ? (
+                      <>
+                        <div className="sizeWrap">
+                          <label className="lab" htmlFor="size">
+                            SIZE
+                          </label>
+
+                          <select
+                            className="select"
+                            name="size"
+                            value={size}
+                            onChange={(e) => setSize(e.target.value)}
+                          >
+                            <option name="size">S</option>
+                            <option name="size">M</option>
+                            <option name="size">L</option>
+                            <option name="size">XL</option>
+                          </select>
+                        </div>
+                      </>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div className="addToCart">
                     <button

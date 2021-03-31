@@ -33,7 +33,18 @@
 
       &__link {
         @include M-bebas-header;
+        @include flex-center;
       }
     }
   }
+}
+
+.cartBadge {
+  background-color: white;
+  color: $primary-red;
+  border-radius: 50%;
+  padding: 0.2rem 0.7rem;
+  @include M-montserrat-header;
+  font-size: 1rem;
+  margin-left: 0.2rem;
 }
