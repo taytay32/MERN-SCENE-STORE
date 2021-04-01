@@ -13,13 +13,13 @@
     @include flex-center;
     @include M-bebas-header;
     color: white;
-    padding-top: 3rem;
+    padding-top: 1rem;
   }
 
   .cards {
-    padding: 3rem 0rem;
+    padding: 1.5rem 0rem;
     .card {
-      height: 40rem;
+      height: 38rem;
       width: 30rem;
       margin: 0 auto;
       box-shadow: 0rem 0rem 5px $primary-dark-blue;
@@ -28,8 +28,9 @@
       margin-bottom: 3rem;
 
       .img {
-        height: 80%;
+        height: 78%;
         width: 100%;
+        padding: 2rem;
 
         &__img {
           height: 100%;
@@ -38,14 +39,14 @@
 
           border-top-left-radius: 8px;
           border-top-right-radius: 8px;
-          padding: 0.5rem;
+          padding-left: 0 1rem;
         }
       }
 
       .info {
         background-color: $background-grey;
         padding: 1rem;
-        height: 20%;
+        height: 22%;
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
         @include flex-center;

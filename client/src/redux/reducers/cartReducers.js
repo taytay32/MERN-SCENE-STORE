@@ -12,23 +12,34 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
     case CART_ADD_ITEM:
       const addedItem = action.payload;
       const existItem = state.cartItems.find(
-        (x) => x.productId === addedItem.productId
+        (x) => x.productId === addedItem.productId && x.size === addedItem.size
       );
       if (existItem) {
         return {
           ...state,
           cartItems: state.cartItems.map((item) =>
-            item.productId === existItem.productId ? addedItem : item
+            item.productId === existItem.productId &&
+            item.size === existItem.size
+              ? addedItem
+              : item
           ),
         };
       } else {
         return { ...state, cartItems: [...state.cartItems, addedItem] };
       }
     case CART_REMOVE_ITEM:
+      console.log("string ", state.cartItems);
+
       return {
         ...state,
+
         cartItems: state.cartItems.filter((item) => {
-          return item.productId !== action.payload;
+          if (item.productId === action.payload.productId) {
+            if (item.size === action.payload.size) {
+              return false;
+            }
+          }
+          return true;
         }),
       };
     // case CART_SAVE_SHIPPING_ADDRESS:

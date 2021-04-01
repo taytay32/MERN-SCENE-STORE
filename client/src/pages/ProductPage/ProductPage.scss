@@ -18,14 +18,15 @@
   }
 
   .img {
-    height: 40rem;
+    height: 35rem;
     width: 30rem;
     margin: 0 auto;
     box-shadow: 0rem 0rem 5px $primary-dark-blue;
     border-radius: 8px;
     background-color: white;
     margin-bottom: 3rem;
-    padding: 0 2rem;
+    padding: 2rem;
+    padding-bottom: 0;
 
     &__img {
       height: 100%;
@@ -62,6 +63,8 @@
       align-items: flex-start;
 
       margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid $primary-dark-blue;
 
       &__title {
         @include M-bebas-header;
@@ -122,15 +125,7 @@
 
     .addToCart {
       &__btn {
-        @include M-bebas-header;
-
-        width: 100%;
-        height: 5rem;
-        background-color: $primary-yellow;
-        outline: none;
-        border: none;
-        border-radius: 5px;
-        color: $primary-dark-blue;
+        @include button;
       }
     }
   }

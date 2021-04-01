@@ -1,15 +1,31 @@
+import bcrypt from "bcryptjs";
+
 const data = {
+  users: [
+    {
+      name: "Taylor",
+      email: "admin@example.com",
+      password: bcrypt.hashSync("1234", 8),
+      isAdmin: true,
+    },
+
+    {
+      name: "John",
+      email: "user@example.com",
+      password: bcrypt.hashSync("1234", 8),
+      isAdmin: false,
+    },
+  ],
   products: [
     {
-      id: "0",
       type: "apparel",
       name: "Crow Hoodie",
       category: "Hoodies",
-      image: "/images/merch/hoodie_edit.jpg",
+      image: "/images/merch/hoodie_edit-1.png",
       imageDetail: "/images/merch/hoodie-pam-removebg.png",
       price: 35,
       countInStock: 60,
-      // countInStock = {
+      sizes: ["S", "M", "L", "XL"],
       //   small: 13,
       //   medium: 13,
       //   large: 13,
@@ -18,7 +34,6 @@ const data = {
       description: "Stylish, flexible, and warm!",
     },
     {
-      id: "1",
       type: "apparel",
       name: "Horse Tee",
       category: "Tees",
@@ -26,6 +41,7 @@ const data = {
       imageDetail: "/images/merch/tee-primz-removebg.png",
       price: 20,
       countInStock: 5,
+      sizes: ["S", "M", "L", "XL"],
       // countInStock = {
       //   small: 13,
       //   medium: 13,
@@ -35,7 +51,6 @@ const data = {
       description: "Standard emo t-shirt, for you.",
     },
     {
-      id: "2",
       type: "apparel",
       name: "Dear Hair Tank",
       category: "Tanks",
@@ -43,6 +58,7 @@ const data = {
       imageDetail: "/images/merch/tank-pam-removebg.png",
       price: 25,
       countInStock: 12,
+      sizes: ["S", "M", "L", "XL"],
       // countInStock = {
       //   small: 13,
       //   medium: 13,
@@ -52,7 +68,6 @@ const data = {
       description: "Oh what a day",
     },
     {
-      id: "3",
       type: "music",
       name: "CD - Autophage",
       category: "CD",
@@ -70,7 +85,6 @@ const data = {
     },
 
     {
-      id: "4",
       type: "music",
       name: "CD - A Better End",
       category: "CD",
@@ -91,7 +105,6 @@ const data = {
       trackLength: ["(4:29)", "(5:02)", "(6:15)"],
     },
     {
-      id: "5",
       type: "music",
       name: `7" Vinyl`,
       category: "Vinyl",
@@ -105,14 +118,35 @@ const data = {
       trackLength: ["(4:29)", "(4:26)"],
     },
     {
-      id: "6",
+      type: "button",
       name: "Sons Btn",
-      category: "Buttons",
+      category: "buttons",
       image: "/images/merch/logo-hockey-puck.png",
       imageDetail: "/images/merch/logo-hockey-puck.png",
       price: 1,
       countInStock: 30,
       description: "For styling up your denim jacket",
+    },
+    {
+      type: "tab",
+      name: "Autophage Tab",
+      category: "digital download",
+      image: "/images/merch/tab-auto.png",
+      imageDetail: "/images/merch/tab-auto.png",
+      price: 5,
+
+      description:
+        "Full digital tab transcription (GP 7) of Autophage EP, including drums, bass, and guitars.  Link to downloadable zip file provided.",
+    },
+    {
+      type: "tab",
+      name: "A Better End Tab",
+      category: "digital download",
+      image: "/images/merch/tab-abe.png",
+      imageDetail: "/images/merch/tab-abe.png",
+      price: 5,
+      description:
+        "Full digital tab transcription (GP 7) of A Better End EP, including drums, bass, and guitars.   Link to downloadable zip file provided.",
     },
   ],
 };

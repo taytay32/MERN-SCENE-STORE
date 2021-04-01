@@ -33,7 +33,7 @@ const LandingPage = () => {
             <h1 className="landingPage__title">PRODUCTS</h1>
             <div className="cards">
               {products.map((product) => (
-                <Product key={product.id} product={product} />
+                <Product product={product} key={product._id} />
               ))}
             </div>
           </section>

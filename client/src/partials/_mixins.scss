@@ -6,6 +6,13 @@
   justify-content: center;
 }
 
+@mixin background {
+  background: url("../assets/images/heros/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 //MOBILE TEXTS
 @mixin M-bebas-header {
   font-family: "Bebas Neue";
@@ -76,4 +83,23 @@
   border: none;
   border-radius: 5px;
   color: $primary-dark-blue;
+  border: 1px solid $primary-dark-blue;
+}
+
+@mixin input {
+  width: 100%;
+  height: 36px;
+  border: 1px solid $primary-dark-blue;
+  border-radius: 20px;
+  margin-bottom: 1.6rem;
+  padding: 0.7rem 0rem 0.9rem 1.6rem;
+  transition: 0.2s;
+  margin-top: 0.4rem;
+  background-color: white;
+}
+
+@mixin label {
+  @include M-montserrat-header;
+  font-size: 1.5rem;
+  color: $background-grey;
 }

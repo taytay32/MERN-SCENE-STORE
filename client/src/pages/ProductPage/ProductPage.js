@@ -86,7 +86,7 @@ const ProductPage = (props) => {
               <div className="status">
                 <h2 className="status__title">Status</h2>
                 <div className="status__status">
-                  {product.countInStock > 0 ? (
+                  {product.type === "tab" || product.countInStock > 0 ? (
                     <span className="status__status__success">In Stock</span>
                   ) : (
                     <span className="status__status__error">Out Of Stock</span>
@@ -126,10 +126,13 @@ const ProductPage = (props) => {
                             value={size}
                             onChange={(e) => setSize(e.target.value)}
                           >
-                            <option name="size">S</option>
-                            <option name="size">M</option>
-                            <option name="size">L</option>
-                            <option name="size">XL</option>
+                            {product.sizes.map((size) => {
+                              return (
+                                <option key={size} name="size">
+                                  {size}
+                                </option>
+                              );
+                            })}
                           </select>
                         </div>
                       </>
@@ -137,6 +140,19 @@ const ProductPage = (props) => {
                       ""
                     )}
                   </div>
+                  <div className="addToCart">
+                    <button
+                      className="addToCart__btn"
+                      onClick={addToCartHandler}
+                    >
+                      Add To Cart
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {product.type === "tab" && (
+                <>
                   <div className="addToCart">
                     <button
                       className="addToCart__btn"

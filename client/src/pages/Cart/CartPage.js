@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import MessageBox from "../../components/boxes/MessageBox";
-import Product from "../../components/product/Product";
+
 import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
 import "./CartPage.scss";
 
@@ -39,95 +38,146 @@ const CartPage = (props) => {
 
   return (
     <section className="cart">
-      <h1 className="cart__title">Cart details</h1>
-
       {cartItems.length === 0 ? (
         <div className="emptyCart">
           <p className="emptyCart__p">Cart is empty </p>
-          <Link to="/">SHOP NOW!</Link>
+          <Link className="shopNow" to="/">
+            SHOP NOW!
+          </Link>
         </div>
       ) : (
-        <ul className="items">
-          {cartItems.map((item) => {
-            return (
-              <li key={item.productId} className="item">
-                <div className="infoWrap">
-                  <img className="item__img" src={item.image} alt={item.name} />
-
-                  <Link
-                    className="item__title"
-                    to={`/product/${item.productId}`}
-                  >
-                    {item.name}
-                  </Link>
-                  <p className="item__price">${item.price}</p>
-                  <div className="item__selects">
-                    <select
-                      className="item__select"
-                      value={item.qty}
-                      name=""
-                      id=""
-                      onChange={(e) =>
-                        dispatch(
-                          addToCart(item.productId, Number(e.target.value))
-                        )
-                      }
-                    >
-                      {[...Array(item.countInStock).keys()].map((x) => {
-                        return (
-                          <option key={x + 1} value={x + 1}>
-                            {x + 1}
-                          </option>
-                        );
-                      })}
-                    </select>
-                    {item.type === "apparel" && (
-                      <select
-                        className="item__select"
-                        name="size"
-                        value={size}
-                        onChange={(e) => dispatch(addToCart(item.size))}
+        <>
+          <h1 className="cart__title">Cart details</h1>
+          <ul className="items">
+            {cartItems.map((item) => {
+              return (
+                <li key={`${item.productId}${item.size}`} className="item">
+                  <div className="infoWrap">
+                    <div className="imgwrap">
+                      <img
+                        className="item__img"
+                        src={item.image}
+                        alt={item.name}
+                      />
+                    </div>
+                    <div className="detailsWrap">
+                      <Link
+                        className="item__title"
+                        to={`/product/${item.productId}`}
                       >
-                        <option name="size">S</option>
-                        <option name="size">M</option>
-                        <option name="size">L</option>
-                        <option name="size">XL</option>
-                      </select>
-                    )}
+                        {item.name}
+                      </Link>
+                      <p className="item__price">${item.price}</p>
+                      {item.type === "apparel" ? (
+                        <div className="item__selects">
+                          <select
+                            className="item__select"
+                            value={item.qty}
+                            name=""
+                            id=""
+                            onChange={(e) =>
+                              dispatch(
+                                addToCart(
+                                  item.productId,
+                                  Number(e.target.value),
+                                  item.size
+                                )
+                              )
+                            }
+                          >
+                            {[...Array(item.countInStock).keys()].map((x) => {
+                              return (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              );
+                            })}
+                          </select>
+                          <select
+                            className="item__select"
+                            name="size"
+                            value={item.size}
+                            onChange={(e) =>
+                              dispatch(
+                                addToCart(
+                                  item.productId,
+                                  item.qty,
+                                  e.target.value
+                                )
+                              )
+                            }
+                          >
+                            {item.sizes.map((size) => {
+                              return (
+                                <option key={size} name="size">
+                                  {size}
+                                </option>
+                              );
+                            })}
+                          </select>
+                        </div>
+                      ) : item.type !== "tab" ? (
+                        <select
+                          className="item__select music__select"
+                          value={item.qty}
+                          name=""
+                          id=""
+                          onChange={(e) =>
+                            dispatch(
+                              addToCart(
+                                item.productId,
+                                Number(e.target.value),
+                                item.size
+                              )
+                            )
+                          }
+                        >
+                          {[...Array(item.countInStock).keys()].map((x) => {
+                            return (
+                              <option key={x + 1} value={x + 1}>
+                                {x + 1}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      ) : (
+                        ""
+                      )}
+
+                      <div className="item__delete">
+                        <button
+                          className="item__delete__btn"
+                          typeof="button"
+                          onClick={() =>
+                            removeFromCartHandler(item.productId, item.size)
+                          }
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </li>
+              );
+            })}
+          </ul>
+          <div className="summary">
+            <h2 className="summary__title">
+              Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $
+              {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+            </h2>
 
-                <div className="item__delete">
-                  <button
-                    className="item__delete__btn"
-                    typeof="button"
-                    onClick={() =>
-                      removeFromCartHandler(item.productId, item.size)
-                    }
-                  >
-                    Delete
-                  </button>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+            <button
+              type="button"
+              onClick={checkoutHandler}
+              className="summary__button"
+              disabled={cartItems.length === 0}
+            >
+              Proceed to checkout
+            </button>
+          </div>
+        </>
       )}
-      <div className="summary">
-        <h2 className="summary__title">
-          Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $
-          {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
-        </h2>
-
-        <button
-          type="button"
-          onClick={checkoutHandler}
-          className="summary__button"
-          disabled={cartItems.length === 0}
-        >
-          Proceed to checkout
-        </button>
-      </div>
     </section>
   );
 };

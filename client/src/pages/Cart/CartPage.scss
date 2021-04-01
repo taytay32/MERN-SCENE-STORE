@@ -10,7 +10,7 @@
   background-position: center;
   padding-bottom: 3rem;
 
-  min-height: 100%;
+  min-height: 80%;
 
   .emptyCart {
     @include M-montserrat-header;
@@ -21,6 +21,10 @@
 
     &__p {
       margin-right: 3rem;
+    }
+
+    .shopNow {
+      color: $primary-red;
     }
   }
   &__title {
@@ -33,6 +37,7 @@
   .items {
     .item {
       width: 30rem;
+
       box-shadow: 0rem 0rem 5px $primary-dark-blue;
       border-radius: 8px;
       background-color: white;
@@ -41,8 +46,11 @@
 
       .infoWrap {
         background-color: $background-grey;
+      }
 
-        padding-bottom: 2rem;
+      .imgwrap {
+        background-color: white;
+        padding: 1.2rem;
       }
 
       &__img {
@@ -54,8 +62,6 @@
       &__title {
         @include M-bebas-header;
         @include flex-center;
-        padding-top: 1rem;
-        margin-bottom: 1rem;
       }
 
       &__price {
@@ -69,10 +75,20 @@
         justify-content: space-between;
         width: 15rem;
         margin: 0rem auto;
+        margin-bottom: 1.25rem;
       }
 
       &__select {
         @include M-montserrat-header;
+        padding-left: 0.3rem;
+        width: 4rem;
+        height: 3rem;
+      }
+
+      .music__select {
+        @include M-montserrat-header;
+        display: block;
+        margin: 0 auto;
         padding-left: 0.3rem;
         width: 4rem;
         height: 3rem;
@@ -86,6 +102,10 @@
     }
   }
 
+  .detailsWrap {
+    padding: 1.5rem;
+  }
+
   .summary {
     width: 30rem;
     box-shadow: 0rem 0rem 5px $primary-dark-blue;
@@ -93,7 +113,7 @@
     background-color: white;
     margin: 0 auto;
     margin-bottom: 2rem;
-    padding-top: 1rem;
+    padding: 1.5rem;
 
     &__title {
       @include M-montserrat-header;

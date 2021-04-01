@@ -2,12 +2,21 @@ import React from "react";
 import logo from "../../assets/images/logos/logo-black-crop.png";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { signout } from "../../redux/actions/userActions";
 
 const Header = () => {
   const cart = useSelector((state) => state.cart);
-
   const { cartItems } = cart;
+
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+
+  const dispatch = useDispatch();
+
+  const signoutHandler = () => {
+    dispatch(signout());
+  };
 
   return (
     <header className="header">
@@ -16,19 +25,32 @@ const Header = () => {
         <h1 className="logo__title">.STORE</h1>
       </Link>
       <div className="links">
-        <div className="links__wrap">
-          <Link className="links__wrap__link" to="/cart">
-            Cart
-            {cartItems.length > 0 && (
-              <span className="cartBadge">{cartItems.length}</span>
-            )}
-          </Link>
-        </div>
-        <div className="links__wrap">
-          <Link className="links__wrap__link" to="/signin">
+        <Link className="links__link" to="/cart">
+          Cart
+          {cartItems.length > 0 && (
+            <span className="cartBadge">{cartItems.length}</span>
+          )}
+        </Link>
+        {userInfo ? (
+          <div className="dropdown links__link">
+            <Link className="dropdown__link" to="#">
+              {userInfo.name} <i className="fa fa-caret-down"></i>{" "}
+            </Link>
+            <ul className="dropdown-content">
+              <Link
+                className="dropdown__link"
+                to="#signout"
+                onClick={signoutHandler}
+              >
+                Sign Out
+              </Link>
+            </ul>
+          </div>
+        ) : (
+          <Link className="links__link" to="/signin">
             Sign In
           </Link>
-        </div>
+        )}
       </div>
     </header>
   );

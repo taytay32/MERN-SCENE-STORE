@@ -23,18 +23,15 @@
 
   .links {
     display: flex;
+
     background-color: $primary-yellow;
     padding: 1rem 0;
 
-    &__wrap {
+    &__link {
       @include flex-center;
-      width: 50%;
+      width: 100%;
       height: 4rem;
-
-      &__link {
-        @include M-bebas-header;
-        @include flex-center;
-      }
+      @include M-bebas-header;
     }
   }
 }
@@ -47,4 +44,34 @@
   @include M-montserrat-header;
   font-size: 1rem;
   margin-left: 0.2rem;
+}
+
+.dropdown {
+  position: relative;
+
+  &__link {
+    @include M-bebas-header;
+  }
+}
+
+.dropdown-content {
+  position: absolute;
+  display: none;
+  right: 0;
+  top: 4rem;
+  z-index: 1;
+  width: 100%;
+  height: 6rem;
+  background-color: $primary-yellow;
+
+  padding: 1rem;
+  border-radius: 0.3rem;
+}
+
+i {
+  height: 0.1rem;
+}
+
+.dropdown:hover .dropdown-content {
+  @include flex-center;
 }
