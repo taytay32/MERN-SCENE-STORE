@@ -3,7 +3,7 @@
 @use '../../partials/mixins' as *;
 @use '../../partials/typography' as *;
 
-.signin {
+.register {
   @include background;
   min-height: 80%;
 
@@ -27,7 +27,7 @@
   }
 }
 
-.signinbutton {
+.registerButton {
   @include button;
   border: 1px solid $primary-dark-blue;
 }

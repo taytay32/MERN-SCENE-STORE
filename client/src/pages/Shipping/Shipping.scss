@@ -3,17 +3,18 @@
 @use '../../partials/mixins' as *;
 @use '../../partials/typography' as *;
 
-.signin {
+.shipping {
+  min-height: 100%;
   @include background;
-  min-height: 80%;
+}
 
-  .submit {
-    &__title {
-      @include M-bebas-header;
-      color: $background-grey;
-      text-align: center;
-      padding: 1.5rem 0;
-    }
+.submit {
+  padding: 0 2rem;
+  &__title {
+    @include M-bebas-header;
+    color: $background-grey;
+    text-align: center;
+    padding: 2rem 0;
   }
 }
 
@@ -27,8 +28,9 @@
   }
 }
 
-.signinbutton {
+.registerButton {
   @include button;
+  margin-top: 1rem;
   border: 1px solid $primary-dark-blue;
 }
 

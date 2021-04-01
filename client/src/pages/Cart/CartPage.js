@@ -7,19 +7,21 @@ import "./CartPage.scss";
 
 const CartPage = (props) => {
   //fetch qty and size
-  const productId = props.match.params.id;
-  const qty = props.location.search
-    ? Number(props.location.search.split("=")[1])
-    : 1;
-  const size = props.location.search
-    ? props.location.search.split("=")[3]
-    : "No sizing selected";
+  // const productId = props.match.params.id;
+  // const qty = props.location.search
+  //   ? Number(props.location.search.split("=")[1])
+  //   : 1;
+  // const size = props.location.search
+  //   ? props.location.search.split("=")[3]
+  //   : "No sizing selected";
 
   //fetch cart items
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
+  const { productId, qty, size } = cartItems;
 
-  console.log(cartItems);
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -33,7 +35,11 @@ const CartPage = (props) => {
   };
 
   const checkoutHandler = () => {
-    props.history.push("/signin?redirect=shipping");
+    if (userInfo) {
+      props.history.push("/shipping");
+    } else {
+      props.history.push("/signin");
+    }
   };
 
   return (

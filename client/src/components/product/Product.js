@@ -3,7 +3,6 @@ import "../../pages/LandingPage/LandingPage.scss";
 import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
-  console.log(product);
   return (
     <div className="card" key={product._id}>
       <Link to={`/product/${product._id}`}>

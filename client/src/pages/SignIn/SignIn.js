@@ -14,6 +14,10 @@ const SignIn = (props) => {
     ? props.location.search.split("?")[1]
     : "/";
 
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+  console.log(cartItems);
+
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo, loading, error } = userSignin;
 
@@ -32,7 +36,7 @@ const SignIn = (props) => {
 
   return (
     <section className="signin">
-      <form action="submit" onSubmit={submitHandler}>
+      <form className="submit" action="submit" onSubmit={submitHandler}>
         <h1 className="submit__title">Sign In</h1>
         {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
@@ -68,7 +72,10 @@ const SignIn = (props) => {
 
         <div className="redirect">
           <p className="redirect__p">New customer?</p>
-          <Link className="redirect__link" to="/register">
+          <Link
+            className="redirect__link"
+            to={`/register?redirect=${redirect}`}
+          >
             Create Account
           </Link>
         </div>

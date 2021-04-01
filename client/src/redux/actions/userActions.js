@@ -8,15 +8,22 @@ import {
   USER_SIGNIN_SUCCESS,
   USER_SIGNOUT,
 } from "../constants/userConstants";
+import { CART_EMPTY } from "../constants/cartConstants";
 
-export const register = (name, email, password) => async (dispatch) => {
+export const register = (firstName, lastName, email, password) => async (
+  dispatch
+) => {
   dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password } });
   try {
-    const { data } = await axios.post("/api/users/register", {
-      name,
-      email,
-      password,
-    });
+    const { data } = await axios.post(
+      "http://localhost:5000/api/users/register",
+      {
+        firstName,
+        lastName,
+        email,
+        password,
+      }
+    );
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
     localStorage.setItem("userInfo", JSON.stringify(data));
@@ -55,7 +62,12 @@ export const signout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   localStorage.removeItem("cartItems");
   localStorage.removeItem("shippingAddress");
+
   dispatch({
     type: USER_SIGNOUT,
+  });
+
+  dispatch({
+    type: CART_EMPTY,
   });
 };

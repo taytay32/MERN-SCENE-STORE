@@ -12,6 +12,8 @@ const Header = () => {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
+  console.log(userSignin);
+
   const dispatch = useDispatch();
 
   const signoutHandler = () => {
@@ -34,12 +36,12 @@ const Header = () => {
         {userInfo ? (
           <div className="dropdown links__link">
             <Link className="dropdown__link" to="#">
-              {userInfo.name} <i className="fa fa-caret-down"></i>{" "}
+              {userInfo.firstName} <i className="fa fa-caret-down"></i>{" "}
             </Link>
             <ul className="dropdown-content">
               <Link
                 className="dropdown__link"
-                to="#signout"
+                to="/signin"
                 onClick={signoutHandler}
               >
                 Sign Out

@@ -1,0 +1,23 @@
+@use '../../partials/globals' as *;
+@use '../../partials/variables';
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+
+.checkout-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.checkout-steps > div {
+  border-top: 0.3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+.checkout-steps > div.active {
+  border-top-color: $primary-light-blue;
+  color: $primary-light-blue;
+}

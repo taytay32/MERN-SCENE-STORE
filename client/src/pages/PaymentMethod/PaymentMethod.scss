@@ -1,0 +1,62 @@
+@use '../../partials/globals' as *;
+@use '../../partials/variables';
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+
+.paymentMethod {
+  @include background;
+  min-height: 80%;
+
+  .form {
+    padding: 0 2rem;
+    &__title {
+      @include M-bebas-header;
+      color: $background-grey;
+      text-align: center;
+      padding-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .methods {
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0rem 0rem 5px $primary-dark-blue;
+      border-radius: 2px;
+      background-color: white;
+      padding: 2rem;
+      height: 18rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .optionsWrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .checkWrap {
+        display: flex;
+        align-items: center;
+
+        input[type="radio"] {
+          border: 0px;
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+
+      .check {
+        @include M-montserrat-header;
+        margin-right: 1rem;
+      }
+
+      .paymentbtn {
+        margin-top: 3rem;
+        &__button {
+          @include button;
+        }
+      }
+    }
+  }
+}

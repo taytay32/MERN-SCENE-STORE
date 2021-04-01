@@ -6,6 +6,7 @@ import LoadingBox from "../../components/boxes/LoadingBox";
 import { selectedProduct } from "../../redux/actions/productActions";
 
 import "./ProductPage.scss";
+import { addToCart } from "../../redux/actions/cartActions";
 
 const ProductPage = (props) => {
   //call the state from store
@@ -22,13 +23,19 @@ const ProductPage = (props) => {
   const [qty, setQty] = useState(1);
   const [size, setSize] = useState("M");
 
-  //dispatch the action
+  // dispatch the action
   useEffect(() => {
     dispatch(selectedProduct(productId));
   }, [dispatch, productId]);
 
   const addToCartHandler = () => {
-    props.history.push(`/cart/${productId}?qty=${qty}=size=${size}`);
+    // dispatch(selectedProduct(productId, qty, size));
+
+    //hit add to cart reducer
+    //update cart state
+
+    dispatch(addToCart(productId, qty, size));
+    props.history.push(`/cart`);
   };
 
   return (
