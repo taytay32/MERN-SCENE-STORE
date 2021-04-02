@@ -9,6 +9,8 @@ import SignIn from "./pages/SignIn/SignIn.js";
 import Register from "./pages/Register/Register";
 import Shipping from "./pages/Shipping/Shipping";
 import PaymentMethod from "./pages/PaymentMethod/PaymentMethod";
+import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
+import OrderDetails from "./pages/OrderDetails/OrderDetails";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/shipping" component={Shipping} />
         <Route path="/payment" component={PaymentMethod} />
+        <Route path="/placeorder" component={PlaceOrder} />
+        <Route path="/order/:id" component={OrderDetails} />
         <Route exact path="/" component={LandingPage} />
       </Switch>
     </BrowserRouter>

@@ -7,11 +7,15 @@
   font-size: 2rem;
   @include flex-center;
   color: $primary-dark-blue;
-  margin-top: 1rem;
+  margin-top: 2rem;
+
+  &__p {
+    margin-left: 1.5rem;
+  }
 }
 
-.fa-spin {
-  margin-right: 1rem;
+.loading > i {
+  text-align: center;
 }
 
 .success {

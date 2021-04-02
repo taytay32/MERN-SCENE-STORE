@@ -15,10 +15,11 @@ export const generateToken = (user) => {
   );
 };
 
-export const isAuth = (req, res, next) => {
-  const authorization = req.headers.authorization;
-  if (authorization) {
-    const token = authorization.slice(7, authorization.length); //Bearer XXXXXXX - gets rid of Bearer_
+export const authUser = (req, res, next) => {
+  const authHeaders = req.headers.authorization;
+  if (authHeaders) {
+    //ISOLATE TOKEN OF REQUEST FROM HEADER
+    const token = authHeaders.slice(7, authHeaders.length);
     jwt.verify(
       token,
       process.env.JWT_SECRET || "somethingsecret",

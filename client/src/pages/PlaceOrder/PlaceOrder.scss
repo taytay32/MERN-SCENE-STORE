@@ -1,0 +1,99 @@
+@use '../../partials/globals' as *;
+@use '../../partials/variables';
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+
+.placeOrder {
+  @include background;
+
+  &__title {
+    @include M-bebas-header;
+    color: white;
+    text-align: center;
+    padding-top: 2rem;
+  }
+}
+
+.border {
+  padding: 2rem;
+}
+
+.orderCard {
+  box-shadow: 0rem 0rem 5px $primary-dark-blue;
+  border-radius: 3px;
+  background-color: white;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+
+  &__title {
+    @include M-bebas-header;
+  }
+
+  &__subtitle {
+    @include M-montserrat-header;
+  }
+
+  &__p {
+    font-size: 1.25rem;
+    color: $primary-dark-blue;
+    margin-bottom: 1rem;
+  }
+}
+
+.item__title {
+  border-bottom: 1px solid $background-grey;
+}
+
+.orderItem {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid $background-grey;
+  height: 15rem;
+}
+
+.imgWrap {
+  background-color: white;
+  padding: 1.2rem;
+  height: 100%;
+  width: 50%;
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.orderDetailsWrap {
+  @include M-montserrat-header;
+  height: 80%;
+
+  &__name {
+    @include M-bebas-header;
+    font-size: 1.7rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.placeOrderButton {
+  @include button;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $background-grey;
+  margin: 0.75rem 0;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.orderCard__price {
+  font-size: 1.25rem;
+  color: $primary-dark-blue;
+}

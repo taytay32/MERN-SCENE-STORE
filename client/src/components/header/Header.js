@@ -12,8 +12,6 @@ const Header = () => {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
-  console.log(userSignin);
-
   const dispatch = useDispatch();
 
   const signoutHandler = () => {

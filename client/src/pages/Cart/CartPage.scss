@@ -89,7 +89,8 @@
       .music__select {
         @include M-montserrat-header;
         display: block;
-        margin: 0 auto;
+        margin: 0.5rem auto 1.5rem;
+
         padding-left: 0.3rem;
         width: 4rem;
         height: 3rem;

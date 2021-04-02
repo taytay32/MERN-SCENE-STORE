@@ -7,16 +7,11 @@ import MessageBox from "../../components/boxes/MessageBox";
 import { listProducts } from "../../redux/actions/productActions";
 
 const LandingPage = () => {
-  //call the state from store
   const productList = useSelector((state) => state.productList);
-  console.log(productList);
-  //deconstruct the state
   const { loading, error, products } = productList;
 
-  //hook to dispatch redux action
   const dispatch = useDispatch();
 
-  //dispatch the action
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
