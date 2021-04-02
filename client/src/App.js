@@ -11,6 +11,7 @@ import Shipping from "./pages/Shipping/Shipping";
 import PaymentMethod from "./pages/PaymentMethod/PaymentMethod";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import OrderDetails from "./pages/OrderDetails/OrderDetails";
+import OrderHistory from "./pages/OrderHistory/OrderHistory";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/payment" component={PaymentMethod} />
         <Route path="/placeorder" component={PlaceOrder} />
         <Route path="/order/:id" component={OrderDetails} />
+        <Route path="/orderhistory" component={OrderHistory} />
         <Route exact path="/" component={LandingPage} />
       </Switch>
     </BrowserRouter>

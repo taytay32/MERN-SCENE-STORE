@@ -1,0 +1,15 @@
+@use '../../partials/globals' as *;
+@use '../../partials/variables';
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+
+.paypal-button-container {
+  min-height: 8.5rem;
+}
+
+.paid__date {
+  @include M-montserrat-header;
+  font-size: 1.25rem;
+  color: $primary-dark-blue;
+  margin-left: 1rem;
+}

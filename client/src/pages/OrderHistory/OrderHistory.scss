@@ -1,0 +1,44 @@
+@use '../../partials/globals' as *;
+@use '../../partials/variables';
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+
+.orderHistory {
+  @include background;
+  min-height: 80%;
+
+  .orderHistWrap {
+    padding: 2rem;
+
+    &__title {
+      @include M-bebas-header;
+      @include flex-center;
+      color: white;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .orderHistCard {
+    width: 30rem;
+    padding: 1rem;
+    box-shadow: 0rem 0rem 5px $primary-dark-blue;
+    border-radius: 2px;
+    background-color: white;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+
+    &__subtitle {
+      @include M-bebas-header;
+      color: $primary-dark-blue;
+    }
+
+    &__p {
+      @include M-montserrat-header;
+      margin-bottom: 1rem;
+    }
+
+    .detailsBtn {
+      @include button;
+    }
+  }
+}

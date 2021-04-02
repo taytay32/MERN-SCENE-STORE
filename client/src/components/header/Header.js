@@ -36,7 +36,10 @@ const Header = () => {
             <Link className="dropdown__link" to="#">
               {userInfo.firstName} <i className="fa fa-caret-down"></i>{" "}
             </Link>
-            <ul className="dropdown-content">
+            <div className="dropdown-content">
+              <Link className="dropdown__link" to="/orderhistory">
+                Order History
+              </Link>
               <Link
                 className="dropdown__link"
                 to="/signin"
@@ -44,7 +47,7 @@ const Header = () => {
               >
                 Sign Out
               </Link>
-            </ul>
+            </div>
           </div>
         ) : (
           <Link className="links__link" to="/signin">

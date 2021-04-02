@@ -30,6 +30,7 @@
   padding: 1rem;
   font-size: 2rem;
   @include flex-center;
+  flex-direction: column;
   border: 0.1rem solid transparent;
   border-radius: 0.5rem;
 }
@@ -43,4 +44,10 @@
   color: red;
   background-color: #ffe0e0e0;
   margin-bottom: 2rem;
+}
+
+.alert-success {
+  color: green;
+  font-size: 1.4rem;
+  background-color: #efffe0e0;
 }
