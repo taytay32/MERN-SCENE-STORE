@@ -2,13 +2,17 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createProduct,
+  deleteProduct,
   listProducts,
 } from "../../redux/actions/productActions";
 import LoadingBox from "../../components/boxes/LoadingBox";
 import MessageBox from "../../components/boxes/MessageBox";
 import "./AdminProductList.scss";
 import "../OrderHistory/OrderHistory.scss";
-import { PRODUCT_CREATE_RESET } from "../../redux/constants/productConstants";
+import {
+  PRODUCT_CREATE_RESET,
+  PRODUCT_DELETE_RESET,
+} from "../../redux/constants/productConstants";
 
 const AdminProductList = (props) => {
   const productList = useSelector((state) => state.productList);
@@ -21,6 +25,12 @@ const AdminProductList = (props) => {
     success: successCreate,
     product: createdProduct,
   } = productCreate;
+  const productDelete = useSelector((state) => state.productDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = productDelete;
 
   const dispatch = useDispatch();
 
@@ -29,11 +39,16 @@ const AdminProductList = (props) => {
       dispatch({ type: PRODUCT_CREATE_RESET });
       props.history.push(`/product/${createdProduct._id}/edit`);
     }
+    if (successDelete) {
+      dispatch({
+        type: PRODUCT_DELETE_RESET,
+      });
+    }
     dispatch(listProducts());
-  }, [dispatch, createdProduct, props.history, successCreate]);
+  }, [dispatch, createdProduct, props.history, successCreate, successDelete]);
 
-  const deleteHandler = () => {
-    // dispatch(delete)
+  const deleteHandler = (product) => {
+    dispatch(deleteProduct(product._id));
   };
 
   const createHandler = () => {
@@ -53,6 +68,8 @@ const AdminProductList = (props) => {
           </button>
         </div>
         <h1 className="orderHistWrap__title">Products</h1>
+        {loadingDelete && <LoadingBox></LoadingBox>}
+        {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
         {loadingCreate && <LoadingBox></LoadingBox>}
         {errorCreate && <MessageBox variant="danger">{errorCreate}</MessageBox>}
         {loading ? (

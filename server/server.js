@@ -35,7 +35,9 @@ app.get("/api/config/paypal", (req, res) => {
 //returns current folder
 const __dirname = path.resolve();
 console.log(__dirname);
+
 app.use("./uploads", express.static(path.join(__dirname, "/uploads")));
+app.use(express.static("uploads"));
 
 //CATCH ERRORS FOR USER SEED
 app.use((err, req, res, next) => {

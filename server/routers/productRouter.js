@@ -101,4 +101,22 @@ productRouter.put(
   })
 );
 
+/* =======================
+ * DELETE PRODUCT
+ * ======================= */
+productRouter.delete(
+  "/:id",
+  authUser,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      const deleteProduct = await product.remove();
+      res.send({ message: "Product Deleted", product: deleteProduct });
+    } else {
+      res.status(404).send({ messsage: "Product not found" });
+    }
+  })
+);
+
 export default productRouter;
