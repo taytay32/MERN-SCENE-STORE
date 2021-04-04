@@ -1,0 +1,16 @@
+@use '../../partials/globals' as *;
+@use '../../partials/variables';
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+
+.descripText {
+  font-size: 1.3rem;
+  font-family: sans-serif;
+  color: black;
+  height: 8rem;
+  padding-right: 2rem;
+}
+
+.updateBtn {
+  margin-bottom: 2rem;
+}

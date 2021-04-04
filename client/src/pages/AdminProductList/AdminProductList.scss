@@ -1,0 +1,34 @@
+@use '../../partials/globals' as *;
+@use '../../partials/variables';
+@use '../../partials/mixins' as *;
+@use '../../partials/typography' as *;
+
+.createBtnWrap {
+  @include flex-center;
+}
+.orderHistWrap__btn {
+  @include button;
+  width: 28rem;
+  margin-bottom: 2rem;
+}
+
+.productCard {
+  position: relative;
+  z-index: 0;
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.2;
+    padding: 2rem;
+  }
+}
+
+.editBtn {
+  margin-bottom: 1rem;
+}

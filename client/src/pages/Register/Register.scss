@@ -10,9 +10,9 @@
   .submit {
     &__title {
       @include M-bebas-header;
-      color: $background-grey;
+      color: white;
       text-align: center;
-      padding: 1.5rem 0;
+      padding: 2rem 0;
     }
   }
 }
