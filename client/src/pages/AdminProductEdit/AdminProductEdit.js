@@ -106,6 +106,7 @@ const AdminProductEdit = (props) => {
     }
   };
 
+  console.log(type);
   return (
     <section className="register">
       <form className="submit" action="submit" onSubmit={submitHandler}>
@@ -168,30 +169,190 @@ const AdminProductEdit = (props) => {
           {errorUpload && (
             <MessageBox variante="danger">{errorUpload}</MessageBox>
           )}
-          <label className="inputs__label" htmlFor="category">
-            Category
-          </label>
-          <input
-            className="inputs__input"
-            type="text"
-            id="category"
-            placeholder="Enter category, eg: apparel"
-            required
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
+
           <label className="inputs__label" htmlFor="type">
             Type
           </label>
-          <input
+          <select
             className="inputs__input"
-            type="text"
+            // type="text"
             id="type"
-            placeholder="Enter type, example: Hoodie"
             required
-            value={type}
             onChange={(e) => setType(e.target.value)}
-          />
+          >
+            <option></option>
+            <option value="Apparel">Apparel</option>
+            <option value="Music">Music</option>
+            <option value="Tab">Tab</option>
+            <option value="Button">Button</option>
+
+            {/* {type === "Apparel" ? (
+              <>
+                <option value={type}>{type}</option>
+                <option value="Music">Music</option>
+                <option value="Tab">Tab</option>
+                <option value="Button">Button</option>
+              </>
+            ) : type === "Music" ? (
+              <>
+                <option value={type}>{type}</option>
+                <option value="Apparel">Apparel</option>
+                <option value="Tab">Tab</option>
+                <option value="Button">Button</option>
+              </>
+            ) : type === "Tab" ? (
+              <>
+                <option value="Apparel">Apparel</option>
+                <option value="Music">Music</option>
+                <option value="Button">Button</option>
+              </>
+            ) : type === "Button" ? (
+              <>
+                <option value="Apparel">Apparel</option>
+                <option value="Tab">Tab</option>
+                <option value="Music">Music</option>
+              </>
+            ) : (
+              ""
+            )} */}
+          </select>
+          {/* {product && product.type === "Apparel" && (
+            <>
+              <label className="inputs__label" htmlFor="category">
+                Category
+              </label>
+              <select
+                className="inputs__input"
+                id="category"
+                required
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="Hoodies">Hoodies</option>
+                <option value="Tees">Tees</option>
+                <option value="Tanks">Tanks</option>
+              </select>
+
+              <h3 className="inputs__label sizeTitle">Sizes</h3>
+              <div className="sizesCont">
+                <div>
+                  <label className="inputs__label CB" htmlFor="S">
+                    S
+                  </label>
+                  <input
+                    className="inputs__checkbox"
+                    type="checkbox"
+                    id="S"
+                    onChange={(e) => setSizes(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="inputs__label CB" htmlFor="M">
+                    M
+                  </label>
+                  <input
+                    className="inputs__checkbox"
+                    type="checkbox"
+                    id="M"
+                    onChange={(e) => setSizes(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="inputs__label CB" htmlFor="L">
+                    L
+                  </label>
+                  <input
+                    className="inputs__checkbox"
+                    type="checkbox"
+                    id="L"
+                    onChange={(e) => setSizes(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="inputs__label CB" htmlFor="XL">
+                    XL
+                  </label>
+                  <input
+                    className="inputs__checkbox"
+                    type="checkbox"
+                    id="XL"
+                    onChange={(e) => setSizes(e.target.value)}
+                  />
+                </div>
+              </div>
+            </>
+          )} */}
+
+          {/* {product && product.type === "Music" && (
+            <>
+              <label className="inputs__label" htmlFor="category">
+                Category
+              </label>
+              <select
+                className="inputs__input"
+                id="category"
+                required
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="CD">CD</option>
+                <option value="Vinyl">Vinyl</option>
+              </select>
+
+              <label className="inputs__label" htmlFor="trackList">
+                Track List
+              </label>
+              <input
+                className="inputs__input"
+                type="text"
+                id="trackList"
+                value={trackList}
+                placeholder="Enter track list eg: 1. Song1, 2. Song2"
+                onChange={(e) => setTrackList(e.target.value)}
+              />
+
+              <label className="inputs__label" htmlFor="trackLength">
+                Track Length
+              </label>
+              <input
+                className="inputs__input"
+                type="text"
+                id="trackLength"
+                value={trackLength}
+                placeholder="Enter track length eg: 1. 3:30, 2. 4:24"
+                onChange={(e) => setTrackLength(e.target.value)}
+              />
+            </>
+          )} */}
+          {/* {product && product.type === "Tab" && (
+            <>
+              <label className="inputs__label" htmlFor="category">
+                Category
+              </label>
+              <select
+                className="inputs__input"
+                id="category"
+                required
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="digital download">Digital Download</option>
+                <option value="book">Book</option>
+              </select>
+            </>
+          )}
+          {product && product.type === "button" && (
+            <>
+              <label className="inputs__label" htmlFor="category">
+                Category
+              </label>
+              <select
+                className="inputs__input"
+                id="category"
+                required
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="buttons">Buttons</option>
+              </select>
+            </>
+          )} */}
 
           <label className="inputs__label" htmlFor="countInStock">
             Count In Stock
@@ -203,41 +364,6 @@ const AdminProductEdit = (props) => {
             placeholder="Enter count in stock"
             value={countInStock}
             onChange={(e) => setCountInStock(e.target.value)}
-          />
-
-          <label className="inputs__label" htmlFor="sizes">
-            Sizes
-          </label>
-          <input
-            className="inputs__input"
-            type="text"
-            id="sizes"
-            value={sizes}
-            placeholder="Enter available sizes eg: S, M, L, XL"
-            onChange={(e) => setSizes(e.target.value)}
-          />
-          <label className="inputs__label" htmlFor="trackList">
-            Track List
-          </label>
-          <input
-            className="inputs__input"
-            type="text"
-            id="trackList"
-            value={trackList}
-            placeholder="Enter track list eg: 1. Song1, 2. Song2"
-            onChange={(e) => setTrackList(e.target.value)}
-          />
-
-          <label className="inputs__label" htmlFor="trackLength">
-            Track Length
-          </label>
-          <input
-            className="inputs__input"
-            type="text"
-            id="trackLength"
-            value={trackLength}
-            placeholder="Enter track length eg: 1. 3:30, 2. 4:24"
-            onChange={(e) => setTrackLength(e.target.value)}
           />
 
           <label className="inputs__label" htmlFor="description">

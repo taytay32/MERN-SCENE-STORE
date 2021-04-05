@@ -14,3 +14,27 @@
 .updateBtn {
   margin-bottom: 2rem;
 }
+
+.sizesCont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
+}
+
+.sizesCont > div {
+  display: flex;
+  align-items: center;
+}
+.CB {
+  margin-right: 1rem;
+}
+
+.sizeTitle {
+  margin-bottom: 0.7rem;
+}
+
+.inputs__checkbox {
+  height: 2rem;
+  width: 2rem;
+}

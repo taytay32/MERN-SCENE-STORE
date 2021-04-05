@@ -177,7 +177,7 @@ const OrderDetails = (props) => {
           </div>
           {order.isPaid && <MessageBox variant="success">SUCCESS!</MessageBox>}
           {!order.isPaid && (
-            <div>
+            <div className="paypaldiv">
               {!sdkReady ? (
                 <LoadingBox></LoadingBox>
               ) : (

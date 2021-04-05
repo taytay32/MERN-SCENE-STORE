@@ -3,6 +3,10 @@
 @use '../../partials/mixins' as *;
 @use '../../partials/typography' as *;
 
+.adminProdList {
+  // z-index: -10;
+}
+
 .createBtnWrap {
   @include flex-center;
 }

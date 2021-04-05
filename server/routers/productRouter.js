@@ -55,7 +55,7 @@ productRouter.post(
   expressAsyncHandler(async (req, res) => {
     const product = new Product({
       name: "sample name" + Date.now(),
-      type: "sample",
+      type: "Apparel",
       category: "sample",
       image: "/images/merch/tee_edit.jpg",
       imageDetail: "/images/merch/tee-primz-removebg.png",
@@ -84,7 +84,7 @@ productRouter.put(
     if (product) {
       product.name = req.body.name;
       product.price = req.body.price;
-      product.image = req.body.image;
+      product.image = `http://localhost:5000${req.body.image}`;
       product.category = req.body.category;
       product.type = req.body.type;
       product.countInStock = req.body.countInStock;

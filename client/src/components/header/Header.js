@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import logo from "../../assets/images/logos/logo-black-crop.png";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import "./Header.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { signout } from "../../redux/actions/userActions";
 import menu from "../../assets/icons/burger-menu.svg";
 import shoppingCart from "../../assets/icons/shopping-cart.svg";
+import SearchBox from "../SearchBox/SearchBox";
 
 const Header = () => {
   const [burger, setBurger] = useState(false);
+  // const [search, setSearch] = useState("");
+
+  // const filteredProducts = products.filter((product) => {
+  //   return product.name.toLowercase().includes(search.toLowercase());
+  // });
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -143,9 +149,16 @@ const Header = () => {
               type="text"
               name="searchMerch"
               // value={searchTerms}
-              // onChange={this.handleChange}
+              // onChange={(e) => setSearch(e.target.value)}
               placeholder="Search..."
             />
+            {/* <div>
+              <Route
+                render={({ history }) => (
+                  <SearchBox history={history}></SearchBox>
+                )}
+              />
+            </div> */}
             <img src={menu} alt="" onClick={burgerHandler} />
           </div>
         </nav>

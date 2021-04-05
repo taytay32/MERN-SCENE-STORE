@@ -44,7 +44,7 @@
         background-repeat: no-repeat;
         font-size: 1.4rem;
         color: $primary-black;
-        border: 1px solid #bdc5d5;
+        border: 1px solid $primary-dark-blue;
       }
     }
   }
@@ -74,6 +74,7 @@
   top: 17rem;
   left: 0;
   background-color: $primary-dark-blue;
+  z-index: 10;
 
   .mobileList {
     width: 100%;

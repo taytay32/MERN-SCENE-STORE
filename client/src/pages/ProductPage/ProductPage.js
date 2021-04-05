@@ -93,7 +93,7 @@ const ProductPage = (props) => {
               <div className="status">
                 <h2 className="status__title">Status</h2>
                 <div className="status__status">
-                  {product.type === "tab" || product.countInStock > 0 ? (
+                  {product.type === "Tab" || product.countInStock > 0 ? (
                     <span className="status__status__success">In Stock</span>
                   ) : (
                     <span className="status__status__error">Out Of Stock</span>
@@ -120,7 +120,7 @@ const ProductPage = (props) => {
                         ))}
                       </select>
                     </div>
-                    {product.type === "apparel" ? (
+                    {product.type === "Apparel" ? (
                       <>
                         <div className="sizeWrap">
                           <label className="lab" htmlFor="size">
@@ -158,7 +158,7 @@ const ProductPage = (props) => {
                 </>
               )}
 
-              {product.type === "tab" && (
+              {product.type === "Tab" && (
                 <>
                   <div className="addToCart">
                     <button

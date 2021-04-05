@@ -3,8 +3,8 @@
 @use '../../partials/mixins' as *;
 @use '../../partials/typography' as *;
 
-.paypal-button-container {
-  min-height: 8.5rem;
+.paypal-buttons {
+  min-height: 14.5rem;
 }
 
 .paid__date {

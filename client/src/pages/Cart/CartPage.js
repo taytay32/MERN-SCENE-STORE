@@ -74,7 +74,7 @@ const CartPage = (props) => {
                         {item.name}
                       </Link>
                       <p className="item__price">${item.price}</p>
-                      {item.type === "apparel" ? (
+                      {item.type === "Apparel" ? (
                         <div className="item__selects">
                           <select
                             className="item__select"
@@ -122,7 +122,7 @@ const CartPage = (props) => {
                             })}
                           </select>
                         </div>
-                      ) : item.type !== "tab" ? (
+                      ) : item.type !== "Tab" ? (
                         <select
                           className="item__select music__select"
                           value={item.qty}

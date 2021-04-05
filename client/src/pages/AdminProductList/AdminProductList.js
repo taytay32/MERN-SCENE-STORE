@@ -25,6 +25,7 @@ const AdminProductList = (props) => {
     success: successCreate,
     product: createdProduct,
   } = productCreate;
+
   const productDelete = useSelector((state) => state.productDelete);
   const {
     loading: loadingDelete,
@@ -48,7 +49,9 @@ const AdminProductList = (props) => {
   }, [dispatch, createdProduct, props.history, successCreate, successDelete]);
 
   const deleteHandler = (product) => {
-    dispatch(deleteProduct(product._id));
+    if (window.confirm(`Are you sure you want to delete "${product.name}"`)) {
+      dispatch(deleteProduct(product._id));
+    }
   };
 
   const createHandler = () => {
@@ -56,7 +59,7 @@ const AdminProductList = (props) => {
   };
 
   return (
-    <section className="orderHistory">
+    <section className="orderHistory adminProdList">
       <div className="orderHistWrap">
         <div className="createBtnWrap">
           <button

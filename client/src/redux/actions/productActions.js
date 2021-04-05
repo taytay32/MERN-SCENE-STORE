@@ -17,15 +17,18 @@ import {
   PRODUCT_DELETE_SUCCESS,
 } from "../constants/productConstants";
 
-export const listProducts = () => async (dispatch) => {
+export const listProducts = (search) => async (dispatch) => {
   dispatch({
     type: PRODUCT_LIST_REQUEST,
   });
   try {
-    const { data } = await axios.get("http://localhost:5000/api/products");
+    const { data } = await axios.get(`http://localhost:5000/api/products`);
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
+      //payload: data.filter((product) => {
+      // return product.name.toLowercase().includes(search.toLowercase());
+      // });
     });
   } catch (error) {
     dispatch({

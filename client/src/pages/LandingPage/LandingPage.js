@@ -10,30 +10,33 @@ const LandingPage = () => {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
+  //const searchTerm = useSelector((state) => state.searchTerm)
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(listProducts());
+    //dispatch(listProducts(searchTerm))
   }, [dispatch]);
 
   return (
     <>
-      {loading ? (
-        <LoadingBox></LoadingBox>
-      ) : error ? (
-        <MessageBox variant="danger">{error}</MessageBox>
-      ) : (
-        <>
-          <section className="landingPage">
-            <h1 className="landingPage__title">PRODUCTS</h1>
+      <section className="landingPage">
+        <h1 className="landingPage__title">PRODUCTS</h1>
+        {loading ? (
+          <LoadingBox></LoadingBox>
+        ) : error ? (
+          <MessageBox variant="danger">{error}</MessageBox>
+        ) : (
+          <>
             <div className="cards">
               {products.map((product) => (
                 <Product product={product} key={product._id} />
               ))}
             </div>
-          </section>
-        </>
-      )}
+          </>
+        )}
+      </section>
     </>
   );
 };
