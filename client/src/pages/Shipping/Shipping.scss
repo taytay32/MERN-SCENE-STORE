@@ -10,6 +10,8 @@
 
 .submit {
   padding: 0 2rem;
+  max-width: 50rem;
+  margin: 0 auto;
   &__title {
     @include M-bebas-header;
     color: $background-grey;
@@ -32,6 +34,11 @@
   @include button;
   margin-top: 1rem;
   border: 1px solid $primary-dark-blue;
+  transition: 0.2s;
+  &:hover {
+    color: $primary-light-blue;
+    border: 2px solid $primary-light-blue;
+  }
 }
 
 .redirect {

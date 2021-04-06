@@ -4,13 +4,8 @@
 @use '../../partials/typography' as *;
 
 .cart {
-  background: url("../../assets/images/heros/background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  padding-bottom: 3rem;
-
-  min-height: 80%;
+  @include background;
+  padding-bottom: 2rem;
 
   .emptyCart {
     @include M-montserrat-header;
@@ -31,18 +26,33 @@
     @include flex-center;
     @include M-bebas-header;
     color: white;
-    padding: 1rem 0;
+    padding: 2rem 0;
   }
 
   .items {
+    @include flex-center;
+    flex-wrap: wrap;
+
+    @include tablet {
+      width: 90%;
+      margin: 0 auto;
+      justify-content: center;
+    }
     .item {
       width: 30rem;
 
       box-shadow: 0rem 0rem 5px $primary-dark-blue;
-      border-radius: 8px;
+      border-radius: 2px;
       background-color: white;
-      margin: 0 auto;
+
       margin-bottom: 2rem;
+
+      @include tablet {
+        max-width: 25rem;
+        flex: 1 1 20rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+      }
 
       .infoWrap {
         background-color: $background-grey;
@@ -82,7 +92,7 @@
       &__select {
         @include M-montserrat-header;
         padding-left: 0.3rem;
-        width: 4rem;
+        width: 4.3rem;
         height: 3rem;
       }
 
@@ -99,6 +109,10 @@
       &__delete {
         &__btn {
           @include button;
+          &:hover {
+            border: 2px solid $primary-red;
+            color: $primary-red;
+          }
         }
       }
     }
@@ -111,11 +125,16 @@
   .summary {
     width: 30rem;
     box-shadow: 0rem 0rem 5px $primary-dark-blue;
-    border-radius: 8px;
+    border-radius: 2px;
     background-color: white;
     margin: 0 auto;
     margin-bottom: 2rem;
     padding: 1.5rem;
+
+    @include tablet {
+      width: 85%;
+      max-width: 100rem;
+    }
 
     &__title {
       @include M-montserrat-header;
@@ -125,6 +144,11 @@
 
     &__button {
       @include button;
+      transition: 0.2s;
+      &:hover {
+        color: $primary-light-blue;
+        border: 2px solid $primary-light-blue;
+      }
     }
   }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./LandingPage.scss";
 import Product from "../../components/product/Product";
@@ -9,15 +9,36 @@ import { listProducts } from "../../redux/actions/productActions";
 const LandingPage = () => {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
+  // console.log(products);
 
-  //const searchTerm = useSelector((state) => state.searchTerm)
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const searchProduct = useSelector((state) => state.searchProduct);
+  console.log(typeof searchProduct);
+  // console.log(searchProduct);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(listProducts());
-    //dispatch(listProducts(searchTerm))
   }, [dispatch]);
+
+  useEffect(() => {
+    console.log("Products: ", products);
+
+    if (products) {
+      setFilteredProducts(
+        products.filter((product) => {
+          return product.name
+            .toLowerCase()
+            .includes(searchProduct.toLowerCase());
+        })
+      );
+    }
+    console.log(filteredProducts);
+  }, [products, searchProduct]);
+
+  console.log(filteredProducts);
 
   return (
     <>
@@ -30,7 +51,7 @@ const LandingPage = () => {
         ) : (
           <>
             <div className="cards">
-              {products.map((product) => (
+              {filteredProducts.map((product) => (
                 <Product product={product} key={product._id} />
               ))}
             </div>

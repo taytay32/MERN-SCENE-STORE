@@ -1,20 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/logos/logo-black-crop.png";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Header.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { signout } from "../../redux/actions/userActions";
 import menu from "../../assets/icons/burger-menu.svg";
 import shoppingCart from "../../assets/icons/shopping-cart.svg";
-import SearchBox from "../SearchBox/SearchBox";
+import { searchAction } from "../../redux/reducers/searchReducer";
 
 const Header = () => {
   const [burger, setBurger] = useState(false);
-  // const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
 
-  // const filteredProducts = products.filter((product) => {
-  //   return product.name.toLowercase().includes(search.toLowercase());
-  // });
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(searchAction(search));
+  }, [search, dispatch]);
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -22,11 +24,9 @@ const Header = () => {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
-  const dispatch = useDispatch();
-
   const signoutHandler = () => {
     dispatch(signout());
-    setBurger(!burger);
+    setBurger(false);
   };
 
   const burgerHandler = () => {
@@ -148,77 +148,84 @@ const Header = () => {
               className="mobileNavWrap__search"
               type="text"
               name="searchMerch"
-              // value={searchTerms}
-              // onChange={(e) => setSearch(e.target.value)}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Search..."
             />
-            {/* <div>
-              <Route
-                render={({ history }) => (
-                  <SearchBox history={history}></SearchBox>
-                )}
-              />
-            </div> */}
             <img src={menu} alt="" onClick={burgerHandler} />
           </div>
         </nav>
         <div>{showBurger}</div>
 
-        <div className="links">
-          <Link className="links__link" to="/cart">
-            Cart
-            {cartItems.length > 0 && (
-              <span className="cartBadge">{cartItems.length}</span>
-            )}
-          </Link>
-          {userInfo ? (
-            <div className="dropdown links__link">
-              <Link className="dropdown__link" to="#">
-                {userInfo.firstName} <i className="fa fa-caret-down"></i>{" "}
+        <nav className="desktopNav">
+          <div className="desktopNavWrap">
+            <div className="deskCartWrap">
+              <Link className="deskCartLink" to="/cart">
+                <img className="deskCartIcon" src={shoppingCart} alt="" />
+                {cartItems.length > 0 && (
+                  <span className="cartBadgeDesk">{cartItems.length}</span>
+                )}
               </Link>
-              <div className="dropdown-content">
-                <Link className="dropdown__link" to="/profile">
-                  User Profile
-                </Link>
-                <Link className="dropdown__link" to="/orderhistory">
-                  Order History
-                </Link>
-                <Link
-                  className="dropdown__link"
-                  to="/signin"
-                  onClick={signoutHandler}
-                >
-                  Sign Out
-                </Link>
-              </div>
             </div>
-          ) : (
-            <Link className="links__link" to="/signin">
-              Sign In
-            </Link>
-          )}
-          {userInfo && userInfo.isAdmin && (
-            <div className="dropdown links__link">
-              <Link className="dropdown__link" to="#admin">
-                Admin <i className="fa fa-caret-down"></i>{" "}
-              </Link>
-              <div className="dropdown-content">
-                <Link className="dropdown__link" to="/dashboard">
-                  Dashboard
+            <input
+              className="desktopNavWrap__search"
+              type="text"
+              name="searchMerch"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search..."
+            />
+            <div className="userDropDowns">
+              {userInfo ? (
+                <div className="dropdown">
+                  <Link className="dropdown__link" to="#">
+                    {userInfo.firstName} <i className="fa fa-caret-down"></i>{" "}
+                  </Link>
+                  <div className="dropdown-content">
+                    <Link className="dropdown-content__link" to="/profile">
+                      User Profile
+                    </Link>
+                    <Link className="dropdown-content__link" to="/orderhistory">
+                      Order History
+                    </Link>
+                    <Link
+                      className="dropdown-content__link"
+                      to="/signin"
+                      onClick={signoutHandler}
+                    >
+                      Sign Out
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <Link className="signInLink" to="/signin">
+                  Sign In
                 </Link>
-                <Link className="dropdown__link" to="/productlist">
-                  Products
-                </Link>
-                <Link className="dropdown__link" to="/orderlist">
-                  Orders
-                </Link>
-                <Link className="dropdown__link" to="/userlist">
-                  Users
-                </Link>
-              </div>
+              )}
+              {userInfo && userInfo.isAdmin && (
+                <div className="dropdown dropdown-2">
+                  <Link className="dropdown__link" to="#admin">
+                    Admin <i className="fa fa-caret-down"></i>{" "}
+                  </Link>
+                  <div className="dropdown-content dropdown-content-2">
+                    <Link className="dropdown-content__link" to="/dashboard">
+                      Dashboard
+                    </Link>
+                    <Link className="dropdown-content__link" to="/productlist">
+                      Products
+                    </Link>
+                    <Link className="dropdown-content__link" to="/orderlist">
+                      Orders
+                    </Link>
+                    <Link className="dropdown-content__link" to="/userlist">
+                      Users
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </div>
+        </nav>
       </header>
     </>
   );

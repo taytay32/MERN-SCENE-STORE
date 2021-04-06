@@ -11,6 +11,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  min-height: 100%;
 }
 
 //MOBILE TEXTS
@@ -18,7 +19,14 @@
   font-family: "Bebas Neue";
   letter-spacing: 0.2rem;
   font-size: 2.9rem;
+  font-weight: bold;
+  color: $primary-red;
+}
 
+@mixin T-bebas-header {
+  font-family: "Bebas Neue";
+  letter-spacing: 0.2rem;
+  font-size: 4rem;
   font-weight: bold;
   color: $primary-red;
 }
@@ -81,9 +89,10 @@
   background-color: $primary-yellow;
   outline: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 2px;
   color: $primary-dark-blue;
   border: 1px solid $primary-dark-blue;
+  cursor: pointer;
 }
 
 @mixin input {
@@ -106,6 +115,12 @@
 
 @mixin tablet {
   @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-desktop) {
     @content;
   }
 }

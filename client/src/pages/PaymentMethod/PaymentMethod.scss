@@ -8,6 +8,8 @@
   min-height: 80%;
 
   .form {
+    max-width: 50rem;
+    margin: 0 auto;
     padding: 0 2rem;
     &__title {
       @include M-bebas-header;
@@ -56,6 +58,11 @@
         margin-top: 3rem;
         &__button {
           @include button;
+          transition: 0.2s;
+          &:hover {
+            color: $primary-light-blue;
+            border: 2px solid $primary-light-blue;
+          }
         }
       }
     }

@@ -4,28 +4,38 @@
 @use '../../partials/typography' as *;
 
 .landingPage {
-  background: url("../../assets/images/heros/background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  @include background;
 
   &__title {
     @include flex-center;
     @include M-bebas-header;
     color: white;
-    padding-top: 1rem;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+
+    @include tablet {
+      @include T-bebas-header;
+      color: white;
+    }
   }
 
   .cards {
     padding: 1.5rem 0rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    @include tablet {
+      padding: 0 2.4rem;
+    }
     .card {
       height: 38rem;
       width: 30rem;
-      margin: 0 auto;
+      margin: 0 2rem 3rem;
       box-shadow: 0rem 0rem 5px $primary-dark-blue;
-      border-radius: 8px;
+      border-radius: 2px;
       background-color: white;
-      margin-bottom: 3rem;
 
       .img {
         height: 78%;
@@ -37,8 +47,8 @@
           width: 100%;
           object-fit: contain;
 
-          border-top-left-radius: 8px;
-          border-top-right-radius: 8px;
+          border-top-left-radius: 2px;
+          border-top-right-radius: 2px;
           padding-left: 0 1rem;
         }
       }
@@ -47,8 +57,8 @@
         background-color: $background-grey;
         padding: 1rem;
         height: 22%;
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
         @include flex-center;
         flex-direction: column;
 

@@ -20,6 +20,7 @@ import {
   orderMineListReducer,
   orderPayReducer,
 } from "./reducers/orderReducers";
+import { searchReducer } from "./reducers/searchReducer";
 
 const initialState = {
   userSignin: {
@@ -54,6 +55,7 @@ const reducer = combineReducers({
   productCreate: productCreateReducer,
   productUpdate: productUpdateReducer,
   productDelete: productDeleteReducer,
+  searchProduct: searchReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -4,128 +4,209 @@
 @use '../../partials/typography' as *;
 
 .selectedProduct {
-  background: url("../../assets/images/heros/background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  @include background;
+  min-height: 100%;
 
-  .title {
+  &__title {
     padding: 2rem;
     padding-top: 3rem;
     @include M-bebas-header;
     @include flex-center;
     color: white;
-  }
 
-  .img {
-    height: 35rem;
-    width: 30rem;
-    margin: 0 auto;
-    box-shadow: 0rem 0rem 5px $primary-dark-blue;
-    border-radius: 8px;
-    background-color: white;
-    margin-bottom: 3rem;
-    padding: 2rem;
-    padding-bottom: 0;
-
-    &__img {
-      height: 100%;
-      width: 100%;
-      object-fit: contain;
+    @include tablet {
+      @include T-bebas-header;
+      color: white;
     }
   }
+  .productWrap {
+    @include flex-center;
+    flex-direction: column;
 
-  .description {
-    width: 31rem;
-    margin: 0 auto;
-    box-shadow: 0rem 0rem 5px $primary-dark-blue;
-    border-radius: 8px;
-    background-color: white;
-    margin-bottom: 3rem;
-    padding: 1.5rem;
-
-    &__price {
-      margin-bottom: 1rem;
-      @include M-bebas-header;
-      text-align: center;
-    }
-
-    &__description,
-    &__release,
-    &__art {
-      @include M-montserrat-header;
-      text-align: center;
-    }
-
-    .trackFlex {
-      display: flex;
-      justify-content: space-around;
-      align-items: flex-start;
-
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid $primary-dark-blue;
-
-      &__title {
-        @include M-bebas-header;
-        margin-right: 1rem;
-      }
-
-      &__tracklist {
-        &__track {
-          @include M-montserrat-header;
-          font-size: 1.2rem;
-          padding: 0.2rem 0;
-        }
-      }
-      &__trackLength {
-        &__length {
-          @include M-montserrat-header;
-          font-size: 1.2rem;
-          padding: 0.2rem 0;
-        }
-      }
-    }
-
-    // &__tracklist {
-    //   @include M-montserrat-header;
-
-    //   &__track {
-    //     padding: 0.2rem 0;
-    //   }
-    // }
-  }
-
-  .details {
-    width: 31rem;
-    margin: 0 auto;
-    box-shadow: 0rem 0rem 5px $primary-dark-blue;
-    border-radius: 8px;
-    background-color: white;
-    margin-bottom: 3rem;
-    padding: 1.5rem;
-
-    .status {
-      display: flex;
+    @include tablet {
+      width: 85%;
+      max-width: 70rem;
+      margin: 0 auto;
+      flex-direction: row;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      @include M-montserrat-header;
-      margin-bottom: 1rem;
+      padding-bottom: 3rem;
+    }
 
-      &__status {
-        &__success {
-          color: $primary-green;
+    .wrapLeft {
+      @include tablet {
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+      }
+      .img {
+        height: 35rem;
+        width: 30rem;
+        box-shadow: 0rem 0rem 5px $primary-dark-blue;
+        border-radius: 2px;
+        background-color: white;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        padding-bottom: 0;
+
+        @include tablet {
+          // width: 30vw;
+          min-width: 20rem;
+          max-width: 30rem;
+          margin-right: 1rem;
         }
 
-        &__error {
-          color: $primary-red;
+        &__img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
+
+        @include tablet {
+          margin-bottom: 0;
         }
       }
     }
 
-    .addToCart {
-      &__btn {
+    .wrapRight {
+      @include tablet {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .description {
+        width: 31rem;
+        margin: 0 auto;
+        box-shadow: 0rem 0rem 5px $primary-dark-blue;
+        border-radius: 2px;
+        background-color: white;
+        margin-bottom: 3rem;
+        padding: 1.5rem;
+
+        @include tablet {
+          margin-bottom: 2rem;
+        }
+
+        &__price {
+          margin-bottom: 1rem;
+          @include M-bebas-header;
+          text-align: center;
+        }
+
+        &__description,
+        &__release,
+        &__art {
+          @include M-montserrat-header;
+          text-align: center;
+        }
+
+        .trackFlex {
+          display: flex;
+          justify-content: space-around;
+          align-items: flex-start;
+
+          margin-top: 1rem;
+          padding-top: 1rem;
+          border-top: 1px solid $primary-dark-blue;
+
+          &__title {
+            @include M-bebas-header;
+            margin-right: 1rem;
+          }
+
+          &__tracklist {
+            &__track {
+              @include M-montserrat-header;
+              font-size: 1.2rem;
+              padding: 0.2rem 0;
+            }
+          }
+          &__trackLength {
+            &__length {
+              @include M-montserrat-header;
+              font-size: 1.2rem;
+              padding: 0.2rem 0;
+            }
+          }
+        }
+
+        // &__tracklist {
+        //   @include M-montserrat-header;
+
+        //   &__track {
+        //     padding: 0.2rem 0;
+        //   }
+        // }
+      }
+
+      .details {
+        width: 31rem;
+        margin: 0 auto;
+        box-shadow: 0rem 0rem 5px $primary-dark-blue;
+        border-radius: 2px;
+        background-color: white;
+        margin-bottom: 3rem;
+        padding: 1.5rem;
+
+        @include tablet {
+          margin-bottom: 2rem;
+        }
+
+        .status {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          @include M-montserrat-header;
+          margin-bottom: 1rem;
+
+          &__status {
+            &__success {
+              color: $primary-green;
+            }
+
+            &__error {
+              color: $primary-red;
+            }
+          }
+        }
+
+        .addToCart {
+          &__btn {
+            @include button;
+            transition: 0.2s;
+
+            &:hover {
+              color: $primary-light-blue;
+              border: 2px solid $primary-light-blue;
+            }
+          }
+        }
+      }
+
+      .backToProducts {
         @include button;
+        background-color: white;
+        @include flex-center;
+        transition: 0.2s;
+
+        @include tablet {
+          padding: 1rem;
+        }
+        &:hover {
+          background-color: $primary-red;
+          border: 2px solid $primary-dark-blue;
+        }
+        &__link {
+          color: $primary-dark-blue;
+          @include flex-center;
+          transition: 0.2s;
+
+          &:hover {
+            color: white;
+          }
+        }
       }
     }
   }
@@ -144,7 +225,7 @@
   }
   .select {
     @include M-montserrat-header;
-    width: 4rem;
+    width: 4.2rem;
     height: 3rem;
   }
 

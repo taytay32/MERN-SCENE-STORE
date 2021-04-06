@@ -6,16 +6,6 @@ import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
 import "./CartPage.scss";
 
 const CartPage = (props) => {
-  //fetch qty and size
-  // const productId = props.match.params.id;
-  // const qty = props.location.search
-  //   ? Number(props.location.search.split("=")[1])
-  //   : 1;
-  // const size = props.location.search
-  //   ? props.location.search.split("=")[3]
-  //   : "No sizing selected";
-
-  //fetch cart items
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const { productId, qty, size } = cartItems;

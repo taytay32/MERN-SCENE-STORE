@@ -26,6 +26,18 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       } else {
         return { ...state, cartItems: [...state.cartItems, addedItem] };
       }
+    case "CART_UPDATE_ITEM":
+      const itemId = action.payload.id;
+      const newSize = action.payload.size;
+      let updatedCartItems = [...state.cartItems];
+
+      updatedCartItems.forEach((item) => {
+        if (item.id === itemId) {
+          item.size = newSize;
+        }
+      });
+
+      return { ...state, cartItems: [...updatedCartItems] };
     case CART_REMOVE_ITEM:
       console.log("string ", state.cartItems);
 

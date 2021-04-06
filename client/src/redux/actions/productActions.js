@@ -23,12 +23,11 @@ export const listProducts = (search) => async (dispatch) => {
   });
   try {
     const { data } = await axios.get(`http://localhost:5000/api/products`);
+    console.log(data);
+
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
-      //payload: data.filter((product) => {
-      // return product.name.toLowercase().includes(search.toLowercase());
-      // });
     });
   } catch (error) {
     dispatch({

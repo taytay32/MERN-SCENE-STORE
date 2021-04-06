@@ -17,7 +17,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import AdminRoute from "./components/AdminRoute";
 import AdminProductList from "./pages/AdminProductList/AdminProductList";
 import AdminProductEdit from "./pages/AdminProductEdit/AdminProductEdit";
-import SearchResults from "./pages/SearchResults/SearchResults";
 
 function App() {
   return (

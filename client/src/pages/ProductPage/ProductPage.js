@@ -29,11 +29,6 @@ const ProductPage = (props) => {
   }, [dispatch, productId]);
 
   const addToCartHandler = () => {
-    // dispatch(selectedProduct(productId, qty, size));
-
-    //hit add to cart reducer
-    //update cart state
-
     dispatch(addToCart(productId, qty, size));
     props.history.push(`/cart`);
   };
@@ -47,131 +42,165 @@ const ProductPage = (props) => {
       ) : (
         <>
           <section className="selectedProduct">
-            <h2 className="title">{product.name}</h2>
-            <div className="img">
-              <img
-                src={product.imageDetail}
-                alt={product.name}
-                className="img__img"
-              />
-            </div>
-            <div className="description">
-              <p className="description__price">${product.price}</p>
-              <p className="description__description">{product.description}</p>
-              {product.type === "music" && (
-                <>
-                  <p className="description__release">
-                    Released: {product.releaseDate}
-                  </p>
-
-                  <div className="trackFlex">
-                    <h2 className="trackFlex__title">Tracklist</h2>
-                    <ul className="trackFlex__tracklist">
-                      {product.trackList.map((track) => {
-                        return (
-                          <li className="trackFlex__tracklist__track">
-                            {track}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                    <ul className="trackFlex__trackLength">
-                      {product.trackLength.map((track) => {
-                        return (
-                          <li className="trackFlex__trackLength__length">
-                            {track}
-                          </li>
-                        );
-                      })}
-                    </ul>
+            <h2 className="selectedProduct__title">{product.name}</h2>
+            <div className="productWrap">
+              <div className="wrapLeft">
+                {product.imageDetail ? (
+                  <div className="img">
+                    <img
+                      src={product.imageDetail}
+                      alt={product.name}
+                      className="img__img"
+                    />
                   </div>
-                </>
-              )}
-            </div>
+                ) : (
+                  <div className="img">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="img__img"
+                    />
+                  </div>
+                )}
+              </div>
+              <div className="wrapRight">
+                <div className="description">
+                  <p className="description__price">${product.price}</p>
+                  <p className="description__description">
+                    {product.description}
+                  </p>
+                  {product.type === "Music" && (
+                    <>
+                      <p className="description__release">
+                        Released: {product.releaseDate}
+                      </p>
 
-            <div className="details">
-              <div className="status">
-                <h2 className="status__title">Status</h2>
-                <div className="status__status">
-                  {product.type === "Tab" || product.countInStock > 0 ? (
-                    <span className="status__status__success">In Stock</span>
-                  ) : (
-                    <span className="status__status__error">Out Of Stock</span>
+                      <div className="trackFlex">
+                        <h2 className="trackFlex__title">Tracklist</h2>
+                        <ul className="trackFlex__tracklist">
+                          {product.trackList.map((track) => {
+                            return (
+                              <li
+                                className="trackFlex__tracklist__track"
+                                key={track}
+                              >
+                                {track}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                        <ul className="trackFlex__trackLength">
+                          {product.trackLength.map((track) => {
+                            return (
+                              <li
+                                className="trackFlex__trackLength__length"
+                                key={track}
+                              >
+                                {track}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    </>
                   )}
                 </div>
-              </div>
-              {product.countInStock > 0 && (
-                <>
-                  <div className="sizenqty">
-                    <div className="qtyWrap">
-                      <label className="lab" htmlFor="quantity">
-                        QTY
-                      </label>
-                      <select
-                        className="select"
-                        name="quantity"
-                        value={qty}
-                        onChange={(e) => setQty(e.target.value)}
-                      >
-                        {[...Array(product.countInStock).keys()].map((x) => (
-                          <option key={x + 1} value={x + 1}>
-                            {x + 1}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    {product.type === "Apparel" ? (
-                      <>
-                        <div className="sizeWrap">
-                          <label className="lab" htmlFor="size">
-                            SIZE
-                          </label>
 
+                <div className="details">
+                  <div className="status">
+                    <h2 className="status__title">Status</h2>
+                    <div className="status__status">
+                      {product.type === "Tab" || product.countInStock > 0 ? (
+                        <span className="status__status__success">
+                          In Stock
+                        </span>
+                      ) : (
+                        <span className="status__status__error">
+                          Out Of Stock
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  {product.countInStock > 0 && (
+                    <>
+                      <div className="sizenqty">
+                        <div className="qtyWrap">
+                          <label className="lab" htmlFor="quantity">
+                            QTY
+                          </label>
                           <select
                             className="select"
-                            name="size"
-                            value={size}
-                            onChange={(e) => setSize(e.target.value)}
+                            name="quantity"
+                            value={qty}
+                            onChange={(e) => setQty(e.target.value)}
                           >
-                            {product.sizes.map((size) => {
-                              return (
-                                <option key={size} name="size">
-                                  {size}
+                            {[...Array(product.countInStock).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
                                 </option>
-                              );
-                            })}
+                              )
+                            )}
                           </select>
                         </div>
-                      </>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                  <div className="addToCart">
-                    <button
-                      className="addToCart__btn"
-                      onClick={addToCartHandler}
-                    >
-                      Add To Cart
-                    </button>
-                  </div>
-                </>
-              )}
+                        {product.type === "Apparel" ? (
+                          <>
+                            <div className="sizeWrap">
+                              <label className="lab" htmlFor="size">
+                                SIZE
+                              </label>
 
-              {product.type === "Tab" && (
-                <>
-                  <div className="addToCart">
-                    <button
-                      className="addToCart__btn"
-                      onClick={addToCartHandler}
-                    >
-                      Add To Cart
-                    </button>
-                  </div>
-                </>
-              )}
+                              <select
+                                className="select"
+                                name="size"
+                                value={size}
+                                onChange={(e) => setSize(e.target.value)}
+                              >
+                                {product.sizes.map((size) => {
+                                  return (
+                                    <option key={size} name="size">
+                                      {size}
+                                    </option>
+                                  );
+                                })}
+                              </select>
+                            </div>
+                          </>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                      <div className="addToCart">
+                        <button
+                          className="addToCart__btn"
+                          onClick={addToCartHandler}
+                        >
+                          Add To Cart
+                        </button>
+                      </div>
+                    </>
+                  )}
+
+                  {product.type === "Tab" && (
+                    <>
+                      <div className="addToCart">
+                        <button
+                          className="addToCart__btn"
+                          onClick={addToCartHandler}
+                        >
+                          Add To Cart
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </div>
+                <div className="backToProducts">
+                  <Link className="backToProducts__link" to="/">
+                    Back to products
+                  </Link>
+                </div>
+              </div>
             </div>
-            <Link to="/">Back to products</Link>
           </section>
         </>
       )}

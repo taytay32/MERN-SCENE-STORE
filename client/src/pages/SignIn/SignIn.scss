@@ -8,6 +8,8 @@
   min-height: 80%;
 
   .submit {
+    max-width: 50rem;
+    margin: 0 auto;
     &__title {
       @include M-bebas-header;
       color: $background-grey;
@@ -30,6 +32,10 @@
 .signinbutton {
   @include button;
   border: 1px solid $primary-dark-blue;
+  &:hover {
+    color: $primary-light-blue;
+    border: 2px solid $primary-light-blue;
+  }
 }
 
 .redirect {

@@ -58,7 +58,7 @@ productRouter.post(
       type: "Apparel",
       category: "sample",
       image: "/images/merch/tee_edit.jpg",
-      imageDetail: "/images/merch/tee-primz-removebg.png",
+
       price: 0,
       countInStock: 0,
       sizes: ["S", "M", "L", "XL"],
@@ -81,10 +81,13 @@ productRouter.put(
   expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId);
+    // req.body.image.slice(0,4) === "http" ?
     if (product) {
       product.name = req.body.name;
       product.price = req.body.price;
-      product.image = `http://localhost:5000${req.body.image}`;
+      req.body.image.slice(0, 4) === "http"
+        ? (product.image = req.body.image)
+        : (product.image = `http://localhost:5000${req.body.image}`);
       product.category = req.body.category;
       product.type = req.body.type;
       product.countInStock = req.body.countInStock;

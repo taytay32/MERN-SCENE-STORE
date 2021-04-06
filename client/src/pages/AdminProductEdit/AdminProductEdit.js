@@ -59,6 +59,7 @@ const AdminProductEdit = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(image);
     //dispatch update product
     dispatch(
       updateProduct({
@@ -85,7 +86,9 @@ const AdminProductEdit = (props) => {
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const bodyFormData = new FormData();
+
     bodyFormData.append("image", file);
+
     setLoadingUpload(true);
     try {
       const { data } = await axios.post(
@@ -98,6 +101,7 @@ const AdminProductEdit = (props) => {
           },
         }
       );
+      console.log("2", data);
       setImage(data);
       setLoadingUpload(false);
     } catch (error) {
@@ -106,7 +110,6 @@ const AdminProductEdit = (props) => {
     }
   };
 
-  console.log(type);
   return (
     <section className="register">
       <form className="submit" action="submit" onSubmit={submitHandler}>
@@ -141,11 +144,11 @@ const AdminProductEdit = (props) => {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
-          <label className="inputs__label" htmlFor="image">
+          <label className="inputs__label image__label" htmlFor="image">
             Image
           </label>
           <input
-            className="inputs__input"
+            className="inputs__input image__input"
             type="text"
             id="image"
             placeholder="Enter image url"
@@ -216,7 +219,7 @@ const AdminProductEdit = (props) => {
               ""
             )} */}
           </select>
-          {/* {product && product.type === "Apparel" && (
+          {product && product.type === "Apparel" && (
             <>
               <label className="inputs__label" htmlFor="category">
                 Category
@@ -232,7 +235,7 @@ const AdminProductEdit = (props) => {
                 <option value="Tanks">Tanks</option>
               </select>
 
-              <h3 className="inputs__label sizeTitle">Sizes</h3>
+              {/* <h3 className="inputs__label sizeTitle">Sizes</h3>
               <div className="sizesCont">
                 <div>
                   <label className="inputs__label CB" htmlFor="S">
@@ -278,9 +281,9 @@ const AdminProductEdit = (props) => {
                     onChange={(e) => setSizes(e.target.value)}
                   />
                 </div>
-              </div>
+              </div> */}
             </>
-          )} */}
+          )}
 
           {/* {product && product.type === "Music" && (
             <>

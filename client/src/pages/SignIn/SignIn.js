@@ -14,8 +14,8 @@ const SignIn = (props) => {
     ? props.location.search.split("?")[1]
     : "/";
 
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
+  // const cart = useSelector((state) => state.cart);
+  // const { cartItems } = cart;
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo, loading, error } = userSignin;
