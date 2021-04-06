@@ -18,8 +18,8 @@ const OrderHistory = (props) => {
 
   return (
     <section className="orderHistory">
+      <h1 className="orderHistory__title">Order History</h1>
       <div className="orderHistWrap">
-        <h1 className="orderHistWrap__title">Order History</h1>
         {loading ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
@@ -29,6 +29,24 @@ const OrderHistory = (props) => {
             {orders &&
               orders.map((order) => (
                 <div key={order._id} className="orderHistCard">
+                  <div className="orderImages">
+                    {order.orderItems.map((item) => {
+                      return (
+                        <img
+                          key={`${item._id}${item.size}`}
+                          src={item.image}
+                          className="orderHistCard__img"
+                          alt={item.image.name}
+                        />
+                      );
+                    })}
+                  </div>
+
+                  {/* <img
+                    className="orderHistCard__img"
+                    src={order.orderItems[0].image}
+                    alt={order.orderItems[0].name}
+                  /> */}
                   <h3 className="orderHistCard__subtitle">ID</h3>
                   <p className="orderHistCard__p">{order._id}</p>
                   <h3 className="orderHistCard__subtitle">DATE</h3>

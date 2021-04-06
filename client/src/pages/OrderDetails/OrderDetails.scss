@@ -3,6 +3,9 @@
 @use '../../partials/mixins' as *;
 @use '../../partials/typography' as *;
 
+.orderDetails {
+  @include background;
+}
 .paypal-buttons {
   min-height: 14.5rem;
 }

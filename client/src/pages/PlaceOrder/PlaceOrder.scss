@@ -11,11 +11,35 @@
     color: white;
     text-align: center;
     padding-top: 2rem;
+
+    @include tablet {
+      @include T-bebas-header;
+      color: white;
+    }
   }
 }
 
-.border {
+.orderWrap {
   padding: 2rem;
+
+  @include tablet {
+    display: flex;
+
+    justify-content: center;
+  }
+}
+
+.shippingCardMobile {
+  @include tablet {
+    display: none;
+  }
+}
+
+.shippingCard {
+  display: none;
+  @include tablet {
+    display: block;
+  }
 }
 
 .orderCard {
@@ -25,6 +49,14 @@
   margin: 0 auto;
   margin-bottom: 2rem;
   padding: 1.5rem;
+  max-width: 35rem;
+
+  @include tablet {
+    min-width: 20rem;
+    max-width: 30rem;
+    flex: 1 1 20rem;
+    margin: 1rem;
+  }
 
   &__title {
     @include M-bebas-header;
@@ -79,6 +111,10 @@
 
 .placeOrderButton {
   @include button;
+  &:hover {
+    color: $primary-light-blue;
+    border: 2px solid $primary-light-blue;
+  }
 }
 
 .row {

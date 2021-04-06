@@ -27,6 +27,11 @@
     @include M-bebas-header;
     color: white;
     padding: 2rem 0;
+
+    @include tablet {
+      @include T-bebas-header;
+      color: white;
+    }
   }
 
   .items {
@@ -35,6 +40,7 @@
 
     @include tablet {
       width: 90%;
+      max-width: 110rem;
       margin: 0 auto;
       justify-content: center;
     }
@@ -132,8 +138,8 @@
     padding: 1.5rem;
 
     @include tablet {
-      width: 85%;
-      max-width: 100rem;
+      width: 90%;
+      max-width: 105rem;
     }
 
     &__title {

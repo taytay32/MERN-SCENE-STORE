@@ -30,18 +30,23 @@
       flex-direction: row;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: space-between;
+      // justify-content: space-between;
       padding-bottom: 3rem;
     }
 
     .wrapLeft {
       @include tablet {
+        @include flex-center;
         margin-bottom: 2rem;
         margin-top: 2rem;
+        height: 100%;
+        margin-right: 2rem;
+        margin-left: 2rem;
+        flex: 1 1 23rem;
       }
       .img {
         height: 35rem;
-        width: 30rem;
+        max-width: 30rem;
         box-shadow: 0rem 0rem 5px $primary-dark-blue;
         border-radius: 2px;
         background-color: white;
@@ -50,10 +55,9 @@
         padding-bottom: 0;
 
         @include tablet {
-          // width: 30vw;
           min-width: 20rem;
           max-width: 30rem;
-          margin-right: 1rem;
+          flex: 1 1 20rem;
         }
 
         &__img {
@@ -75,6 +79,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        margin-right: 2rem;
+        margin-left: 2rem;
       }
       .description {
         width: 31rem;
@@ -87,6 +93,9 @@
 
         @include tablet {
           margin-bottom: 2rem;
+          min-width: 20rem;
+          max-width: 30rem;
+          // flex: 1 1 20rem;
         }
 
         &__price {
@@ -152,6 +161,8 @@
 
         @include tablet {
           margin-bottom: 2rem;
+          min-width: 20rem;
+          max-width: 30rem;
         }
 
         .status {

@@ -46,102 +46,113 @@ const PlaceOrder = (props) => {
 
       <h1 className="placeOrder__title">Order Summary</h1>
 
-      <div className="border">
-        <ul>
-          <li>
-            <div className="orderCard">
-              <h2 className="orderCard__title">Shipping</h2>
-              <h3 className="orderCard__subtitle">NAME:</h3>
-              <p className="orderCard__p">{cart.shippingAddress.fullName}</p>
-              <h3 className="orderCard__subtitle">ADDRESS:</h3>
-              <p className="orderCard__p">
-                {cart.shippingAddress.address}, {cart.shippingAddress.city},{" "}
-                {cart.shippingAddress.postalCode},{" "}
-                {cart.shippingAddress.country}
-              </p>
-              <h2 className="orderCard__title">Payment</h2>
+      <div className="orderWrap">
+        <div className="orderCard shippingCardMobile">
+          <h2 className="orderCard__title">Shipping</h2>
+          <h3 className="orderCard__subtitle">NAME:</h3>
+          <p className="orderCard__p">{cart.shippingAddress.fullName}</p>
+          <h3 className="orderCard__subtitle">ADDRESS:</h3>
+          <p className="orderCard__p">
+            {cart.shippingAddress.address}, {cart.shippingAddress.city},{" "}
+            {cart.shippingAddress.postalCode}, {cart.shippingAddress.country}
+          </p>
+          <h2 className="orderCard__title">Payment</h2>
 
-              <h3 className="orderCard__subtitle">METHOD:</h3>
-              <p className="orderCard__p">{cart.paymentMethod}</p>
-            </div>
-          </li>
+          <h3 className="orderCard__subtitle">METHOD:</h3>
+          <p className="orderCard__p">{cart.paymentMethod}</p>
+        </div>
 
-          <li>
-            <div className="orderCard">
-              <h2 className="orderCard__title item__title">Items</h2>
-              <ul>
-                {cart.cartItems.map((item) => {
-                  return (
-                    <Link
-                      to={`/product/${item.productId}`}
-                      key={`${item.productId}${item.size}`}
-                    >
-                      <li className="orderItem">
-                        <div className="imgWrap">
-                          <img
-                            className="imgWrap__img"
-                            src={item.image}
-                            alt={item.name}
-                          />
-                        </div>
-                        <div className="orderDetailsWrap">
-                          <p className="orderDetailsWrap__name">{item.name}</p>
+        <div className="orderCard itemsCard">
+          <h2 className="orderCard__title item__title">Items</h2>
+          <ul>
+            {cart.cartItems.map((item) => {
+              return (
+                <Link
+                  to={`/product/${item.productId}`}
+                  key={`${item.productId}${item.size}`}
+                >
+                  <li className="orderItem">
+                    <div className="imgWrap">
+                      <img
+                        className="imgWrap__img"
+                        src={item.image}
+                        alt={item.name}
+                      />
+                    </div>
+                    <div className="orderDetailsWrap">
+                      <p className="orderDetailsWrap__name">{item.name}</p>
 
-                          <div>
-                            {item.qty} {item.size} x ${item.price} = $
-                            {item.qty * item.price}
-                          </div>
-                        </div>
-                      </li>
-                    </Link>
-                  );
-                })}
-              </ul>
-            </div>
-          </li>
-        </ul>
+                      <div>
+                        {item.qty} {item.size} x ${item.price} = $
+                        {item.qty * item.price}
+                      </div>
+                    </div>
+                  </li>
+                </Link>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="rightWrap">
+          <div className="orderCard shippingCard">
+            <h2 className="orderCard__title">Shipping</h2>
+            <h3 className="orderCard__subtitle">NAME:</h3>
+            <p className="orderCard__p">{cart.shippingAddress.fullName}</p>
+            <h3 className="orderCard__subtitle">ADDRESS:</h3>
+            <p className="orderCard__p">
+              {cart.shippingAddress.address}, {cart.shippingAddress.city},{" "}
+              {cart.shippingAddress.postalCode}, {cart.shippingAddress.country}
+            </p>
+            <h2 className="orderCard__title">Payment</h2>
 
-        <div className="orderCard">
-          <h2 className="orderCard__title">Summary</h2>
-
-          <div className="row">
-            <h3 className="orderCard__subtitle">Items</h3>
-            <div className="orderCard__price">
-              ${cart.itemsPrice.toFixed(2)}
-            </div>
+            <h3 className="orderCard__subtitle">METHOD:</h3>
+            <p className="orderCard__p">{cart.paymentMethod}</p>
           </div>
 
-          <div className="row">
-            <h3 className="orderCard__subtitle">Shipping</h3>
-            <div className="orderCard__price">
-              ${cart.shippingPrice.toFixed(2)}
+          <div className="orderCard">
+            <h2 className="orderCard__title summaryCard">Summary</h2>
+
+            <div className="row">
+              <h3 className="orderCard__subtitle">Items</h3>
+              <div className="orderCard__price">
+                ${cart.itemsPrice.toFixed(2)}
+              </div>
             </div>
+
+            <div className="row">
+              <h3 className="orderCard__subtitle">Shipping</h3>
+              <div className="orderCard__price">
+                ${cart.shippingPrice.toFixed(2)}
+              </div>
+            </div>
+
+            <div className="row">
+              <h3 className="orderCard__subtitle">Tax</h3>
+              <div className="orderCard__price">
+                ${cart.taxPrice.toFixed(2)}
+              </div>
+            </div>
+
+            <div className="row">
+              <h3 className="orderCard__subtitle bold">TOTAL</h3>
+
+              <strong className="orderCard__price">
+                ${cart.totalPrice.toFixed(2)}
+              </strong>
+            </div>
+
+            <button
+              type="button"
+              onClick={placeOrderHandler}
+              className="placeOrderButton"
+              disabled={cart.cartItems.length === 0}
+            >
+              Place Order
+            </button>
+
+            {loading && <LoadingBox></LoadingBox>}
+            {error && <MessageBox variant="danger">{error}</MessageBox>}
           </div>
-
-          <div className="row">
-            <h3 className="orderCard__subtitle">Tax</h3>
-            <div className="orderCard__price">${cart.taxPrice.toFixed(2)}</div>
-          </div>
-
-          <div className="row">
-            <h3 className="orderCard__subtitle bold">TOTAL</h3>
-
-            <strong className="orderCard__price">
-              ${cart.totalPrice.toFixed(2)}
-            </strong>
-          </div>
-
-          <button
-            type="button"
-            onClick={placeOrderHandler}
-            className="placeOrderButton"
-            disabled={cart.cartItems.length === 0}
-          >
-            Place Order
-          </button>
-
-          {loading && <LoadingBox></LoadingBox>}
-          {error && <MessageBox variant="danger">{error}</MessageBox>}
         </div>
       </div>
     </section>

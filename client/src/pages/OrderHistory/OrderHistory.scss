@@ -5,20 +5,30 @@
 
 .orderHistory {
   @include background;
-  min-height: 80%;
 
+  &__title {
+    @include M-bebas-header;
+    @include flex-center;
+    color: white;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+
+    @include tablet {
+      @include T-bebas-header;
+      color: white;
+    }
+  }
   .orderHistWrap {
     padding: 2rem;
-
-    &__title {
-      @include M-bebas-header;
-      @include flex-center;
-      color: white;
-      margin-bottom: 2rem;
-    }
+    padding-top: 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .orderHistCard {
+    position: relative;
     width: 30rem;
     padding: 1rem;
     box-shadow: 0rem 0rem 5px $primary-dark-blue;
@@ -26,6 +36,37 @@
     background-color: white;
     margin: 0 auto;
     margin-bottom: 2rem;
+    z-index: 0;
+
+    @include tablet {
+      width: 25rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
+    .orderImages {
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include flex-center;
+      flex-wrap: wrap;
+      width: 30rem;
+
+      @include tablet {
+        width: 25rem;
+      }
+    }
+
+    &__img {
+      z-index: -1;
+      // position: absolute;
+      // top: 0;
+      // left: 0;
+      width: 10rem;
+      height: auto;
+      opacity: 0.2;
+      padding: 2rem;
+    }
 
     &__subtitle {
       @include M-bebas-header;
@@ -39,6 +80,10 @@
 
     .detailsBtn {
       @include button;
+      &:hover {
+        color: $primary-light-blue;
+        border: 2px solid $primary-light-blue;
+      }
     }
   }
 }

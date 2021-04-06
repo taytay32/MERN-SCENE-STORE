@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -6,6 +6,8 @@ import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
 import "./CartPage.scss";
 
 const CartPage = (props) => {
+  const [filteredItems, setFilteredItems] = useState([]);
+
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const { productId, qty, size } = cartItems;
@@ -13,12 +15,26 @@ const CartPage = (props) => {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
+  const searchProduct = useSelector((state) => state.searchProduct);
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty, size));
     }
   }, [dispatch, productId, qty, size]);
+
+  useEffect(() => {
+    // console.log("Products: ", products);
+
+    if (cartItems) {
+      setFilteredItems(
+        cartItems.filter((item) => {
+          return item.name.toLowerCase().includes(searchProduct.toLowerCase());
+        })
+      );
+    }
+  }, [cartItems, searchProduct]);
 
   const removeFromCartHandler = (id, size) => {
     dispatch(removeFromCart(id, size));
@@ -45,7 +61,7 @@ const CartPage = (props) => {
         <>
           <h1 className="cart__title">Cart details</h1>
           <ul className="items">
-            {cartItems.map((item) => {
+            {filteredItems.map((item) => {
               return (
                 <li key={`${item.productId}${item.size}`} className="item">
                   <div className="infoWrap">
@@ -159,8 +175,9 @@ const CartPage = (props) => {
           </ul>
           <div className="summary">
             <h2 className="summary__title">
-              Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $
-              {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+              Subtotal (
+              {cartItems.reduce((a, c) => Number(a) + Number(c.qty), 0)} items)
+              : ${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
             </h2>
 
             <button

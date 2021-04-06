@@ -14,8 +14,6 @@ const LandingPage = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const searchProduct = useSelector((state) => state.searchProduct);
-  console.log(typeof searchProduct);
-  // console.log(searchProduct);
 
   const dispatch = useDispatch();
 
@@ -35,10 +33,7 @@ const LandingPage = () => {
         })
       );
     }
-    console.log(filteredProducts);
   }, [products, searchProduct]);
-
-  console.log(filteredProducts);
 
   return (
     <>
