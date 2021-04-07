@@ -70,21 +70,32 @@ const Header = () => {
               </li>
             </>
           ) : (
-            <li className="mobileList__item">
-              <Link
-                onClick={burgerHandler}
-                className="mobileList__item__link"
-                to="/signin"
-              >
-                Sign In
-              </Link>
-            </li>
+            <>
+              <li className="mobileList__item">
+                <Link
+                  onClick={burgerHandler}
+                  className="mobileList__item__link"
+                  to="/signin"
+                >
+                  Sign In
+                </Link>
+              </li>
+              <li className="mobileList__item">
+                <Link
+                  onClick={burgerHandler}
+                  className="mobileList__item__link"
+                  to="/register"
+                >
+                  Register
+                </Link>
+              </li>
+            </>
           )}
 
           {userInfo && userInfo.isAdmin && (
             <>
               <li className="mobileList__item underline">Admin</li>
-              <li className="mobileList__item">
+              {/* <li className="mobileList__item">
                 <Link
                   onClick={burgerHandler}
                   className="mobileList__item__link"
@@ -92,7 +103,7 @@ const Header = () => {
                 >
                   Dashboard
                 </Link>
-              </li>
+              </li> */}
               <li className="mobileList__item">
                 <Link
                   onClick={burgerHandler}
@@ -102,7 +113,7 @@ const Header = () => {
                   Products
                 </Link>
               </li>
-              <li className="mobileList__item">
+              {/* <li className="mobileList__item">
                 <Link
                   onClick={burgerHandler}
                   className="mobileList__item__link"
@@ -119,7 +130,7 @@ const Header = () => {
                 >
                   Users
                 </Link>
-              </li>
+              </li> */}
             </>
           )}
         </ul>
@@ -137,7 +148,11 @@ const Header = () => {
         <nav className="mobileNav">
           <div className="mobileNavWrap">
             <div className="mobileCartWrap">
-              <Link className="mobileCartLink" to="/cart">
+              <Link
+                className="mobileCartLink"
+                to="/cart"
+                onClick={() => setBurger(false)}
+              >
                 <img className="cartIcon" src={shoppingCart} alt="" />
                 {cartItems.length > 0 && (
                   <span className="cartBadgeMobile">{cartItems.length}</span>

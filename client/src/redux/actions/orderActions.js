@@ -21,8 +21,6 @@ export const createOrder = (order) => async (dispatch, getState) => {
     payload: order,
   });
   try {
-    //userInfo for token
-    //getState returns full redux store
     const {
       userSignin: { userInfo },
     } = getState();

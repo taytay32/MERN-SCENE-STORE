@@ -42,11 +42,6 @@ const OrderHistory = (props) => {
                     })}
                   </div>
 
-                  {/* <img
-                    className="orderHistCard__img"
-                    src={order.orderItems[0].image}
-                    alt={order.orderItems[0].name}
-                  /> */}
                   <h3 className="orderHistCard__subtitle">ID</h3>
                   <p className="orderHistCard__p">{order._id}</p>
                   <h3 className="orderHistCard__subtitle">DATE</h3>

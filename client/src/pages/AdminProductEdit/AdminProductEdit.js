@@ -24,6 +24,11 @@ const AdminProductEdit = (props) => {
   const [sizes, setSizes] = useState("");
   const [trackList, setTrackList] = useState("");
   const [trackLength, setTrackLength] = useState("");
+  const [releaseDate, setReleaseDate] = useState("");
+  const [sizeSmall, setSizeSmall] = useState("");
+  const [sizeMedium, setSizeMedium] = useState("");
+  const [sizeLarge, setSizeLarge] = useState("");
+  const [sizeExtraLarge, setSizeExtraLarge] = useState("");
 
   const productSelected = useSelector((state) => state.productSelected);
   const { loading, error, product } = productSelected;
@@ -52,14 +57,19 @@ const AdminProductEdit = (props) => {
       setCountInStock(product.countInStock);
       setDescription(product.description);
       setSizes(product.sizes);
+      setSizeSmall(product.sizesOb.S);
+      setSizeMedium(product.sizesOb.M);
+      setSizeLarge(product.sizesOb.L);
+      setSizeExtraLarge(product.sizesOb.XL);
       setTrackList(product.trackList);
       setTrackLength(product.trackLength);
+      setReleaseDate(product.releaseDate);
     }
   }, [product, dispatch, productId, props.history, successUpdate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(image);
+
     //dispatch update product
     dispatch(
       updateProduct({
@@ -71,9 +81,21 @@ const AdminProductEdit = (props) => {
         category,
         countInStock,
         description,
-        sizes,
-        trackList,
-        trackLength,
+        sizesOb: {
+          S: Number(sizeSmall),
+          M: Number(sizeMedium),
+          L: Number(sizeLarge),
+          XL: Number(sizeExtraLarge),
+        },
+        // sizes:
+        //   typeof sizes === "string" ? sizes.toUpperCase().split(",") : sizes,
+        trackList:
+          typeof trackList === "string" ? trackList.split(",") : trackList,
+        trackLength:
+          typeof trackLength === "string"
+            ? trackLength.split(",")
+            : trackLength,
+        releaseDate,
       })
     );
   };
@@ -101,7 +123,7 @@ const AdminProductEdit = (props) => {
           },
         }
       );
-      console.log("2", data);
+
       setImage(data);
       setLoadingUpload(false);
     } catch (error) {
@@ -156,21 +178,33 @@ const AdminProductEdit = (props) => {
             value={image}
             onChange={(e) => setImage(e.target.value)}
           />
-          <div>
-            <label className="inputs__label" htmlFor="imageFile">
-              Image File
-            </label>
-            <input
-              className="inputs__input"
-              type="file"
-              id="imageFile"
-              label="Choose Image"
-              onChange={uploadFileHandler}
-            />
-          </div>
+
+          <label className="inputs__label" htmlFor="imageFile">
+            New Image File
+          </label>
+
+          <input
+            className="upload__input inputs__input"
+            type="file"
+            id="imageFile"
+            label="Choose Image"
+            onChange={uploadFileHandler}
+          />
+
           {loadingUpload && <LoadingBox></LoadingBox>}
           {errorUpload && (
             <MessageBox variante="danger">{errorUpload}</MessageBox>
+          )}
+          {product && image.length >= 1 && (
+            <img
+              className="uploadImg"
+              src={
+                image.slice(0, 8) === "/uploads"
+                  ? `http://localhost:5000${image}`
+                  : image
+              }
+              alt={product.name}
+            />
           )}
 
           <label className="inputs__label" htmlFor="type">
@@ -178,48 +212,18 @@ const AdminProductEdit = (props) => {
           </label>
           <select
             className="inputs__input"
-            // type="text"
             id="type"
             required
+            value={type}
             onChange={(e) => setType(e.target.value)}
           >
-            <option></option>
+            {!type && <option></option>}
             <option value="Apparel">Apparel</option>
             <option value="Music">Music</option>
             <option value="Tab">Tab</option>
             <option value="Button">Button</option>
-
-            {/* {type === "Apparel" ? (
-              <>
-                <option value={type}>{type}</option>
-                <option value="Music">Music</option>
-                <option value="Tab">Tab</option>
-                <option value="Button">Button</option>
-              </>
-            ) : type === "Music" ? (
-              <>
-                <option value={type}>{type}</option>
-                <option value="Apparel">Apparel</option>
-                <option value="Tab">Tab</option>
-                <option value="Button">Button</option>
-              </>
-            ) : type === "Tab" ? (
-              <>
-                <option value="Apparel">Apparel</option>
-                <option value="Music">Music</option>
-                <option value="Button">Button</option>
-              </>
-            ) : type === "Button" ? (
-              <>
-                <option value="Apparel">Apparel</option>
-                <option value="Tab">Tab</option>
-                <option value="Music">Music</option>
-              </>
-            ) : (
-              ""
-            )} */}
           </select>
-          {product && product.type === "Apparel" && (
+          {product && type === "Apparel" && (
             <>
               <label className="inputs__label" htmlFor="category">
                 Category
@@ -228,64 +232,84 @@ const AdminProductEdit = (props) => {
                 className="inputs__input"
                 id="category"
                 required
+                value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
+                <option></option>
                 <option value="Hoodies">Hoodies</option>
                 <option value="Tees">Tees</option>
                 <option value="Tanks">Tanks</option>
               </select>
 
-              {/* <h3 className="inputs__label sizeTitle">Sizes</h3>
-              <div className="sizesCont">
-                <div>
-                  <label className="inputs__label CB" htmlFor="S">
-                    S
+              {/* <label className="inputs__label" htmlFor="sizes">
+                Sizes
+              </label>
+              <input
+                className="inputs__input"
+                type="text"
+                id="sizes"
+                placeholder="Eg S, M, L, XL"
+                value={sizes}
+                onChange={(e) => setSizes(e.target.value)}
+              /> */}
+
+              <div className="sizeWrappers">
+                <div className="sizeHeadings">
+                  <label className="inputs__label sizeHeading" htmlFor="small">
+                    Small
                   </label>
+                  <label className="inputs__label sizeHeading" htmlFor="medium">
+                    Medium
+                  </label>
+                  <label className="inputs__label sizeHeading" htmlFor="large">
+                    Large
+                  </label>
+                  <label
+                    className="inputs__label sizeHeading"
+                    htmlFor="extraLarge"
+                  >
+                    Extra Large
+                  </label>
+                </div>
+                <div className="sizeInputs">
                   <input
-                    className="inputs__checkbox"
-                    type="checkbox"
-                    id="S"
-                    onChange={(e) => setSizes(e.target.value)}
+                    className="inputs__input size__input"
+                    type="text"
+                    id="small"
+                    placeholder="qty"
+                    value={sizeSmall}
+                    onChange={(e) => setSizeSmall(e.target.value)}
+                  />
+                  <input
+                    className="inputs__input size__input"
+                    type="text"
+                    id="medium"
+                    placeholder="qty"
+                    value={sizeMedium}
+                    onChange={(e) => setSizeMedium(e.target.value)}
+                  />
+                  <input
+                    className="inputs__input size__input"
+                    type="text"
+                    id="large"
+                    placeholder="qty"
+                    value={sizeLarge}
+                    onChange={(e) => setSizeLarge(e.target.value)}
+                  />
+                  <input
+                    className="inputs__input size__input"
+                    type="text"
+                    id="extraLarge"
+                    placeholder="qty"
+                    value={sizeExtraLarge}
+                    onChange={(e) => setSizeExtraLarge(e.target.value)}
                   />
                 </div>
-                <div>
-                  <label className="inputs__label CB" htmlFor="M">
-                    M
-                  </label>
-                  <input
-                    className="inputs__checkbox"
-                    type="checkbox"
-                    id="M"
-                    onChange={(e) => setSizes(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label className="inputs__label CB" htmlFor="L">
-                    L
-                  </label>
-                  <input
-                    className="inputs__checkbox"
-                    type="checkbox"
-                    id="L"
-                    onChange={(e) => setSizes(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label className="inputs__label CB" htmlFor="XL">
-                    XL
-                  </label>
-                  <input
-                    className="inputs__checkbox"
-                    type="checkbox"
-                    id="XL"
-                    onChange={(e) => setSizes(e.target.value)}
-                  />
-                </div>
-              </div> */}
+              </div>
             </>
           )}
 
-          {/* {product && product.type === "Music" && (
+          {product && type === "Music" && (
             <>
               <label className="inputs__label" htmlFor="category">
                 Category
@@ -296,6 +320,7 @@ const AdminProductEdit = (props) => {
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
+                <option></option>
                 <option value="CD">CD</option>
                 <option value="Vinyl">Vinyl</option>
               </select>
@@ -323,9 +348,33 @@ const AdminProductEdit = (props) => {
                 placeholder="Enter track length eg: 1. 3:30, 2. 4:24"
                 onChange={(e) => setTrackLength(e.target.value)}
               />
+
+              <label className="inputs__label" htmlFor="countInStock">
+                Count In Stock
+              </label>
+              <input
+                className="inputs__input"
+                type="text"
+                id="countInStock"
+                placeholder="Enter count in stock"
+                value={countInStock}
+                onChange={(e) => setCountInStock(e.target.value)}
+              />
+
+              <label className="inputs__label" htmlFor="releaseDate">
+                Release Date
+              </label>
+              <input
+                className="inputs__input"
+                type="text"
+                id="releaseDate"
+                placeholder="Enter release date"
+                value={releaseDate}
+                onChange={(e) => setReleaseDate(e.target.value)}
+              />
             </>
-          )} */}
-          {/* {product && product.type === "Tab" && (
+          )}
+          {product && type === "Tab" && (
             <>
               <label className="inputs__label" htmlFor="category">
                 Category
@@ -336,12 +385,28 @@ const AdminProductEdit = (props) => {
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
+                <option></option>
                 <option value="digital download">Digital Download</option>
                 <option value="book">Book</option>
               </select>
             </>
           )}
-          {product && product.type === "button" && (
+          {product && category === "book" && (
+            <>
+              <label className="inputs__label" htmlFor="countInStock">
+                Count In Stock
+              </label>
+              <input
+                className="inputs__input"
+                type="text"
+                id="countInStock"
+                placeholder="Enter count in stock"
+                value={countInStock}
+                onChange={(e) => setCountInStock(e.target.value)}
+              />
+            </>
+          )}
+          {product && type === "Button" && (
             <>
               <label className="inputs__label" htmlFor="category">
                 Category
@@ -352,22 +417,23 @@ const AdminProductEdit = (props) => {
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
+                <option></option>
                 <option value="buttons">Buttons</option>
               </select>
-            </>
-          )} */}
 
-          <label className="inputs__label" htmlFor="countInStock">
-            Count In Stock
-          </label>
-          <input
-            className="inputs__input"
-            type="text"
-            id="countInStock"
-            placeholder="Enter count in stock"
-            value={countInStock}
-            onChange={(e) => setCountInStock(e.target.value)}
-          />
+              <label className="inputs__label" htmlFor="countInStock">
+                Count In Stock
+              </label>
+              <input
+                className="inputs__input"
+                type="text"
+                id="countInStock"
+                placeholder="Enter count in stock"
+                value={countInStock}
+                onChange={(e) => setCountInStock(e.target.value)}
+              />
+            </>
+          )}
 
           <label className="inputs__label" htmlFor="description">
             Description

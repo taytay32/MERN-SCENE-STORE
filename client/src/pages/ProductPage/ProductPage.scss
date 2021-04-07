@@ -89,7 +89,7 @@
         border-radius: 2px;
         background-color: white;
         margin-bottom: 3rem;
-        padding: 1.5rem;
+        padding: 1rem;
 
         @include tablet {
           margin-bottom: 2rem;
@@ -122,7 +122,7 @@
 
           &__title {
             @include M-bebas-header;
-            margin-right: 1rem;
+            margin-right: 0.2rem;
           }
 
           &__tracklist {
@@ -175,12 +175,22 @@
           &__status {
             &__success {
               color: $primary-green;
+              font-size: 1.8rem;
             }
 
             &__error {
               color: $primary-red;
             }
           }
+        }
+
+        .qtyWrap {
+          @include flex-center;
+          margin-bottom: 1rem;
+        }
+
+        .qtyWrapApparel {
+          @include flex-center;
         }
 
         .addToCart {
@@ -222,29 +232,35 @@
     }
   }
 }
+.lab {
+  margin-right: 1rem;
+  @include M-montserrat-header;
+}
+
+.select {
+  @include M-montserrat-header;
+  width: 4.2rem;
+  height: 3rem;
+}
 
 .sizenqty {
   display: flex;
   align-items: center;
 
   @include M-montserrat-header;
-  padding: 1.5rem 0;
+  padding: 0 0 1.25rem;
 
   .qtyWrap {
+    display: flex;
     align-items: center;
+    justify-content: center;
     width: 50%;
-  }
-  .select {
-    @include M-montserrat-header;
-    width: 4.2rem;
-    height: 3rem;
-  }
-
-  .lab {
-    margin-right: 1rem;
   }
 
   .sizeWrap {
-    margin-left: auto;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

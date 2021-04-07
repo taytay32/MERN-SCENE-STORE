@@ -12,6 +12,8 @@ const CartPage = (props) => {
   const { cartItems } = cart;
   const { productId, qty, size } = cartItems;
 
+  console.log(cartItems);
+
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
@@ -62,6 +64,7 @@ const CartPage = (props) => {
           <h1 className="cart__title">Cart details</h1>
           <ul className="items">
             {filteredItems.map((item) => {
+              console.log(item);
               return (
                 <li key={`${item.productId}${item.size}`} className="item">
                   <div className="infoWrap">
@@ -84,6 +87,29 @@ const CartPage = (props) => {
                         <div className="item__selects">
                           <select
                             className="item__select"
+                            name="size"
+                            value={item.size}
+                            onChange={(e) =>
+                              dispatch(
+                                addToCart(
+                                  item.productId,
+                                  item.qty,
+                                  e.target.value,
+                                  item.sizesOb
+                                )
+                              )
+                            }
+                          >
+                            {Object.keys(item.sizesOb).map((size) => {
+                              return (
+                                <option key={size} name="size">
+                                  {size}
+                                </option>
+                              );
+                            })}
+                          </select>
+                          <select
+                            className="item__select"
                             value={item.qty}
                             name=""
                             id=""
@@ -92,40 +118,36 @@ const CartPage = (props) => {
                                 addToCart(
                                   item.productId,
                                   Number(e.target.value),
-                                  item.size
+                                  item.size,
+                                  item.sizesOb
                                 )
                               )
                             }
                           >
-                            {[...Array(item.countInStock).keys()].map((x) => {
-                              return (
+                            {item.size === "S" &&
+                              [...Array(item.sizesOb.S).keys()].map((x) => (
                                 <option key={x + 1} value={x + 1}>
                                   {x + 1}
                                 </option>
-                              );
-                            })}
-                          </select>
-                          <select
-                            className="item__select"
-                            name="size"
-                            value={item.size}
-                            onChange={(e) =>
-                              dispatch(
-                                addToCart(
-                                  item.productId,
-                                  item.qty,
-                                  e.target.value
-                                )
-                              )
-                            }
-                          >
-                            {item.sizes.map((size) => {
-                              return (
-                                <option key={size} name="size">
-                                  {size}
+                              ))}
+                            {item.size === "M" &&
+                              [...Array(item.sizesOb.M).keys()].map((x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
                                 </option>
-                              );
-                            })}
+                              ))}
+                            {item.size === "L" &&
+                              [...Array(item.sizesOb.L).keys()].map((x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              ))}
+                            {item.size === "XL" &&
+                              [...Array(item.sizesOb.XL).keys()].map((x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              ))}
                           </select>
                         </div>
                       ) : item.type !== "Tab" ? (

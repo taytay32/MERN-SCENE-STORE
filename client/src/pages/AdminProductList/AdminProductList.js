@@ -60,17 +60,18 @@ const AdminProductList = (props) => {
 
   return (
     <section className="orderHistory adminProdList">
+      <h1 className="orderHistory__title">Products</h1>
+      <div className="createBtnWrap">
+        <button
+          type="button"
+          className="orderHistWrap__btn"
+          onClick={createHandler}
+        >
+          Create Product
+        </button>
+      </div>
+
       <div className="orderHistWrap">
-        <div className="createBtnWrap">
-          <button
-            type="button"
-            className="orderHistWrap__btn"
-            onClick={createHandler}
-          >
-            Create Product
-          </button>
-        </div>
-        <h1 className="orderHistWrap__title">Products</h1>
         {loadingDelete && <LoadingBox></LoadingBox>}
         {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
         {loadingCreate && <LoadingBox></LoadingBox>}
@@ -110,7 +111,7 @@ const AdminProductList = (props) => {
                   </button>
                   <button
                     type="button"
-                    className="detailsBtn"
+                    className="deleteBtn"
                     onClick={() => deleteHandler(product)}
                   >
                     DELETE
