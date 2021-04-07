@@ -12,40 +12,38 @@ const data = {
   ],
   products: [
     {
-      type: "apparel",
+      type: "Apparel",
       name: "Crow Hoodie",
       category: "Hoodies",
       image: "/images/merch/hoodie_edit-1.png",
       imageDetail: "/images/merch/hoodie-pam-removebg.png",
       price: 35,
-      countInStock: 60,
-      sizes: ["S", "M", "L", "XL"],
-      //   small: 13,
-      //   medium: 13,
-      //   large: 13,
-      //   xlarge: 23
-      // }
+      sizesOb: {
+        S: 20,
+        M: 15,
+        L: 3,
+        XL: 18,
+      },
       description: "Stylish, flexible, and warm!",
     },
     {
-      type: "apparel",
+      type: "Apparel",
       name: "Horse Tee",
       category: "Tees",
       image: "/images/merch/tee_edit.jpg",
       imageDetail: "/images/merch/tee-primz-removebg.png",
       price: 20,
       countInStock: 5,
-      sizes: ["S", "M", "L", "XL"],
-      // countInStock = {
-      //   small: 13,
-      //   medium: 13,
-      //   large: 13,
-      //   xlarge: 23
-      // }
+      sizesOb: {
+        S: 20,
+        M: 15,
+        L: 3,
+        XL: 18,
+      },
       description: "Standard emo t-shirt, for you.",
     },
     {
-      type: "apparel",
+      type: "Apparel",
       name: "Dear Hair Tank",
       category: "Tanks",
       image: "/images/merch/tank_edit-bg.png",
@@ -53,43 +51,36 @@ const data = {
       price: 25,
       countInStock: 12,
       sizes: ["S", "M", "L", "XL"],
-      // countInStock = {
-      //   small: 13,
-      //   medium: 13,
-      //   large: 13,
-      //   xlarge: 23
-      // }
-      description: "Oh what a day",
+      sizesOb: {
+        S: 20,
+        M: 15,
+        L: 3,
+        XL: 18,
+      },
+      description: "Oh, what a day!",
     },
     {
-      type: "music",
+      type: "Music",
       name: "CD - Autophage",
       category: "CD",
       image: "/images/merch/cd-auto-front.jpeg",
       imageDetail: "/images/merch/auto-cd-full-2.png",
       price: 5,
       countInStock: 10,
-      // description:
-      //   "GURTH's debut EP in a low profile slip case, artwork by Geoff Watson.",
       releaseDate: "Mar 31, 2018",
       artwork: "Artwork by Geoff Watson",
-
       trackList: ["1. Dear Hair", "2. Caskets", "3. Trappist", "4. Breathe"],
       trackLength: ["(4:26)", "(4:52)", "(5:23)", "(3:44)"],
     },
 
     {
-      type: "music",
+      type: "Music",
       name: "CD - A Better End",
       category: "CD",
       image: "/images/merch/cd-abe-front.jpeg",
       imageDetail: "/images/merch/cd-abe-full.png",
       price: 5,
       countInStock: 20,
-
-      // description:
-      //   "GURTH's sophomore EP in low profile slip case, artwork by Gabe Altrows.",
-      //artwork: "Artwork by Gabe Altrows."
       releaseDate: "Oct 19, 2019",
       trackList: [
         "1. Concluding",
@@ -99,20 +90,19 @@ const data = {
       trackLength: ["(4:29)", "(5:02)", "(6:15)"],
     },
     {
-      type: "music",
+      type: "Music",
       name: `7" Vinyl`,
       category: "Vinyl",
       image: "/images/merch/vinyls.png",
       imageDetail: "/images/merch/vinyls.png",
       price: 15,
       countInStock: 30,
-      // description: "high quality product",
       releaseDate: "Oct 19, 2019",
       trackList: ["Side A: Concluding", "Side B: Dear Hair"],
       trackLength: ["(4:29)", "(4:26)"],
     },
     {
-      type: "button",
+      type: "Button",
       name: "Sons Btn",
       category: "buttons",
       image: "/images/merch/logo-hockey-puck.png",
@@ -128,7 +118,6 @@ const data = {
       image: "/images/merch/tab-auto.png",
       imageDetail: "/images/merch/tab-auto.png",
       price: 5,
-
       description:
         "Full digital tab transcription (GP 7) of Autophage EP, including drums, bass, and guitars.  Link to downloadable zip file provided.",
     },

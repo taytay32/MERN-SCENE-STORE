@@ -94,7 +94,6 @@ productRouter.put(
       product.type = req.body.type;
       product.countInStock = req.body.countInStock;
       product.sizesOb = req.body.sizesOb;
-      // product.sizes = req.body.sizes;
       product.trackList = req.body.trackList;
       product.trackLength = req.body.trackLength;
       product.releaseDate = req.body.releaseDate;

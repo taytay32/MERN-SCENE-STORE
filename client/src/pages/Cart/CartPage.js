@@ -10,7 +10,7 @@ const CartPage = (props) => {
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  const { productId, qty, size } = cartItems;
+  const { productId, qty, size, type } = cartItems;
 
   console.log(cartItems);
 
@@ -22,13 +22,11 @@ const CartPage = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (productId) {
-      dispatch(addToCart(productId, qty, size));
+      dispatch(addToCart(productId, qty, size, type));
     }
-  }, [dispatch, productId, qty, size]);
+  }, [dispatch, productId, qty, size, type]);
 
   useEffect(() => {
-    // console.log("Products: ", products);
-
     if (cartItems) {
       setFilteredItems(
         cartItems.filter((item) => {

@@ -11,6 +11,7 @@ import { updateProduct } from "../../redux/actions/productActions";
 
 const PlaceOrder = (props) => {
   const cart = useSelector((state) => state.cart);
+  console.log(cart);
 
   //FETCH ORDER DETAILS FOR useEffect
   const orderCreate = useSelector((state) => state.orderCreate);

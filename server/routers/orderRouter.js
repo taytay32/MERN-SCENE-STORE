@@ -1,7 +1,7 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import Order from "../models/orderModel.js";
-import { authUser } from "../utils.js";
+import { authUser, updateInventory } from "../utils.js";
 
 const orderRouter = express.Router();
 
@@ -25,6 +25,7 @@ orderRouter.get(
 orderRouter.post(
   "/",
   authUser,
+  updateInventory,
   expressAsyncHandler(async (req, res) => {
     if (req.body.orderItems.length === 0) {
       res.status(400).send({ message: "Cart is empty" });

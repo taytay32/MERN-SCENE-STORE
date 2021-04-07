@@ -40,10 +40,10 @@ app.get("/api/config/paypal", (req, res) => {
 
 app.use("/uploads", express.static("uploads"));
 
-//CATCH ERRORS FOR USER SEED
-app.use((err, req, res, next) => {
-  res.status(500).send({ message: err.message });
-});
+// //CATCH ERRORS FOR USER SEED
+// app.use((err, req, res, next) => {
+//   res.status(500).send({ message: err.message });
+// });
 
 app.get("/", (req, res) => {
   res.send("Server is ready");
