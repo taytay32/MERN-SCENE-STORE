@@ -14,8 +14,8 @@ const SignIn = (props) => {
     ? props.location.search.split("?")[1]
     : "/";
 
-  // const cart = useSelector((state) => state.cart);
-  // const { cartItems } = cart;
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo, loading, error } = userSignin;
@@ -25,6 +25,10 @@ const SignIn = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(signin(email, password));
+
+    if (cartItems.length > 0) {
+      props.history.push("/cart");
+    }
   };
 
   useEffect(() => {

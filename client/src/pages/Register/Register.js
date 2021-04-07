@@ -16,6 +16,10 @@ const Register = (props) => {
   const userRegister = useSelector((state) => state.userRegister);
   const { userInfo, loading, error } = userRegister;
 
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+  console.log(cartItems);
+
   const redirect = props.location.search
     ? props.location.search.split("?")[1]
     : "/";
@@ -28,6 +32,10 @@ const Register = (props) => {
       alert("Password and confirm password do not match");
     } else {
       dispatch(register(firstName, lastName, email, password));
+    }
+
+    if (cartItems.length > 0) {
+      props.history.push("/cart");
     }
   };
 
