@@ -7,18 +7,19 @@ import LoadingBox from "../../components/boxes/LoadingBox";
 import MessageBox from "../../components/boxes/MessageBox";
 
 const Register = (props) => {
+  //STATE HOOKS
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  //PULL IN FROM STORE
   const userRegister = useSelector((state) => state.userRegister);
   const { userInfo, loading, error } = userRegister;
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  console.log(cartItems);
 
   const redirect = props.location.search
     ? props.location.search.split("?")[1]

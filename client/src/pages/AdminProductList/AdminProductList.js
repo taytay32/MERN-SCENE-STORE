@@ -15,6 +15,7 @@ import {
 } from "../../redux/constants/productConstants";
 
 const AdminProductList = (props) => {
+  //PULL FROM STORE
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
@@ -34,7 +35,7 @@ const AdminProductList = (props) => {
   } = productDelete;
 
   const dispatch = useDispatch();
-
+  //CREATE PRODUCT PUSHES TO EDIT PAGE, OTHERWISE, POPULATE PRODUCT LIST
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: PRODUCT_CREATE_RESET });
@@ -48,12 +49,14 @@ const AdminProductList = (props) => {
     dispatch(listProducts());
   }, [dispatch, createdProduct, props.history, successCreate, successDelete]);
 
+  //DELETE PRODUCT
   const deleteHandler = (product) => {
     if (window.confirm(`Are you sure you want to delete "${product.name}"`)) {
       dispatch(deleteProduct(product._id));
     }
   };
 
+  //CREATE PRODUCT
   const createHandler = () => {
     dispatch(createProduct());
   };

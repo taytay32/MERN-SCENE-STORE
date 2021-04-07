@@ -7,16 +7,13 @@ import { ORDER_CREATE_RESET } from "../../redux/constants/orderConstants.js";
 import LoadingBox from "../../components/boxes/LoadingBox";
 import MessageBox from "../../components/boxes/MessageBox";
 import "./PlaceOrder.scss";
-import { updateProduct } from "../../redux/actions/productActions";
 
 const PlaceOrder = (props) => {
+  //PULL FROM STORE
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
 
-  //FETCH ORDER DETAILS FOR useEffect
   const orderCreate = useSelector((state) => state.orderCreate);
   const { loading, success, error, order } = orderCreate;
-  console.log(order);
 
   //FORMAT PRICES
   const toPrice = (num) => Number(num.toFixed(2));
@@ -31,7 +28,6 @@ const PlaceOrder = (props) => {
   //DISPATCH PLACE ORDER
   const dispatch = useDispatch();
   const placeOrderHandler = () => {
-    //Replaced cartItems: cart.cartItems with orderItems: cart.cartItems within the cart for backend
     dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
   };
 

@@ -11,16 +11,16 @@ import MessageBox from "../../components/boxes/MessageBox";
 import { USER_UPDATE_PROFILE_RESET } from "../../redux/constants/userConstants";
 
 const UserProfile = (props) => {
+  //STATE HOOKS
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  //PULL FROM STORE
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
-
-  console.log(userSignin);
 
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
@@ -32,8 +32,7 @@ const UserProfile = (props) => {
     loading: loadingUpdate,
   } = userUpdateProfile;
 
-  console.log(userUpdateProfile);
-
+  //
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {

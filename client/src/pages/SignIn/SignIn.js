@@ -7,6 +7,7 @@ import LoadingBox from "../../components/boxes/LoadingBox";
 import MessageBox from "../../components/boxes/MessageBox";
 
 const SignIn = (props) => {
+  //STATE HOOKS
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,6 +15,7 @@ const SignIn = (props) => {
     ? props.location.search.split("?")[1]
     : "/";
 
+  //PULL IN FROM STORE
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
@@ -34,7 +36,6 @@ const SignIn = (props) => {
   useEffect(() => {
     if (userInfo) {
       props.history.push(redirect);
-      console.log(redirect);
     }
   }, [userInfo, props.history, redirect]);
 

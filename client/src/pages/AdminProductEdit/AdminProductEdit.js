@@ -14,6 +14,7 @@ import axios from "../../../node_modules/axios/index";
 const AdminProductEdit = (props) => {
   const productId = props.match.params.id;
 
+  //HOOKS TO ESTABLISH STATE
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [price, setPrice] = useState("");
@@ -21,7 +22,6 @@ const AdminProductEdit = (props) => {
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState("");
   const [description, setDescription] = useState("");
-  const [sizes, setSizes] = useState("");
   const [trackList, setTrackList] = useState("");
   const [trackLength, setTrackLength] = useState("");
   const [releaseDate, setReleaseDate] = useState("");
@@ -29,10 +29,14 @@ const AdminProductEdit = (props) => {
   const [sizeMedium, setSizeMedium] = useState("");
   const [sizeLarge, setSizeLarge] = useState("");
   const [sizeExtraLarge, setSizeExtraLarge] = useState("");
+  const [loadingUpload, setLoadingUpload] = useState(false);
+  const [errorUpload, setErrorUpload] = useState("");
 
+  //IMPORT PRODUCTSELECTED FROM STORE
   const productSelected = useSelector((state) => state.productSelected);
   const { loading, error, product } = productSelected;
 
+  //IMPORT UPDATEDPRODUCT FROM STORE
   const productUpdate = useSelector((state) => state.productUpdate);
   const {
     loading: loadingUpdate,
@@ -41,6 +45,8 @@ const AdminProductEdit = (props) => {
   } = productUpdate;
 
   const dispatch = useDispatch();
+
+  //IF  UPDATE - REDIRECT, OR DISPATCH PRODUCT AND REPOPULATE STATE
   useEffect(() => {
     if (successUpdate) {
       props.history.push("/productlist");
@@ -56,7 +62,6 @@ const AdminProductEdit = (props) => {
       setCategory(product.category);
       setCountInStock(product.countInStock);
       setDescription(product.description);
-      setSizes(product.sizes);
       if (product.type === "Apparel") {
         setSizeSmall(product.sizesOb.S);
         setSizeMedium(product.sizesOb.M);
@@ -73,7 +78,7 @@ const AdminProductEdit = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    //dispatch update product
+    //PUT BODY
     dispatch(
       updateProduct({
         _id: productId,
@@ -90,8 +95,7 @@ const AdminProductEdit = (props) => {
           L: Number(sizeLarge),
           XL: Number(sizeExtraLarge),
         },
-        // sizes:
-        //   typeof sizes === "string" ? sizes.toUpperCase().split(",") : sizes,
+
         trackList:
           typeof trackList === "string" ? trackList.split(",") : trackList,
         trackLength:
@@ -103,11 +107,11 @@ const AdminProductEdit = (props) => {
     );
   };
 
-  const [loadingUpload, setLoadingUpload] = useState(false);
-  const [errorUpload, setErrorUpload] = useState("");
-
+  //IMPORT USERINFO FROM STORE
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
+
+  //UPLOAD FILE
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const bodyFormData = new FormData();
@@ -437,7 +441,6 @@ const AdminProductEdit = (props) => {
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option></option>
                 <option value="buttons">Buttons</option>
               </select>
 

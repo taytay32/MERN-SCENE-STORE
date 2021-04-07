@@ -7,9 +7,9 @@ import MessageBox from "../../components/boxes/MessageBox";
 import { listProducts } from "../../redux/actions/productActions";
 
 const LandingPage = () => {
+  //PULL IN FROM STORE
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
-  // console.log(products);
 
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -17,13 +17,13 @@ const LandingPage = () => {
 
   const dispatch = useDispatch();
 
+  //PULL IN PRODUCTS
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
 
+  //SEARCH FUNCTIONALITY
   useEffect(() => {
-    console.log("Products: ", products);
-
     if (products) {
       setFilteredProducts(
         products.filter((product) => {

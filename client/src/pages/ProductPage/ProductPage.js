@@ -9,16 +9,13 @@ import "./ProductPage.scss";
 import { addToCart } from "../../redux/actions/cartActions";
 
 const ProductPage = (props) => {
-  //call the state from store
+  //PULL IN FROM STORE
   const productSelected = useSelector((state) => state.productSelected);
-  console.log(productSelected);
-  //deconstruct the state
   const { loading, error, product } = productSelected;
 
-  //hook to dispatch redux action
   const dispatch = useDispatch();
 
-  //getID to feed to backend
+  //to pass through dispatch
   const productId = props.match.params.id;
   const [qty, setQty] = useState(1);
   const [size, setSize] = useState("M");

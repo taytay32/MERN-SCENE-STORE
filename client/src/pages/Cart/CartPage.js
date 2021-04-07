@@ -6,19 +6,19 @@ import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
 import "./CartPage.scss";
 
 const CartPage = (props) => {
+  //PULL FROM STORE
   const [filteredItems, setFilteredItems] = useState([]);
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const { productId, qty, size, type } = cartItems;
 
-  console.log(cartItems);
-
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
   const searchProduct = useSelector((state) => state.searchProduct);
 
+  //ADD TO CART
   const dispatch = useDispatch();
   useEffect(() => {
     if (productId) {
@@ -26,6 +26,7 @@ const CartPage = (props) => {
     }
   }, [dispatch, productId, qty, size, type]);
 
+  //SEARCH FUNCTIONALITY
   useEffect(() => {
     if (cartItems) {
       setFilteredItems(
@@ -40,6 +41,7 @@ const CartPage = (props) => {
     dispatch(removeFromCart(id, size));
   };
 
+  //ON CHECKOUT
   const checkoutHandler = () => {
     if (userInfo) {
       props.history.push("/shipping");
@@ -62,7 +64,6 @@ const CartPage = (props) => {
           <h1 className="cart__title">Cart details</h1>
           <ul className="items">
             {filteredItems.map((item) => {
-              console.log(item);
               return (
                 <li key={`${item.productId}${item.size}`} className="item">
                   <div className="infoWrap">

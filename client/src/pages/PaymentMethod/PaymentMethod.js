@@ -5,11 +5,14 @@ import CheckoutSteps from "../../components/checkoutSteps/CheckoutSteps.js";
 import "./PaymentMethod.scss";
 
 const PaymentMethod = (props) => {
+  //PULL FROM STORE
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
   if (!shippingAddress.address) {
     props.history.push("/shipping");
   }
+
+  //STATE HOOKS
   const [paymentMethod, setPaymentMethod] = useState("");
 
   const dispatch = useDispatch();

@@ -6,10 +6,10 @@ import LoadingBox from "../../components/boxes/LoadingBox";
 import MessageBox from "../../components/boxes/MessageBox";
 
 const OrderHistory = (props) => {
+  //PULL IN FROM STORE
   const orderMineList = useSelector((state) => state.orderMineList);
   const { loading, error, orders } = orderMineList;
 
-  console.log(orders);
   const dispatch = useDispatch();
 
   useEffect(() => {

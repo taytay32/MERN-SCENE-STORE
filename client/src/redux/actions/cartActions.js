@@ -15,7 +15,6 @@ export const addToCart = (productId, qty, size, sizesOb) => async (
     `http://localhost:5000/api/products/${productId}`
   );
 
-  console.log(data.type);
   dispatch({
     type: CART_ADD_ITEM,
     payload: {

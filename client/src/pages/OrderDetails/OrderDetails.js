@@ -13,12 +13,15 @@ import { ORDER_PAY_RESET } from "../../redux/constants/orderConstants";
 
 const OrderDetails = (props) => {
   const orderId = props.match.params.id;
+
+  //STATE HOOKS
   const [sdkReady, setSdkReady] = useState(false);
+
+  //PULL IN FROM STORE
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
 
   const orderPay = useSelector((state) => state.orderPay);
-  //RENAMING loading, error, succes IN THIS INSTANCE
   const {
     loading: loadingPay,
     error: errorPay,
@@ -26,7 +29,7 @@ const OrderDetails = (props) => {
   } = orderPay;
 
   const dispatch = useDispatch();
-
+  //USE PAYPAL
   useEffect(() => {
     const addPayPalScript = async () => {
       const { data } = await axios.get(
