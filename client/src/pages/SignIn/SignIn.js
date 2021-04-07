@@ -30,6 +30,7 @@ const SignIn = (props) => {
   useEffect(() => {
     if (userInfo) {
       props.history.push(redirect);
+      console.log(redirect);
     }
   }, [userInfo, props.history, redirect]);
 
@@ -71,10 +72,7 @@ const SignIn = (props) => {
 
         <div className="redirect">
           <p className="redirect__p">New customer?</p>
-          <Link
-            className="redirect__link"
-            to={`/register?redirect=${redirect}`}
-          >
+          <Link className="redirect__link" to={"/register"}>
             Create Account
           </Link>
         </div>

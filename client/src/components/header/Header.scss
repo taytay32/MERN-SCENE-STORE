@@ -143,6 +143,7 @@
         width: 90%;
 
         .deskCartWrap {
+          flex: 1;
           .deskCartLink {
             display: flex;
             position: relative;
@@ -169,12 +170,15 @@
         }
 
         &__search {
+          flex: 1;
+          position: relative;
+          right: 5rem;
           height: 3.6rem;
           border-radius: 0.3rem;
           padding-left: 1.6rem;
           padding-right: 1.6rem;
           width: 70%;
-          max-width: 50rem;
+          min-width: 50rem;
           background-image: url("../../assets/icons/search-24px.svg");
           background-position: calc(100% - 1rem), center;
           background-repeat: no-repeat;
@@ -184,9 +188,10 @@
         }
 
         .userDropDowns {
+          flex: 1;
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: flex-end;
           // width: 40rem;
         }
       }
@@ -244,7 +249,7 @@
 
 .signInLink {
   @include M-bebas-header;
-  margin-left: auto;
+  margin: 0 2rem;
   font-size: 2rem;
 
   text-align: center;

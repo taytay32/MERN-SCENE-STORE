@@ -213,9 +213,14 @@ const Header = () => {
                   </div>
                 </div>
               ) : (
-                <Link className="signInLink" to="/signin">
-                  Sign In
-                </Link>
+                <>
+                  <Link className="signInLink" to="/Register">
+                    Register
+                  </Link>
+                  <Link className="signInLink" to="/signin">
+                    Sign In
+                  </Link>
+                </>
               )}
               {userInfo && userInfo.isAdmin && (
                 <div className="dropdown dropdown-2">
