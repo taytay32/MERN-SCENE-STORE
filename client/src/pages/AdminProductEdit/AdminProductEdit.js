@@ -244,18 +244,6 @@ const AdminProductEdit = (props) => {
                 <option value="Tanks">Tanks</option>
               </select>
 
-              {/* <label className="inputs__label" htmlFor="sizes">
-                Sizes
-              </label>
-              <input
-                className="inputs__input"
-                type="text"
-                id="sizes"
-                placeholder="Eg S, M, L, XL"
-                value={sizes}
-                onChange={(e) => setSizes(e.target.value)}
-              /> */}
-
               <div className="sizeWrappers">
                 <div className="sizeHeadings">
                   <label className="inputs__label sizeHeading" htmlFor="small">
@@ -308,6 +296,19 @@ const AdminProductEdit = (props) => {
                     onChange={(e) => setSizeExtraLarge(e.target.value)}
                   />
                 </div>
+                <label className="inputs__label" htmlFor="description">
+                  Description
+                </label>
+                <textarea
+                  className="inputs__input descripText"
+                  type="text"
+                  id="description"
+                  rows="3"
+                  value={description}
+                  placeholder="Enter description"
+                  required
+                  onChange={(e) => setDescription(e.target.value)}
+                />
               </div>
             </>
           )}
@@ -320,6 +321,7 @@ const AdminProductEdit = (props) => {
               <select
                 className="inputs__input"
                 id="category"
+                value={category}
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
@@ -377,7 +379,7 @@ const AdminProductEdit = (props) => {
               />
             </>
           )}
-          {product && type === "Tab" && (
+          {product && type === "tab" && (
             <>
               <label className="inputs__label" htmlFor="category">
                 Category
@@ -385,6 +387,7 @@ const AdminProductEdit = (props) => {
               <select
                 className="inputs__input"
                 id="category"
+                value={category}
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
@@ -392,6 +395,19 @@ const AdminProductEdit = (props) => {
                 <option value="digital download">Digital Download</option>
                 <option value="book">Book</option>
               </select>
+              <label className="inputs__label" htmlFor="description">
+                Description
+              </label>
+              <textarea
+                className="inputs__input descripText"
+                type="text"
+                id="description"
+                rows="3"
+                value={description}
+                placeholder="Enter description"
+                required
+                onChange={(e) => setDescription(e.target.value)}
+              />
             </>
           )}
           {product && category === "book" && (
@@ -417,6 +433,7 @@ const AdminProductEdit = (props) => {
               <select
                 className="inputs__input"
                 id="category"
+                value={category}
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
@@ -435,22 +452,21 @@ const AdminProductEdit = (props) => {
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
               />
+              <label className="inputs__label" htmlFor="description">
+                Description
+              </label>
+              <textarea
+                className="inputs__input descripText"
+                type="text"
+                id="description"
+                rows="3"
+                value={description}
+                placeholder="Enter description"
+                required
+                onChange={(e) => setDescription(e.target.value)}
+              />
             </>
           )}
-
-          <label className="inputs__label" htmlFor="description">
-            Description
-          </label>
-          <textarea
-            className="inputs__input descripText"
-            type="text"
-            id="description"
-            rows="3"
-            value={description}
-            placeholder="Enter description"
-            required
-            onChange={(e) => setDescription(e.target.value)}
-          />
         </div>
 
         <button className="registerButton updateBtn" type="submit">

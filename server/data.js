@@ -111,7 +111,7 @@ const data = {
     {
       type: "Button",
       name: "Sons Btn",
-      category: "buttons",
+      category: "Buttons",
       image: "/images/merch/logo-hockey-puck.png",
       imageDetail: "/images/merch/logo-hockey-puck.png",
       price: 1,
@@ -119,9 +119,9 @@ const data = {
       description: "For styling up your denim jacket",
     },
     {
-      type: "tab",
+      type: "Tab",
       name: "Autophage Tab",
-      category: "digital download",
+      category: "Digital Download",
       image: "/images/merch/tab-auto.png",
       imageDetail: "/images/merch/tab-auto.png",
       price: 5,
@@ -129,9 +129,9 @@ const data = {
         "Full digital tab transcription (GP 7) of Autophage EP, including drums, bass, and guitars.  Link to downloadable zip file provided.",
     },
     {
-      type: "tab",
+      type: "Tab",
       name: "A Better End Tab",
-      category: "digital download",
+      category: "Digital Download",
       image: "/images/merch/tab-abe.png",
       imageDetail: "/images/merch/tab-abe.png",
       price: 5,
