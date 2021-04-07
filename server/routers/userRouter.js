@@ -8,20 +8,6 @@ import { authUser, generateToken } from "../utils.js";
 const userRouter = express.Router();
 
 /* =======================
- * SEED USERS TO DB
- * ======================= */
-//wrap in expressasync to redirect error to middleware on serverjs - prevent duplicate data on loading
-//  await User.remove({}); removes all users before inserting new
-userRouter.get(
-  "/seed",
-  expressAsyncHandler(async (req, res) => {
-    // await User.remove({});
-    const createdUsers = await User.insertMany(data.users);
-    res.send({ createdUsers });
-  })
-);
-
-/* =======================
  * SIGN IN POST REQUEST
  * ======================= */
 userRouter.post(

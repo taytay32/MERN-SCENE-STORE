@@ -57,10 +57,13 @@ const AdminProductEdit = (props) => {
       setCountInStock(product.countInStock);
       setDescription(product.description);
       setSizes(product.sizes);
-      setSizeSmall(product.sizesOb.S);
-      setSizeMedium(product.sizesOb.M);
-      setSizeLarge(product.sizesOb.L);
-      setSizeExtraLarge(product.sizesOb.XL);
+      if (product.type === "Apparel") {
+        setSizeSmall(product.sizesOb.S);
+        setSizeMedium(product.sizesOb.M);
+        setSizeLarge(product.sizesOb.L);
+        setSizeExtraLarge(product.sizesOb.XL);
+      }
+
       setTrackList(product.trackList);
       setTrackLength(product.trackLength);
       setReleaseDate(product.releaseDate);

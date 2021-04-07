@@ -18,19 +18,6 @@ productRouter.get(
 );
 
 /* =======================
- * SEED PRODUCTS TO DB
- * ======================= */
-productRouter.get(
-  "/seed",
-  expressAsyncHandler(async (req, res) => {
-    //remove before adding new
-    // await Product.remove({});
-    const createdProducts = await Product.insertMany(data.products);
-    res.send({ products: createdProducts });
-  })
-);
-
-/* =======================
  * GET PRODUCT DETAILS
  * ======================= */
 productRouter.get(
