@@ -24,6 +24,17 @@
 .productCard {
   position: relative;
   z-index: 0;
+  padding: 1rem;
+  box-shadow: 0rem 0rem 5px $primary-dark-blue;
+  border-radius: 2px;
+  background-color: white;
+  margin: 1rem;
+  width: 30rem;
+
+  @include tablet {
+    // height: 30rem;
+    width: 20rem;
+  }
 
   &__img {
     position: absolute;
@@ -43,11 +54,16 @@
 }
 
 .editBtn {
+  @include button;
   margin-bottom: 1rem;
+  font-size: 2rem;
+  height: 4rem;
 }
 
 .deleteBtn {
   @include button;
+  font-size: 2rem;
+  height: 4rem;
   &:hover {
     border: 2px solid $primary-red;
     color: $primary-red;

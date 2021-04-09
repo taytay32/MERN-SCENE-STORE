@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createProduct,
@@ -61,6 +61,22 @@ const AdminProductList = (props) => {
     dispatch(createProduct());
   };
 
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const searchProduct = useSelector((state) => state.searchProduct);
+
+  //SEARCH FUNCTIONALITY
+  useEffect(() => {
+    if (products) {
+      setFilteredProducts(
+        products.filter((product) => {
+          return product.name
+            .toLowerCase()
+            .includes(searchProduct.toLowerCase());
+        })
+      );
+    }
+  }, [products, searchProduct]);
+
   return (
     <section className="orderHistory adminProdList">
       <h1 className="orderHistory__title">Products</h1>
@@ -85,42 +101,41 @@ const AdminProductList = (props) => {
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <>
-            {products &&
-              products.map((product) => (
-                <div key={product._id} className="orderHistCard productCard">
-                  <img
-                    className="productCard__img"
-                    src={product.image}
-                    alt={product.name}
-                  />
+            {filteredProducts.map((product) => (
+              <div key={product._id} className="productCard">
+                <img
+                  className="productCard__img"
+                  src={product.image}
+                  alt={product.name}
+                />
 
-                  <h3 className="orderHistCard__subtitle">NAME</h3>
-                  <p className="orderHistCard__p">{product.name}</p>
-                  <h3 className="orderHistCard__subtitle">PRICE</h3>
-                  <p className="orderHistCard__p">${product.price}</p>
-                  <h3 className="orderHistCard__subtitle">TYPE</h3>
-                  <p className="orderHistCard__p">{product.type}</p>
-                  <h3 className="orderHistCard__subtitle">CATEGORY</h3>
-                  <p className="orderHistCard__p">{product.category}</p>
+                <h3 className="orderHistCard__subtitle">NAME</h3>
+                <p className="orderHistCard__p">{product.name}</p>
+                <h3 className="orderHistCard__subtitle">PRICE</h3>
+                <p className="orderHistCard__p">${product.price}</p>
+                <h3 className="orderHistCard__subtitle">TYPE</h3>
+                <p className="orderHistCard__p">{product.type}</p>
+                <h3 className="orderHistCard__subtitle">CATEGORY</h3>
+                <p className="orderHistCard__p">{product.category}</p>
 
-                  <button
-                    type="button"
-                    className="detailsBtn editBtn"
-                    onClick={() => {
-                      props.history.push(`/product/${product._id}/edit`);
-                    }}
-                  >
-                    EDIT
-                  </button>
-                  <button
-                    type="button"
-                    className="deleteBtn"
-                    onClick={() => deleteHandler(product)}
-                  >
-                    DELETE
-                  </button>
-                </div>
-              ))}
+                <button
+                  type="button"
+                  className=" editBtn"
+                  onClick={() => {
+                    props.history.push(`/product/${product._id}/edit`);
+                  }}
+                >
+                  EDIT
+                </button>
+                <button
+                  type="button"
+                  className="deleteBtn"
+                  onClick={() => deleteHandler(product)}
+                >
+                  DELETE
+                </button>
+              </div>
+            ))}
           </>
         )}
       </div>

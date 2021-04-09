@@ -39,10 +39,10 @@
     flex-wrap: wrap;
 
     @include tablet {
-      width: 90%;
-      max-width: 110rem;
+      width: 95%;
+      // // max-width: 110rem;
       margin: 0 auto;
-      justify-content: center;
+      // justify-content: flex-start;
     }
     .item {
       width: 30rem;
@@ -54,20 +54,33 @@
       margin-bottom: 2rem;
 
       @include tablet {
-        max-width: 25rem;
-        flex: 1 1 20rem;
+        width: 40rem;
+        height: 18rem;
+        // width: auto;
+        // flex: 1 1 20rem;
         margin-left: 2rem;
         margin-right: 2rem;
       }
 
       .infoWrap {
         background-color: $background-grey;
+        @include tablet {
+          display: flex;
+          width: 100%;
+          height: 100%;
+        }
       }
 
       .imgwrap {
         background-color: white;
         padding: 1.2rem;
         height: 25rem;
+
+        @include tablet {
+          height: auto;
+          width: 50%;
+          height: auto;
+        }
       }
 
       &__img {
@@ -79,12 +92,19 @@
       &__title {
         @include M-bebas-header;
         @include flex-center;
+        text-align: center;
+        @include tablet {
+          font-size: 2rem;
+        }
       }
 
       &__price {
         @include M-bebas-header;
         color: $primary-dark-blue;
         @include flex-center;
+        @include tablet {
+          font-size: 2rem;
+        }
       }
 
       &__selects {
@@ -119,6 +139,10 @@
             border: 2px solid $primary-red;
             color: $primary-red;
           }
+          @include tablet {
+            font-size: 2rem;
+            height: 4rem;
+          }
         }
       }
     }
@@ -126,6 +150,15 @@
 
   .detailsWrap {
     padding: 1.5rem;
+
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      height: auto;
+      // align-items: center;
+      justify-content: space-between;
+    }
   }
 
   .summary {
@@ -138,8 +171,9 @@
     padding: 1.5rem;
 
     @include tablet {
-      width: 90%;
-      max-width: 105rem;
+      // width: 90%;
+      width: 40rem;
+      // max-width: 105rem;
     }
 
     &__title {
@@ -156,5 +190,19 @@
         border: 2px solid $primary-light-blue;
       }
     }
+  }
+}
+
+.backToProd {
+  @include button;
+  margin-top: 1rem;
+  background-color: white;
+  color: $primary-red;
+  border: none;
+  transition: 0.2s;
+  font-size: 2rem;
+  height: 3rem;
+  &:hover {
+    color: green;
   }
 }

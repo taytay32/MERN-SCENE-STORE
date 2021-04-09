@@ -39,7 +39,12 @@
 
       @include tablet {
         flex: 1 1 23rem;
-        max-width: 26rem;
+        height: 30rem;
+        max-width: 20rem;
+
+        &:hover {
+          filter: opacity(0.8);
+        }
       }
 
       .img {
@@ -70,11 +75,17 @@
           @include M-bebas-header;
           @include flex-center;
           text-align: center;
+          @include tablet {
+            font-size: 2rem;
+          }
         }
 
         &__price {
           @include M-bebas-header;
           color: $primary-dark-blue;
+          @include tablet {
+            font-size: 2rem;
+          }
         }
       }
     }

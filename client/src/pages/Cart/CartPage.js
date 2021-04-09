@@ -194,6 +194,7 @@ const CartPage = (props) => {
               );
             })}
           </ul>
+
           <div className="summary">
             <h2 className="summary__title">
               Subtotal (
@@ -209,6 +210,11 @@ const CartPage = (props) => {
             >
               Proceed to checkout
             </button>
+            <Link to="/">
+              <button type="button" className="backToProd">
+                BACK TO PRODUCTS
+              </button>
+            </Link>
           </div>
         </>
       )}
