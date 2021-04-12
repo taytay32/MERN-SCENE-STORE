@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import "../Register/Register.scss";
+
+import "./UserProfile.scss";
 import {
   detailsUser,
   updateUserProfile,
@@ -70,7 +71,7 @@ const UserProfile = (props) => {
   ]);
 
   return (
-    <section className="register">
+    <section className="userProfile">
       <form className="submit" action="submit" onSubmit={submitHandler}>
         <h1 className="submit__title">User Profile</h1>
         {loading ? (
@@ -149,7 +150,7 @@ const UserProfile = (props) => {
               />
             </div>
 
-            <button className="registerButton" type="submit">
+            <button className="updateBtn" type="submit">
               Update
             </button>
           </>

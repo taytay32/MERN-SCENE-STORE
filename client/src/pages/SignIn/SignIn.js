@@ -71,12 +71,12 @@ const SignIn = (props) => {
           />
         </div>
 
-        <button className="signinbutton" type="submit">
+        <button className="signInBtn" type="submit">
           Sign In
         </button>
 
         <div className="redirect">
-          <p className="redirect__p">New customer?</p>
+          <p className="redirect__text">New customer?</p>
           <Link className="redirect__link" to={"/register"}>
             Create Account
           </Link>

@@ -12,40 +12,45 @@
     margin: 0 auto;
     &__title {
       @include M-bebas-header;
-      color: $background-grey;
+      color: white;
       text-align: center;
       padding: 1.5rem 0;
+
+      @include tablet {
+        @include T-bebas-header;
+        color: white;
+      }
     }
-  }
-}
 
-.inputs {
-  &__label {
-    @include label;
-  }
+    .inputs {
+      &__label {
+        @include label;
+      }
 
-  &__input {
-    @include input;
-  }
-}
+      &__input {
+        @include input;
+      }
+    }
 
-.signinbutton {
-  @include button;
-  border: 1px solid $primary-dark-blue;
-  &:hover {
-    color: $primary-light-blue;
-    border: 2px solid $primary-light-blue;
-  }
-}
+    .signInBtn {
+      @include button;
+      border: 1px solid $primary-dark-blue;
+      &:hover {
+        color: $primary-light-blue;
+        border: 2px solid $primary-light-blue;
+      }
+    }
 
-.redirect {
-  margin-top: 1.5rem;
-  &__p {
-    @include M-montserrat-header;
-  }
+    .redirect {
+      margin-top: 1.5rem;
+      &__text {
+        @include M-montserrat-header;
+      }
 
-  &__link {
-    @include M-bebas-header;
-    color: $background-grey;
+      &__link {
+        @include M-bebas-header;
+        color: white;
+      }
+    }
   }
 }

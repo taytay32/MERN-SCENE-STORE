@@ -4,7 +4,6 @@
 @use '../../partials/typography' as *;
 
 .shipping {
-  min-height: 100%;
   @include background;
 }
 
@@ -17,38 +16,31 @@
     color: white;
     text-align: center;
     padding: 2rem 0;
-  }
-}
 
-.inputs {
-  &__label {
-    @include label;
-  }
-
-  &__input {
-    @include input;
-  }
-}
-
-.registerButton {
-  @include button;
-  margin-top: 1rem;
-  border: 1px solid $primary-dark-blue;
-  transition: 0.2s;
-  &:hover {
-    color: $primary-light-blue;
-    border: 2px solid $primary-light-blue;
-  }
-}
-
-.redirect {
-  margin-top: 1.5rem;
-  &__p {
-    @include M-montserrat-header;
+    @include tablet {
+      @include T-bebas-header;
+      color: white;
+    }
   }
 
-  &__link {
-    @include M-bebas-header;
-    color: $background-grey;
+  .inputs {
+    &__label {
+      @include label;
+    }
+
+    &__input {
+      @include input;
+    }
+  }
+
+  .continueBtn {
+    @include button;
+    margin-top: 1rem;
+    border: 1px solid $primary-dark-blue;
+    transition: 0.2s;
+    &:hover {
+      color: $primary-light-blue;
+      border: 2px solid $primary-light-blue;
+    }
   }
 }

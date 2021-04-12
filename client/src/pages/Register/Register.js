@@ -117,7 +117,7 @@ const Register = (props) => {
         </button>
 
         <div className="redirect">
-          <p className="redirect__p">Already registered?</p>
+          <p className="redirect__text">Already registered?</p>
           <Link className="redirect__link" to={`/signin?redirect=${redirect}`}>
             Sign In
           </Link>

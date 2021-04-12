@@ -111,7 +111,7 @@ const Shipping = (props) => {
           />
         </div>
 
-        <button className="registerButton" type="submit">
+        <button className="continueBtn" type="submit">
           Continue
         </button>
       </form>
