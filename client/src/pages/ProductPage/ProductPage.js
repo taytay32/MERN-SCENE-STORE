@@ -40,27 +40,27 @@ const ProductPage = (props) => {
         <>
           <section className="selectedProduct">
             <h2 className="selectedProduct__title">{product.name}</h2>
-            <div className="productWrap">
-              <div className="wrapLeft">
+            <div className="selectedProduct__container">
+              <div className="selectedProduct__imgsContainer">
                 {product.imageDetail ? (
-                  <div className="img">
+                  <div className="selectedProduct__imgContainer">
                     <img
                       src={product.imageDetail}
                       alt={product.name}
-                      className="img__img"
+                      className="selectedProduct__img"
                     />
                   </div>
                 ) : (
-                  <div className="img">
+                  <div className="selectedProduct__imgContainer">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="img__img"
+                      className="selectedProduct__img"
                     />
                   </div>
                 )}
               </div>
-              <div className="wrapRight">
+              <div className="selectedProduct__info">
                 {product.type === "Button" && (
                   <>
                     <div className="description">
@@ -69,7 +69,7 @@ const ProductPage = (props) => {
                         {product.description}
                       </p>
                     </div>
-                    <div className="details">
+                    <div className="productDetails">
                       <div className="status">
                         <h2 className="status__title">Status</h2>
                         <div className="status__status">
@@ -85,12 +85,15 @@ const ProductPage = (props) => {
                         </div>
                       </div>
 
-                      <div className="qtyWrap">
-                        <label className="lab" htmlFor="quantity">
+                      <div className="qtyContainer">
+                        <label
+                          className="qtyContainer__label"
+                          htmlFor="quantity"
+                        >
                           QTY
                         </label>
                         <select
-                          className="select"
+                          className="qtyContainer__select"
                           name="quantity"
                           value={qty}
                           onChange={(e) => setQty(e.target.value)}
@@ -122,7 +125,7 @@ const ProductPage = (props) => {
                         {product.description}
                       </p>
                     </div>
-                    <div className="details">
+                    <div className="productDetails">
                       <div className="status">
                         <h2 className="status__title">Status</h2>
                         <div className="status__status">
@@ -155,13 +158,13 @@ const ProductPage = (props) => {
                         Released: {product.releaseDate}
                       </p>
 
-                      <div className="trackFlex">
-                        <h2 className="trackFlex__title">Tracklist</h2>
-                        <ul className="trackFlex__tracklist">
+                      <div className="tracklistContainer">
+                        <h2 className="tracklistContainer__title">Tracklist</h2>
+                        <ul className="tracklistContainer__tracklist">
                           {product.trackList.map((track) => {
                             return (
                               <li
-                                className="trackFlex__tracklist__track"
+                                className="tracklistContainer__tracklist__track"
                                 key={track}
                               >
                                 {track}
@@ -169,11 +172,11 @@ const ProductPage = (props) => {
                             );
                           })}
                         </ul>
-                        <ul className="trackFlex__trackLength">
+                        <ul className="tracklistContainer__trackLength">
                           {product.trackLength.map((track) => {
                             return (
                               <li
-                                className="trackFlex__trackLength__length"
+                                className="tracklistContainer__trackLength__length"
                                 key={track}
                               >
                                 {track}
@@ -183,7 +186,7 @@ const ProductPage = (props) => {
                         </ul>
                       </div>
                     </div>
-                    <div className="details">
+                    <div className="productDetails">
                       <div className="status">
                         <h2 className="status__title">Status</h2>
                         <div className="status__status">
@@ -199,12 +202,15 @@ const ProductPage = (props) => {
                         </div>
                       </div>
 
-                      <div className="qtyWrap">
-                        <label className="lab" htmlFor="quantity">
+                      <div className="qtyContainer">
+                        <label
+                          className="qtyContainer__label"
+                          htmlFor="quantity"
+                        >
                           QTY
                         </label>
                         <select
-                          className="select"
+                          className="qtyContainer__select"
                           name="quantity"
                           value={qty}
                           onChange={(e) => setQty(e.target.value)}
@@ -238,7 +244,7 @@ const ProductPage = (props) => {
                       </p>
                     </div>
 
-                    <div className="details">
+                    <div className="productDetails">
                       <div className="status">
                         <h2 className="status__title">Status</h2>
                         <div className="status__status">
@@ -256,14 +262,14 @@ const ProductPage = (props) => {
                           )}
                         </div>
                       </div>
-                      <div className="sizenqty">
-                        <div className="sizeWrap">
-                          <label className="lab" htmlFor="size">
+                      <div className="sizeQtyContainer">
+                        <div className="sizeContainer">
+                          <label className="qtyContainer__label" htmlFor="size">
                             SIZE
                           </label>
 
                           <select
-                            className="select"
+                            className="qtyContainer__select"
                             name="size"
                             value={size}
                             onChange={(e) => setSize(e.target.value)}
@@ -278,12 +284,15 @@ const ProductPage = (props) => {
                           </select>
                         </div>
 
-                        <div className="qtyWrapApparel">
-                          <label className="lab" htmlFor="quantity">
+                        <div className="qtyContainerApparel">
+                          <label
+                            className="qtyContainer__label"
+                            htmlFor="quantity"
+                          >
                             QTY
                           </label>
                           <select
-                            className="select"
+                            className="qtyContainer__select"
                             name="quantity"
                             value={qty}
                             onChange={(e) => setQty(e.target.value)}

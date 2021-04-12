@@ -19,10 +19,9 @@
       color: white;
     }
   }
-  .productWrap {
+  &__container {
     @include flex-center;
     flex-direction: column;
-
     @include tablet {
       width: 85%;
       max-width: 70rem;
@@ -34,233 +33,215 @@
       padding-bottom: 3rem;
       height: 100%;
     }
+  }
 
-    .wrapLeft {
+  &__imgsContainer {
+    @include tablet {
+      @include flex-center;
+
+      height: 100%;
+      margin: 1rem 2rem;
+      flex: 1 1 23rem;
+    }
+  }
+  &__imgContainer {
+    height: 35rem;
+    max-width: 30rem;
+    box-shadow: 0rem 0rem 5px $primary-dark-blue;
+    border-radius: 2px;
+    background-color: white;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    padding-bottom: 0;
+
+    @include tablet {
+      min-width: 20rem;
+      max-width: 30rem;
+      flex: 1 1 20rem;
+      margin-bottom: 0;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__info {
+    @include tablet {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      margin: 1rem 2rem;
+    }
+    .description {
+      width: 31rem;
+      margin: 0 auto;
+      box-shadow: 0rem 0rem 5px $primary-dark-blue;
+      border-radius: 2px;
+      background-color: white;
+      margin-bottom: 3rem;
+      padding: 1rem;
+
       @include tablet {
-        @include flex-center;
-
-        height: 100%;
-        margin: 1rem 2rem;
-        flex: 1 1 23rem;
-      }
-      .img {
-        height: 35rem;
+        margin-bottom: 2rem;
+        min-width: 20rem;
         max-width: 30rem;
-        box-shadow: 0rem 0rem 5px $primary-dark-blue;
-        border-radius: 2px;
-        background-color: white;
-        margin-bottom: 3rem;
-        padding: 2rem;
-        padding-bottom: 0;
+      }
 
-        @include tablet {
-          min-width: 20rem;
-          max-width: 30rem;
-          flex: 1 1 20rem;
+      &__price {
+        margin-bottom: 1rem;
+        @include M-bebas-header;
+        text-align: center;
+      }
+
+      &__description,
+      &__release,
+      &__art {
+        @include M-montserrat-header;
+        text-align: center;
+      }
+
+      .tracklistContainer {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid $primary-dark-blue;
+
+        &__title {
+          @include M-bebas-header;
+          margin-right: 0.2rem;
         }
 
-        &__img {
-          height: 100%;
-          width: 100%;
-          object-fit: contain;
+        &__tracklist {
+          &__track {
+            @include M-montserrat-header;
+            font-size: 1.2rem;
+            padding: 0.2rem 0;
+          }
         }
-
-        @include tablet {
-          margin-bottom: 0;
+        &__trackLength {
+          &__length {
+            @include M-montserrat-header;
+            font-size: 1.2rem;
+            padding: 0.2rem 0;
+          }
         }
       }
     }
 
-    .wrapRight {
+    .productDetails {
+      width: 31rem;
+      margin: 0 auto;
+      box-shadow: 0rem 0rem 5px $primary-dark-blue;
+      border-radius: 2px;
+      background-color: white;
+      margin-bottom: 3rem;
+      padding: 1.5rem;
+
       @include tablet {
-        height: 100%;
+        margin-bottom: 2rem;
+        min-width: 20rem;
+        max-width: 30rem;
+      }
+
+      .status {
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        @include M-montserrat-header;
+        margin-bottom: 1rem;
 
-        margin: 1rem 2rem;
+        &__status {
+          &__success {
+            color: $primary-green;
+            font-size: 1.8rem;
+          }
+
+          &__error {
+            color: $primary-red;
+          }
+        }
       }
-      .description {
-        width: 31rem;
-        margin: 0 auto;
-        box-shadow: 0rem 0rem 5px $primary-dark-blue;
-        border-radius: 2px;
-        background-color: white;
-        margin-bottom: 3rem;
-        padding: 1rem;
 
-        @include tablet {
-          margin-bottom: 2rem;
-          min-width: 20rem;
-          max-width: 30rem;
-          // flex: 1 1 20rem;
-        }
+      .qtyContainer {
+        @include flex-center;
+        margin-bottom: 1rem;
 
-        &__price {
-          margin-bottom: 1rem;
-          @include M-bebas-header;
-          text-align: center;
-        }
-
-        &__description,
-        &__release,
-        &__art {
+        &__label {
+          margin-right: 1rem;
           @include M-montserrat-header;
-          text-align: center;
         }
 
-        .trackFlex {
-          display: flex;
-          justify-content: space-around;
-          align-items: flex-start;
-
-          margin-top: 1rem;
-          padding-top: 1rem;
-          border-top: 1px solid $primary-dark-blue;
-
-          &__title {
-            @include M-bebas-header;
-            margin-right: 0.2rem;
-          }
-
-          &__tracklist {
-            &__track {
-              @include M-montserrat-header;
-              font-size: 1.2rem;
-              padding: 0.2rem 0;
-            }
-          }
-          &__trackLength {
-            &__length {
-              @include M-montserrat-header;
-              font-size: 1.2rem;
-              padding: 0.2rem 0;
-            }
-          }
+        &__select {
+          @include M-montserrat-header;
+          width: 4.2rem;
+          height: 3rem;
         }
-
-        // &__tracklist {
-        //   @include M-montserrat-header;
-
-        //   &__track {
-        //     padding: 0.2rem 0;
-        //   }
-        // }
       }
 
-      .details {
-        width: 31rem;
-        margin: 0 auto;
-        box-shadow: 0rem 0rem 5px $primary-dark-blue;
-        border-radius: 2px;
-        background-color: white;
-        margin-bottom: 3rem;
-        padding: 1.5rem;
+      .qtyContainerApparel {
+        @include flex-center;
+      }
 
-        @include tablet {
-          margin-bottom: 2rem;
-          min-width: 20rem;
-          max-width: 30rem;
-        }
+      .sizeQtyContainer {
+        display: flex;
+        align-items: center;
 
-        .status {
+        @include M-montserrat-header;
+        padding: 0 0 1.25rem;
+
+        .sizeContainer {
+          width: 50%;
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          @include M-montserrat-header;
-          margin-bottom: 1rem;
-
-          &__status {
-            &__success {
-              color: $primary-green;
-              font-size: 1.8rem;
-            }
-
-            &__error {
-              color: $primary-red;
-            }
-          }
-        }
-
-        .qtyWrap {
-          @include flex-center;
-          margin-bottom: 1rem;
-        }
-
-        .qtyWrapApparel {
-          @include flex-center;
-        }
-
-        .addToCart {
-          &__btn {
-            @include button;
-            transition: 0.2s;
-
-            &:hover {
-              color: $primary-light-blue;
-              border: 2px solid $primary-light-blue;
-            }
-          }
+          justify-content: center;
         }
       }
 
-      .backToProducts {
-        @include button;
-        background-color: white;
-        @include flex-center;
-        transition: 0.2s;
-
-        @include tablet {
-          padding: 1rem;
-          margin-bottom: 0rem;
-        }
-        &:hover {
-          background-color: $primary-red;
-          border: 2px solid $primary-dark-blue;
-        }
-        &__link {
-          color: $primary-dark-blue;
-          @include flex-center;
+      .addToCart {
+        &__btn {
+          @include button;
           transition: 0.2s;
 
           &:hover {
-            color: white;
+            color: $primary-light-blue;
+            border: 2px solid $primary-light-blue;
           }
         }
       }
     }
-  }
-}
-.lab {
-  margin-right: 1rem;
-  @include M-montserrat-header;
-}
 
-.select {
-  @include M-montserrat-header;
-  width: 4.2rem;
-  height: 3rem;
-}
+    .backToProducts {
+      @include button;
+      background-color: white;
+      @include flex-center;
+      transition: 0.2s;
 
-.sizenqty {
-  display: flex;
-  align-items: center;
+      @include tablet {
+        padding: 1rem;
+        margin-bottom: 0rem;
+      }
+      &:hover {
+        background-color: $primary-red;
+        border: 2px solid $primary-dark-blue;
+      }
+      &__link {
+        color: $primary-dark-blue;
+        @include flex-center;
+        transition: 0.2s;
 
-  @include M-montserrat-header;
-  padding: 0 0 1.25rem;
-
-  .qtyWrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-  }
-
-  .sizeWrap {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        &:hover {
+          color: white;
+        }
+      }
+    }
   }
 }
