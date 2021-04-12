@@ -13,10 +13,10 @@ import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import OrderDetails from "./pages/OrderDetails/OrderDetails";
 import OrderHistory from "./pages/OrderHistory/OrderHistory";
 import UserProfile from "./pages/UserProfile/UserProfile";
-import PrivateRoute from "./components/PrivateRoute";
-import AdminRoute from "./components/AdminRoute";
 import AdminProductList from "./pages/AdminProductList/AdminProductList";
 import AdminProductEdit from "./pages/AdminProductEdit/AdminProductEdit";
+import AdminRoute from "./components/routeComponents/AdminRoute";
+import PrivateRoute from "./components/routeComponents/PrivateRoute";
 
 function App() {
   return (
@@ -33,7 +33,6 @@ function App() {
         <Route path="/placeorder" component={PlaceOrder} />
         <Route path="/order/:id" component={OrderDetails} />
         <Route path="/orderhistory" component={OrderHistory} />
-        {/* <Route path="/search/name/:name?" component={SearchResults} exact /> */}
         <PrivateRoute path="/profile" component={UserProfile} />
         <AdminRoute path="/productlist" component={AdminProductList} />
         <Route exact path="/" component={LandingPage} />

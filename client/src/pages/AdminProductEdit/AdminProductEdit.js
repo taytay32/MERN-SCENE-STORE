@@ -140,9 +140,13 @@ const AdminProductEdit = (props) => {
   };
 
   return (
-    <section className="register">
-      <form className="submit" action="submit" onSubmit={submitHandler}>
-        <h1 className="submit__title">Edit Product</h1>
+    <section className="productEdit">
+      <h1 className="productEdit__title">Edit Product</h1>
+      <form
+        className="submit productEditForm"
+        action="submit"
+        onSubmit={submitHandler}
+      >
         {loadingUpdate && <LoadingBox></LoadingBox>}
         {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
         {loading && <LoadingBox></LoadingBox>}
@@ -248,7 +252,7 @@ const AdminProductEdit = (props) => {
                 <option value="Tanks">Tanks</option>
               </select>
 
-              <div className="sizeWrappers">
+              <div className="sizesContainer">
                 <div className="sizeHeadings">
                   <label className="inputs__label sizeHeading" htmlFor="small">
                     Small
@@ -304,7 +308,7 @@ const AdminProductEdit = (props) => {
                   Description
                 </label>
                 <textarea
-                  className="inputs__input descripText"
+                  className="inputs__input descriptionText"
                   type="text"
                   id="description"
                   rows="3"
