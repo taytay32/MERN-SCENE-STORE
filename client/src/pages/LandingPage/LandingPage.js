@@ -45,7 +45,7 @@ const LandingPage = () => {
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <>
-            <div className="cards">
+            <div className="productCardsContainer">
               {filteredProducts.map((product) => (
                 <Product product={product} key={product._id} />
               ))}

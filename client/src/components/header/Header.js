@@ -7,6 +7,7 @@ import { signout } from "../../redux/actions/userActions";
 import menu from "../../assets/icons/burger-menu.svg";
 import shoppingCart from "../../assets/icons/shopping-cart.svg";
 import { searchAction } from "../../redux/reducers/searchReducer";
+import NavDesktop from "./NavDesktop";
 
 const Header = () => {
   const [burger, setBurger] = useState(false);
@@ -33,7 +34,6 @@ const Header = () => {
     setBurger(!burger);
   };
 
-  //MOBILE MENU
   let showBurger;
   if (burger) {
     showBurger = (
@@ -147,6 +147,7 @@ const Header = () => {
           <img src={logo} alt="" className="header__logoImg" />
           <h1 className="header__title">.STORE</h1>
         </Link>
+
         <nav className="navMobile">
           <div className="navMobile__container">
             <div className="navMobile__cartContainer">
@@ -158,7 +159,7 @@ const Header = () => {
                 <img
                   className="navMobile__cartIcon"
                   src={shoppingCart}
-                  alt=""
+                  alt="cart"
                 />
                 {cartItems.length > 0 && (
                   <span className="navMobile__cartBadge">
@@ -179,93 +180,7 @@ const Header = () => {
           </div>
         </nav>
         <div>{showBurger}</div>
-
-        <nav className="navDesktop">
-          <div className="navDesktop__container">
-            <div className="navDesktop__cartContainer">
-              <Link className="navDesktop__cartLink" to="/cart">
-                <img
-                  className="navDesktop__cartIcon"
-                  src={shoppingCart}
-                  alt=""
-                />
-                {cartItems.length > 0 && (
-                  <span className="navDesktop__cartBadge">
-                    {cartItems.length}
-                  </span>
-                )}
-              </Link>
-            </div>
-            <input
-              className="navDesktop__search"
-              type="text"
-              name="searchMerch"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search..."
-            />
-            <div className="navDesktop__dropdownsContainer">
-              {userInfo ? (
-                <div className="navDesktop__dropdown">
-                  <Link className="navDesktop__link" to="#">
-                    {userInfo.firstName} <i className="fa fa-caret-down"></i>{" "}
-                  </Link>
-                  <div className="navDesktop__dropdownContent">
-                    <Link className="navDesktop__dropdownLink" to="/profile">
-                      User Profile
-                    </Link>
-                    <Link
-                      className="navDesktop__dropdownLink"
-                      to="/orderhistory"
-                    >
-                      Order History
-                    </Link>
-                    <Link
-                      className="navDesktop__dropdownLink"
-                      to="/signin"
-                      onClick={signoutHandler}
-                    >
-                      Sign Out
-                    </Link>
-                  </div>
-                </div>
-              ) : (
-                <>
-                  <Link className="navDesktop__link signInLink" to="/register">
-                    Register
-                  </Link>
-                  <Link className="navDesktop__link signInLink" to="/signin">
-                    Sign In
-                  </Link>
-                </>
-              )}
-              {userInfo && userInfo.isAdmin && (
-                <div className="navDesktop__dropdown dropdown-2">
-                  <Link className="navDesktop__link" to="#admin">
-                    Admin <i className="fa fa-caret-down"></i>{" "}
-                  </Link>
-                  <div className="navDesktop__dropdownContent">
-                    <Link className="navDesktop__dropdownLink" to="/dashboard">
-                      Dashboard
-                    </Link>
-                    <Link
-                      className="navDesktop__dropdownLink"
-                      to="/productlist"
-                    >
-                      Products
-                    </Link>
-                    <Link className="navDesktop__dropdownLink" to="/orderlist">
-                      Orders
-                    </Link>
-                    <Link className="navDesktop__dropdownLink" to="/userlist">
-                      Users
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </nav>
+        <NavDesktop />
       </header>
     </>
   );
