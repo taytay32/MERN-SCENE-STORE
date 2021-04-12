@@ -41,48 +41,6 @@
   color: $primary-dark-blue;
 }
 
-@mixin M-subheader {
-  font-size: 2rem;
-  line-height: 28px;
-  font-weight: bold;
-  color: $primary-black;
-}
-
-@mixin M-label-link-button {
-  font-size: 1.3rem;
-  line-height: 20px;
-  font-weight: bold;
-  color: $primary-black;
-}
-
-@mixin M-table-header {
-  font-size: 1.1rem;
-  line-height: 16px;
-  color: $secondary-slate;
-  font-weight: bold;
-}
-
-@mixin M-body-large {
-  font-size: 1.5rem;
-  line-height: 26px;
-  color: $primary-black;
-  font-weight: normal;
-}
-
-@mixin M-body-medium {
-  font-size: 1.3rem;
-  line-height: 20px;
-  color: $primary-black;
-  font-weight: normal;
-}
-
-@mixin M-body-small {
-  font-size: 1.1rem;
-  line-height: 16px;
-  color: $primary-black;
-  font-weight: normal;
-}
-
 @mixin button {
   @include M-bebas-header;
   width: 100%;

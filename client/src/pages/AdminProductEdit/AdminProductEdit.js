@@ -476,7 +476,7 @@ const AdminProductEdit = (props) => {
           )}
         </div>
 
-        <button className="registerButton updateBtn" type="submit">
+        <button className="updateBtn" type="submit">
           Update
         </button>
       </form>

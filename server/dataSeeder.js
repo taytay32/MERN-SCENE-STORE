@@ -11,6 +11,7 @@ mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/gurthstore2", {
   useCreateIndex: true,
 });
 
+//PRODUCT SEED TO MONGODB
 export const seedProducts = async () => {
   try {
     const products = data.products;
@@ -25,6 +26,7 @@ export const seedProducts = async () => {
   }
 };
 
+//USER SEED TO MONGODB
 export const seedUsers = async () => {
   try {
     const users = data.users;

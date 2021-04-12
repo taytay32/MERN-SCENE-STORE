@@ -18,7 +18,7 @@ const ProductPage = (props) => {
   //to pass through dispatch
   const productId = props.match.params.id;
   const [qty, setQty] = useState(1);
-  const [size, setSize] = useState("M");
+  const [size, setSize] = useState("");
 
   // dispatch the action
   useEffect(() => {

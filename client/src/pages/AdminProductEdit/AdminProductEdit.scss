@@ -63,5 +63,10 @@
 }
 
 .updateBtn {
-  margin-bottom: 2rem;
+  @include button;
+  border: 1px solid $primary-dark-blue;
+  &:hover {
+    color: $primary-light-blue;
+    border: 2px solid $primary-light-blue;
+  }
 }
