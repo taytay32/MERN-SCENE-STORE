@@ -5,7 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd client && npm install && npm run build",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm runbuild",
     "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
   "keywords": [],

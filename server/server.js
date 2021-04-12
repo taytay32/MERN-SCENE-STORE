@@ -38,6 +38,10 @@ app.get("/", (req, res) => {
   res.send("Server is ready");
 });
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("../client/build"));
+}
+
 //PORT SETUP
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
