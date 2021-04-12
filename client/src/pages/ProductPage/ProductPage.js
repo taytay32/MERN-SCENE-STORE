@@ -18,7 +18,7 @@ const ProductPage = (props) => {
   //to pass through dispatch
   const productId = props.match.params.id;
   const [qty, setQty] = useState(1);
-  const [size, setSize] = useState("");
+  const [size, setSize] = useState("S");
 
   // dispatch the action
   useEffect(() => {
@@ -85,35 +85,41 @@ const ProductPage = (props) => {
                         </div>
                       </div>
 
-                      <div className="qtyContainer">
-                        <label
-                          className="qtyContainer__label"
-                          htmlFor="quantity"
-                        >
-                          QTY
-                        </label>
-                        <select
-                          className="qtyContainer__select"
-                          name="quantity"
-                          value={qty}
-                          onChange={(e) => setQty(e.target.value)}
-                        >
-                          {[...Array(product.countInStock).keys()].map((x) => (
-                            <option key={x + 1} value={x + 1}>
-                              {x + 1}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
+                      {product.countInStock > 0 && (
+                        <>
+                          <div className="qtyContainer">
+                            <label
+                              className="qtyContainer__label"
+                              htmlFor="quantity"
+                            >
+                              QTY
+                            </label>
+                            <select
+                              className="qtyContainer__select"
+                              name="quantity"
+                              value={qty}
+                              onChange={(e) => setQty(e.target.value)}
+                            >
+                              {[...Array(product.countInStock).keys()].map(
+                                (x) => (
+                                  <option key={x + 1} value={x + 1}>
+                                    {x + 1}
+                                  </option>
+                                )
+                              )}
+                            </select>
+                          </div>
 
-                      <div className="addToCart">
-                        <button
-                          className="addToCart__btn"
-                          onClick={addToCartHandler}
-                        >
-                          Add To Cart
-                        </button>
-                      </div>
+                          <div className="addToCart">
+                            <button
+                              className="addToCart__btn"
+                              onClick={addToCartHandler}
+                            >
+                              Add To Cart
+                            </button>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </>
                 )}
@@ -201,36 +207,41 @@ const ProductPage = (props) => {
                           )}
                         </div>
                       </div>
+                      {product.countInStock > 0 && (
+                        <>
+                          <div className="qtyContainer">
+                            <label
+                              className="qtyContainer__label"
+                              htmlFor="quantity"
+                            >
+                              QTY
+                            </label>
+                            <select
+                              className="qtyContainer__select"
+                              name="quantity"
+                              value={qty}
+                              onChange={(e) => setQty(e.target.value)}
+                            >
+                              {[...Array(product.countInStock).keys()].map(
+                                (x) => (
+                                  <option key={x + 1} value={x + 1}>
+                                    {x + 1}
+                                  </option>
+                                )
+                              )}
+                            </select>
+                          </div>
 
-                      <div className="qtyContainer">
-                        <label
-                          className="qtyContainer__label"
-                          htmlFor="quantity"
-                        >
-                          QTY
-                        </label>
-                        <select
-                          className="qtyContainer__select"
-                          name="quantity"
-                          value={qty}
-                          onChange={(e) => setQty(e.target.value)}
-                        >
-                          {[...Array(product.countInStock).keys()].map((x) => (
-                            <option key={x + 1} value={x + 1}>
-                              {x + 1}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <div className="addToCart">
-                        <button
-                          className="addToCart__btn"
-                          onClick={addToCartHandler}
-                        >
-                          Add To Cart
-                        </button>
-                      </div>
+                          <div className="addToCart">
+                            <button
+                              className="addToCart__btn"
+                              onClick={addToCartHandler}
+                            >
+                              Add To Cart
+                            </button>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </>
                 )}

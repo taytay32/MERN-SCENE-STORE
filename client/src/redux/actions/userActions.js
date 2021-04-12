@@ -15,21 +15,19 @@ import {
   USER_UPDATE_PROFILE_SUCCESS,
 } from "../constants/userConstants";
 import { CART_EMPTY } from "../constants/cartConstants";
+import { API_URL } from "../../utils.js";
 
 export const register = (firstName, lastName, email, password) => async (
   dispatch
 ) => {
   dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password } });
   try {
-    const { data } = await axios.post(
-      "http://localhost:5000/api/users/register",
-      {
-        firstName,
-        lastName,
-        email,
-        password,
-      }
-    );
+    const { data } = await axios.post(`${API_URL}/api/users/register`, {
+      firstName,
+      lastName,
+      email,
+      password,
+    });
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
     localStorage.setItem("userInfo", JSON.stringify(data));
@@ -47,10 +45,10 @@ export const register = (firstName, lastName, email, password) => async (
 export const signin = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
   try {
-    const { data } = await axios.post(
-      "http://localhost:5000/api/users/signin",
-      { email, password }
-    );
+    const { data } = await axios.post(`${API_URL}/api/users/signin`, {
+      email,
+      password,
+    });
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
@@ -87,12 +85,9 @@ export const detailsUser = (userId) => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.get(
-      `http://localhost:5000/api/users/${userId}`,
-      {
-        headers: { Authorization: `Bearer ${userInfo.token}` },
-      }
-    );
+    const { data } = await axios.get(`${API_URL}/api/users/${userId}`, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data,
@@ -119,13 +114,9 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.put(
-      `http://localhost:5000/api/users/profile`,
-      user,
-      {
-        headers: { Authorization: `Bearer ${userInfo.token}` },
-      }
-    );
+    const { data } = await axios.put(`${API_URL}/api/users/profile`, user, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
       payload: data,

@@ -14,6 +14,7 @@ import {
   ORDER_PAY_REQUEST,
   ORDER_PAY_SUCCESS,
 } from "../constants/orderConstants";
+import { API_URL } from "../../utils.js";
 
 export const createOrder = (order) => async (dispatch, getState) => {
   dispatch({
@@ -25,15 +26,11 @@ export const createOrder = (order) => async (dispatch, getState) => {
       userSignin: { userInfo },
     } = getState();
 
-    const { data } = await axios.post(
-      "http://localhost:5000/api/orders",
-      order,
-      {
-        headers: {
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      }
-    );
+    const { data } = await axios.post(`${API_URL}/api/orders`, order, {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
     dispatch({ type: ORDER_CREATE_SUCCESS, payload: data.order });
     dispatch({ type: CART_EMPTY });
     localStorage.removeItem("cartItems");
@@ -58,12 +55,9 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await axios.get(
-      `http://localhost:5000/api/orders/${orderId}`,
-      {
-        headers: { Authorization: `Bearer ${userInfo.token}` },
-      }
-    );
+    const { data } = await axios.get(`${API_URL}/api/orders/${orderId}`, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     const message =
@@ -90,7 +84,7 @@ export const payOrder = (order, paymentResult) => async (
   } = getState();
   try {
     const { data } = axios.put(
-      `http://localhost:5000/api/orders/${order._id}/pay`,
+      `${API_URL}/api/orders/${order._id}/pay`,
       paymentResult,
       {
         headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -119,7 +113,7 @@ export const listOrderMine = () => async (dispatch, getState) => {
   } = getState();
 
   try {
-    const { data } = await axios.get("http://localhost:5000/api/orders/mine", {
+    const { data } = await axios.get(`${API_URL}/api/orders/mine`, {
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },

@@ -6,6 +6,8 @@ import { authUser, isAdmin, generateToken } from "../utils.js";
 
 const productRouter = express.Router();
 
+const serverAddress = "http://localhost:5000";
+
 /* =======================
  * GET PRODUCTS
  * ======================= */
@@ -76,7 +78,7 @@ productRouter.put(
         ? (product.image = req.body.image)
         : req.body.image.slice(0, 2) === "/i"
         ? (product.image = req.body.image)
-        : (product.image = `http://localhost:5000${req.body.image}`);
+        : (product.image = `${serverAddress}${req.body.image}`);
       product.category = req.body.category;
       product.type = req.body.type;
       product.countInStock = req.body.countInStock;

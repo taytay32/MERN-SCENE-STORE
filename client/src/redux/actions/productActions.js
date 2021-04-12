@@ -16,13 +16,14 @@ import {
   PRODUCT_DELETE_FAIL,
   PRODUCT_DELETE_SUCCESS,
 } from "../constants/productConstants";
+import { API_URL } from "../../utils.js";
 
 export const listProducts = (search) => async (dispatch) => {
   dispatch({
     type: PRODUCT_LIST_REQUEST,
   });
   try {
-    const { data } = await axios.get(`http://localhost:5000/api/products`);
+    const { data } = await axios.get(`${API_URL}/api/products`);
     console.log(data);
 
     dispatch({
@@ -43,9 +44,7 @@ export const selectedProduct = (productId) => async (dispatch) => {
     payload: productId,
   });
   try {
-    const { data } = await axios.get(
-      `http://localhost:5000/api/products/${productId}`
-    );
+    const { data } = await axios.get(`${API_URL}/api/products/${productId}`);
     dispatch({
       type: SELECTED_PRODUCT_SUCCESS,
       payload: data,
@@ -70,7 +69,7 @@ export const createProduct = () => async (dispatch, getState) => {
   } = getState();
   try {
     const { data } = await axios.post(
-      "http://localhost:5000/api/products",
+      `${API_URL}/api/products`,
       {},
       {
         headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -103,7 +102,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
   } = getState();
   try {
     const { data } = await axios.put(
-      `http://localhost:5000/api/products/${product._id}`,
+      `${API_URL}/api/products/${product._id}`,
       product,
       {
         headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -134,12 +133,9 @@ export const deleteProduct = (productId) => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = axios.delete(
-      `http://localhost:5000/api/products/${productId}`,
-      {
-        headers: { Authorization: `Bearer ${userInfo.token}` },
-      }
-    );
+    const { data } = axios.delete(`${API_URL}/api/products/${productId}`, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,
     });

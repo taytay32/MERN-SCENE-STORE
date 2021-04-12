@@ -82,11 +82,16 @@ const PlaceOrder = (props) => {
                     </div>
                     <div className="orderItem__detailsContainer">
                       <p className="orderItem__name">{item.name}</p>
-
-                      <div>
-                        {item.qty} {item.size} x ${item.price} = $
-                        {item.qty * item.price}
-                      </div>
+                      {item.type !== "Apparel" ? (
+                        <div>
+                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                        </div>
+                      ) : (
+                        <div>
+                          {item.qty} {item.size} x ${item.price} = $
+                          {item.qty * item.price}
+                        </div>
+                      )}
                     </div>
                   </li>
                 </Link>

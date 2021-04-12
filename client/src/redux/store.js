@@ -20,7 +20,7 @@ import {
   orderMineListReducer,
   orderPayReducer,
 } from "./reducers/orderReducers";
-import { burgerReducer, searchReducer } from "./reducers/searchReducer";
+import { searchReducer } from "./reducers/searchReducer";
 
 const initialState = {
   userSignin: {

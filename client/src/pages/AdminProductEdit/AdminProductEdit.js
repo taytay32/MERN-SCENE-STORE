@@ -10,6 +10,7 @@ import {
 } from "../../redux/actions/productActions.js";
 import { PRODUCT_UPDATE_RESET } from "../../redux/constants/productConstants";
 import axios from "../../../node_modules/axios/index";
+import { API_URL } from "../../utils.js";
 
 const AdminProductEdit = (props) => {
   const productId = props.match.params.id;
@@ -121,7 +122,7 @@ const AdminProductEdit = (props) => {
     setLoadingUpload(true);
     try {
       const { data } = await axios.post(
-        `http://localhost:5000/api/uploads`,
+        `${API_URL}/api/uploads`,
         bodyFormData,
         {
           headers: {

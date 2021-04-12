@@ -10,6 +10,7 @@ import MessageBox from "../../components/boxes/MessageBox";
 import "../PlaceOrder/PlaceOrder.scss";
 // import "./OrderDetails.scss";
 import { ORDER_PAY_RESET } from "../../redux/constants/orderConstants";
+import { API_URL } from "../../utils.js";
 
 const OrderDetails = (props) => {
   const orderId = props.match.params.id;
@@ -32,9 +33,7 @@ const OrderDetails = (props) => {
   //USE PAYPAL
   useEffect(() => {
     const addPayPalScript = async () => {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/config/paypal"
-      );
+      const { data } = await axios.get(`${API_URL}/api/config/paypal`);
 
       const script = document.createElement("script");
       script.type = "text/javascript";
