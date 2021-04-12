@@ -54,7 +54,7 @@ const CartPage = (props) => {
     <section className="cart">
       {cartItems.length === 0 ? (
         <div className="emptyCart">
-          <p className="emptyCart__p">Cart is empty </p>
+          <p className="emptyCart__text">Cart is empty </p>
           <Link className="shopNow" to="/">
             SHOP NOW!
           </Link>
@@ -62,30 +62,30 @@ const CartPage = (props) => {
       ) : (
         <>
           <h1 className="cart__title">Cart details</h1>
-          <ul className="items">
+          <ul className="cart__items">
             {filteredItems.map((item) => {
               return (
-                <li key={`${item.productId}${item.size}`} className="item">
-                  <div className="infoWrap">
-                    <div className="imgwrap">
+                <li key={`${item.productId}${item.size}`} className="cartItem">
+                  <div className="cartItem__container">
+                    <div className="cartItem__imgContainer">
                       <img
-                        className="item__img"
+                        className="cartItem__img"
                         src={item.image}
                         alt={item.name}
                       />
                     </div>
-                    <div className="detailsWrap">
+                    <div className="cartItem__detailsContainer">
                       <Link
-                        className="item__title"
+                        className="cartItem__title"
                         to={`/product/${item.productId}`}
                       >
                         {item.name}
                       </Link>
-                      <p className="item__price">${item.price}</p>
+                      <p className="cartItem__price">${item.price}</p>
                       {item.type === "Apparel" ? (
-                        <div className="item__selects">
+                        <div className="cartItem__selectsContainer">
                           <select
-                            className="item__select"
+                            className="cartItem__select"
                             name="size"
                             value={item.size}
                             onChange={(e) =>
@@ -108,7 +108,7 @@ const CartPage = (props) => {
                             })}
                           </select>
                           <select
-                            className="item__select"
+                            className="cartItem__select"
                             value={item.qty}
                             name=""
                             id=""
@@ -151,7 +151,7 @@ const CartPage = (props) => {
                         </div>
                       ) : item.type !== "Tab" ? (
                         <select
-                          className="item__select music__select"
+                          className="cartItem__select music__select"
                           value={item.qty}
                           name=""
                           id=""
@@ -177,9 +177,9 @@ const CartPage = (props) => {
                         ""
                       )}
 
-                      <div className="item__delete">
+                      <div className="cartItem__removeBtnContainer">
                         <button
-                          className="item__delete__btn"
+                          className="cartItem__removeBtn"
                           typeof="button"
                           onClick={() =>
                             removeFromCartHandler(item.productId, item.size)
@@ -195,8 +195,8 @@ const CartPage = (props) => {
             })}
           </ul>
 
-          <div className="summary">
-            <h2 className="summary__title">
+          <div className="cartSummary">
+            <h2 className="cartSummary__title">
               Subtotal (
               {cartItems.reduce((a, c) => Number(a) + Number(c.qty), 0)} items)
               : ${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
@@ -205,13 +205,13 @@ const CartPage = (props) => {
             <button
               type="button"
               onClick={checkoutHandler}
-              className="summary__button"
+              className="cartSummary__button"
               disabled={cartItems.length === 0}
             >
               Proceed to checkout
             </button>
             <Link to="/">
-              <button type="button" className="backToProd">
+              <button type="button" className="cartSummary__linkToHome">
                 BACK TO PRODUCTS
               </button>
             </Link>

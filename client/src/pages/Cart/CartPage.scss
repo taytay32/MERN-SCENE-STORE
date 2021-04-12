@@ -14,7 +14,7 @@
     @include flex-center;
     padding: 2rem;
 
-    &__p {
+    &__text {
       margin-right: 3rem;
     }
 
@@ -34,7 +34,7 @@
     }
   }
 
-  .items {
+  &__items {
     @include flex-center;
     flex-wrap: wrap;
 
@@ -44,7 +44,7 @@
       margin: 0 auto;
       // justify-content: flex-start;
     }
-    .item {
+    .cartItem {
       width: 30rem;
 
       box-shadow: 0rem 0rem 5px $primary-dark-blue;
@@ -62,7 +62,7 @@
         margin-right: 2rem;
       }
 
-      .infoWrap {
+      &__container {
         background-color: $background-grey;
         @include tablet {
           display: flex;
@@ -71,7 +71,7 @@
         }
       }
 
-      .imgwrap {
+      &__imgContainer {
         background-color: white;
         padding: 1.2rem;
         height: 25rem;
@@ -87,6 +87,19 @@
         height: 100%;
         width: 100%;
         object-fit: contain;
+      }
+
+      &__detailsContainer {
+        padding: 1.5rem;
+
+        @include tablet {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          height: auto;
+          // align-items: center;
+          justify-content: space-between;
+        }
       }
 
       &__title {
@@ -107,7 +120,7 @@
         }
       }
 
-      &__selects {
+      &__selectsContainer {
         @include flex-center;
         justify-content: space-between;
         width: 15rem;
@@ -132,36 +145,21 @@
         height: 3rem;
       }
 
-      &__delete {
-        &__btn {
-          @include button;
-          &:hover {
-            border: 2px solid $primary-red;
-            color: $primary-red;
-          }
-          @include tablet {
-            font-size: 2rem;
-            height: 4rem;
-          }
+      &__removeBtn {
+        @include button;
+        &:hover {
+          border: 2px solid $primary-red;
+          color: $primary-red;
+        }
+        @include tablet {
+          font-size: 2rem;
+          height: 4rem;
         }
       }
     }
   }
 
-  .detailsWrap {
-    padding: 1.5rem;
-
-    @include tablet {
-      display: flex;
-      flex-direction: column;
-      width: 50%;
-      height: auto;
-      // align-items: center;
-      justify-content: space-between;
-    }
-  }
-
-  .summary {
+  .cartSummary {
     width: 30rem;
     box-shadow: 0rem 0rem 5px $primary-dark-blue;
     border-radius: 2px;
@@ -190,19 +188,19 @@
         border: 2px solid $primary-light-blue;
       }
     }
-  }
-}
 
-.backToProd {
-  @include button;
-  margin-top: 1rem;
-  background-color: white;
-  color: $primary-red;
-  border: none;
-  transition: 0.2s;
-  font-size: 2rem;
-  height: 3rem;
-  &:hover {
-    color: green;
+    &__linkToHome {
+      @include button;
+      margin-top: 1rem;
+      background-color: white;
+      color: $primary-red;
+      border: none;
+      transition: 0.2s;
+      font-size: 2rem;
+      height: 3rem;
+      &:hover {
+        color: green;
+      }
+    }
   }
 }

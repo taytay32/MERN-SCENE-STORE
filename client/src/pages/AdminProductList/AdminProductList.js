@@ -78,19 +78,19 @@ const AdminProductList = (props) => {
   }, [products, searchProduct]);
 
   return (
-    <section className="orderHistory adminProdList">
-      <h1 className="orderHistory__title">Products</h1>
-      <div className="createBtnWrap">
+    <section className="adminProducts">
+      <h1 className="adminProducts__title">Products</h1>
+      <div className="adminProducts__btnContainer">
         <button
           type="button"
-          className="orderHistWrap__btn"
+          className="adminProducts__createProductBtn"
           onClick={createHandler}
         >
           Create Product
         </button>
       </div>
 
-      <div className="orderHistWrap">
+      <div className="adminProducts__productsContainer">
         {loadingDelete && <LoadingBox></LoadingBox>}
         {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
         {loadingCreate && <LoadingBox></LoadingBox>}
@@ -109,18 +109,18 @@ const AdminProductList = (props) => {
                   alt={product.name}
                 />
 
-                <h3 className="orderHistCard__subtitle">NAME</h3>
-                <p className="orderHistCard__p">{product.name}</p>
-                <h3 className="orderHistCard__subtitle">PRICE</h3>
-                <p className="orderHistCard__p">${product.price}</p>
-                <h3 className="orderHistCard__subtitle">TYPE</h3>
-                <p className="orderHistCard__p">{product.type}</p>
-                <h3 className="orderHistCard__subtitle">CATEGORY</h3>
-                <p className="orderHistCard__p">{product.category}</p>
+                <h3 className="productCard__subtitle">NAME</h3>
+                <p className="productCard__text">{product.name}</p>
+                <h3 className="productCard__subtitle">PRICE</h3>
+                <p className="productCard__text">${product.price}</p>
+                <h3 className="productCard__subtitle">TYPE</h3>
+                <p className="productCard__text">{product.type}</p>
+                <h3 className="productCard__subtitle">CATEGORY</h3>
+                <p className="productCard__text">{product.category}</p>
 
                 <button
                   type="button"
-                  className=" editBtn"
+                  className="productCard__editBtn"
                   onClick={() => {
                     props.history.push(`/product/${product._id}/edit`);
                   }}
@@ -129,7 +129,7 @@ const AdminProductList = (props) => {
                 </button>
                 <button
                   type="button"
-                  className="deleteBtn"
+                  className="productCard__deleteBtn"
                   onClick={() => deleteHandler(product)}
                 >
                   DELETE

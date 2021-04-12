@@ -3,69 +3,108 @@
 @use '../../partials/mixins' as *;
 @use '../../partials/typography' as *;
 
-.createBtnWrap {
-  @include flex-center;
-}
-.orderHistWrap__btn {
-  @include button;
-  width: 28rem;
-  margin-bottom: 2rem;
-
-  &:hover {
-    border: 2px solid $primary-light-blue;
-    color: $primary-light-blue;
-  }
-
-  @include tablet {
-    width: 25.5rem;
-  }
-}
-
-.productCard {
-  position: relative;
-  z-index: 0;
-  padding: 1rem;
-  box-shadow: 0rem 0rem 5px $primary-dark-blue;
-  border-radius: 2px;
-  background-color: white;
-  margin: 1rem;
-  width: 30rem;
-
-  @include tablet {
-    // height: 30rem;
-    width: 20rem;
-  }
-
-  &__img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: contain;
-    height: 80%;
-    width: 100%;
-    z-index: -1;
-    opacity: 0.2;
-    padding: 2rem;
+.adminProducts {
+  @include background;
+  &__title {
+    @include M-bebas-header;
+    @include flex-center;
+    color: white;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
 
     @include tablet {
-      padding-top: 0;
+      @include T-bebas-header;
+      color: white;
     }
   }
-}
 
-.editBtn {
-  @include button;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  height: 4rem;
-}
+  &__btnContainer {
+    @include flex-center;
+  }
 
-.deleteBtn {
-  @include button;
-  font-size: 2rem;
-  height: 4rem;
-  &:hover {
-    border: 2px solid $primary-red;
-    color: $primary-red;
+  &__createProductBtn {
+    @include button;
+    width: 28rem;
+    margin-bottom: 2rem;
+
+    &:hover {
+      border: 2px solid $primary-light-blue;
+      color: $primary-light-blue;
+    }
+
+    @include tablet {
+      width: 25.5rem;
+    }
+  }
+
+  &__productsContainer {
+    padding: 2rem;
+    padding-top: 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .productCard {
+    position: relative;
+    z-index: 0;
+    padding: 1rem;
+    box-shadow: 0rem 0rem 5px $primary-dark-blue;
+    border-radius: 2px;
+    background-color: white;
+    margin: 1rem;
+    width: 30rem;
+
+    @include tablet {
+      width: 20rem;
+    }
+
+    &__img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: contain;
+      height: 80%;
+      width: 100%;
+      z-index: -1;
+      opacity: 0.2;
+      padding: 2rem;
+
+      @include tablet {
+        padding-top: 0;
+      }
+    }
+
+    &__subtitle {
+      @include M-bebas-header;
+      color: $primary-dark-blue;
+    }
+
+    &__text {
+      @include M-montserrat-header;
+      margin-bottom: 1rem;
+    }
+
+    &__editBtn {
+      @include button;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      height: 4rem;
+      &:hover {
+        color: $primary-light-blue;
+        border: 2px solid $primary-light-blue;
+      }
+    }
+
+    &__deleteBtn {
+      @include button;
+      font-size: 2rem;
+      height: 4rem;
+      &:hover {
+        border: 2px solid $primary-red;
+        color: $primary-red;
+      }
+    }
   }
 }

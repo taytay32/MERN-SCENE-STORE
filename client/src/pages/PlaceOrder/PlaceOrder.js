@@ -40,29 +40,31 @@ const PlaceOrder = (props) => {
   }, [dispatch, success, order, props.history]);
 
   return (
-    <section className="placeOrder">
+    <section className="order">
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
 
-      <h1 className="placeOrder__title">Order Summary</h1>
+      <h1 className="order__title">Order Summary</h1>
 
-      <div className="orderWrap">
+      <div className="orderContainer">
         <div className="orderCard shippingCardMobile">
           <h2 className="orderCard__title">Shipping</h2>
           <h3 className="orderCard__subtitle">NAME:</h3>
-          <p className="orderCard__p">{cart.shippingAddress.fullName}</p>
+          <p className="orderCard__text">{cart.shippingAddress.fullName}</p>
           <h3 className="orderCard__subtitle">ADDRESS:</h3>
-          <p className="orderCard__p">
+          <p className="orderCard__text">
             {cart.shippingAddress.address}, {cart.shippingAddress.city},{" "}
             {cart.shippingAddress.postalCode}, {cart.shippingAddress.country}
           </p>
           <h2 className="orderCard__title">Payment</h2>
 
           <h3 className="orderCard__subtitle">METHOD:</h3>
-          <p className="orderCard__p">{cart.paymentMethod}</p>
+          <p className="orderCard__text">{cart.paymentMethod}</p>
         </div>
 
         <div className="orderCard itemsCard">
-          <h2 className="orderCard__title item__title">Items</h2>
+          <h2 className="orderCard__title orderCard__title--underline">
+            Items
+          </h2>
           <ul>
             {cart.cartItems.map((item) => {
               return (
@@ -71,15 +73,15 @@ const PlaceOrder = (props) => {
                   key={`${item.productId}${item.size}`}
                 >
                   <li className="orderItem">
-                    <div className="imgWrap">
+                    <div className="orderItem__imgContainer">
                       <img
-                        className="imgWrap__img"
+                        className="orderItem__img"
                         src={item.image}
                         alt={item.name}
                       />
                     </div>
-                    <div className="orderDetailsWrap">
-                      <p className="orderDetailsWrap__name">{item.name}</p>
+                    <div className="orderItem__detailsContainer">
+                      <p className="orderItem__name">{item.name}</p>
 
                       <div>
                         {item.qty} {item.size} x ${item.price} = $
@@ -96,44 +98,46 @@ const PlaceOrder = (props) => {
           <div className="orderCard shippingCard">
             <h2 className="orderCard__title">Shipping</h2>
             <h3 className="orderCard__subtitle">NAME:</h3>
-            <p className="orderCard__p">{cart.shippingAddress.fullName}</p>
+            <p className="orderCard__text">{cart.shippingAddress.fullName}</p>
             <h3 className="orderCard__subtitle">ADDRESS:</h3>
-            <p className="orderCard__p">
+            <p className="orderCard__text">
               {cart.shippingAddress.address}, {cart.shippingAddress.city},{" "}
               {cart.shippingAddress.postalCode}, {cart.shippingAddress.country}
             </p>
             <h2 className="orderCard__title">Payment</h2>
 
             <h3 className="orderCard__subtitle">METHOD:</h3>
-            <p className="orderCard__p">{cart.paymentMethod}</p>
+            <p className="orderCard__text">{cart.paymentMethod}</p>
           </div>
 
           <div className="orderCard">
-            <h2 className="orderCard__title summaryCard">Summary</h2>
+            <h2 className="orderCard__title">Summary</h2>
 
-            <div className="row">
+            <div className="orderCard__summaryRow">
               <h3 className="orderCard__subtitle">Items</h3>
               <div className="orderCard__price">
                 ${cart.itemsPrice.toFixed(2)}
               </div>
             </div>
 
-            <div className="row">
+            <div className="orderCard__summaryRow">
               <h3 className="orderCard__subtitle">Shipping</h3>
               <div className="orderCard__price">
                 ${cart.shippingPrice.toFixed(2)}
               </div>
             </div>
 
-            <div className="row">
+            <div className="orderCard__summaryRow">
               <h3 className="orderCard__subtitle">Tax</h3>
               <div className="orderCard__price">
                 ${cart.taxPrice.toFixed(2)}
               </div>
             </div>
 
-            <div className="row">
-              <h3 className="orderCard__subtitle bold">TOTAL</h3>
+            <div className="orderCard__summaryRow">
+              <h3 className="orderCard__subtitle orderCard__subtitle--bold">
+                TOTAL
+              </h3>
 
               <strong className="orderCard__price">
                 ${cart.totalPrice.toFixed(2)}

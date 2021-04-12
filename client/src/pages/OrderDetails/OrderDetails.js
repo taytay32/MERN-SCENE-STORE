@@ -8,7 +8,7 @@ import { detailsOrder, payOrder } from "../../redux/actions/orderActions";
 import LoadingBox from "../../components/boxes/LoadingBox";
 import MessageBox from "../../components/boxes/MessageBox";
 import "../PlaceOrder/PlaceOrder.scss";
-import "./OrderDetails.scss";
+// import "./OrderDetails.scss";
 import { ORDER_PAY_RESET } from "../../redux/constants/orderConstants";
 
 const OrderDetails = (props) => {
@@ -71,20 +71,20 @@ const OrderDetails = (props) => {
   ) : error ? (
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
-    <section className="placeOrder">
+    <section className="order">
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
 
-      <h1 className="placeOrder__title">Order Details</h1>
+      <h1 className="order__title">Order Details</h1>
 
-      <div className="orderWrap">
+      <div className="orderContainer">
         <div className="orderCard shippingCardMobile">
           <h2 className="orderCard__title">Shipping</h2>
           <h3 className="orderCard__subtitle">ORDER #:</h3>
-          <p className="orderCard__p">{order._id}</p>
+          <p className="orderCard__text">{order._id}</p>
           <h3 className="orderCard__subtitle">NAME:</h3>
-          <p className="orderCard__p">{order.shippingAddress.fullName}</p>
+          <p className="orderCard__text">{order.shippingAddress.fullName}</p>
           <h3 className="orderCard__subtitle">ADDRESS:</h3>
-          <p className="orderCard__p">
+          <p className="orderCard__text">
             {order.shippingAddress.address}, {order.shippingAddress.city},{" "}
             {order.shippingAddress.postalCode}, {order.shippingAddress.country}
           </p>
@@ -99,7 +99,7 @@ const OrderDetails = (props) => {
           <h2 className="orderCard__title">Payment</h2>
 
           <h3 className="orderCard__subtitle">METHOD:</h3>
-          <p className="orderCard__p">{order.paymentMethod}</p>
+          <p className="orderCard__text">{order.paymentMethod}</p>
           {order.isPaid ? (
             <MessageBox variant="success">
               <p> Paid on {order.paidOn.split("T")[0]}.</p>
@@ -111,7 +111,9 @@ const OrderDetails = (props) => {
         </div>
 
         <div className="orderCard">
-          <h2 className="orderCard__title item__title">Items</h2>
+          <h2 className="orderCard__title orderCard__title--underline">
+            Items
+          </h2>
           <ul>
             {order.orderItems.map((item) => {
               return (
@@ -120,15 +122,15 @@ const OrderDetails = (props) => {
                   key={`${item.productId}${item.size}`}
                 >
                   <li className="orderItem">
-                    <div className="imgWrap">
+                    <div className="orderItem__imgContainer">
                       <img
-                        className="imgWrap__img"
+                        className="orderItem__img"
                         src={item.image}
                         alt={item.name}
                       />
                     </div>
-                    <div className="orderDetailsWrap">
-                      <p className="orderDetailsWrap__name">{item.name}</p>
+                    <div className="orderItem__detailsContainer">
+                      <p className="orderItem__name">{item.name}</p>
 
                       <div>
                         {item.qty} {item.size} x ${item.price} = $
@@ -145,11 +147,11 @@ const OrderDetails = (props) => {
           <div className="orderCard shippingCard">
             <h2 className="orderCard__title">Shipping</h2>
             <h3 className="orderCard__subtitle">ORDER #:</h3>
-            <p className="orderCard__p">{order._id}</p>
+            <p className="orderCard__text">{order._id}</p>
             <h3 className="orderCard__subtitle">NAME:</h3>
-            <p className="orderCard__p">{order.shippingAddress.fullName}</p>
+            <p className="orderCard__text">{order.shippingAddress.fullName}</p>
             <h3 className="orderCard__subtitle">ADDRESS:</h3>
-            <p className="orderCard__p">
+            <p className="orderCard__text">
               {order.shippingAddress.address}, {order.shippingAddress.city},{" "}
               {order.shippingAddress.postalCode},{" "}
               {order.shippingAddress.country}
@@ -165,7 +167,7 @@ const OrderDetails = (props) => {
             <h2 className="orderCard__title">Payment</h2>
 
             <h3 className="orderCard__subtitle">METHOD:</h3>
-            <p className="orderCard__p">{order.paymentMethod}</p>
+            <p className="orderCard__text">{order.paymentMethod}</p>
             {order.isPaid ? (
               <MessageBox variant="success">
                 <p> Paid on {order.paidOn.split("T")[0]}.</p>
@@ -179,29 +181,31 @@ const OrderDetails = (props) => {
           <div className="orderCard">
             <h2 className="orderCard__title">Summary</h2>
 
-            <div className="row">
+            <div className="orderCard__summaryRow">
               <h3 className="orderCard__subtitle">Items</h3>
               <div className="orderCard__price">
                 ${order.itemsPrice.toFixed(2)}
               </div>
             </div>
 
-            <div className="row">
+            <div className="orderCard__summaryRow">
               <h3 className="orderCard__subtitle">Shipping</h3>
               <div className="orderCard__price">
                 ${order.shippingPrice.toFixed(2)}
               </div>
             </div>
 
-            <div className="row">
+            <div className="orderCard__summaryRow">
               <h3 className="orderCard__subtitle">Tax</h3>
               <div className="orderCard__price">
                 ${order.taxPrice.toFixed(2)}
               </div>
             </div>
 
-            <div className="row">
-              <h3 className="orderCard__subtitle bold">TOTAL</h3>
+            <div className="orderCard__summaryRow">
+              <h3 className="orderCard__subtitle orderCard__subtitle--bold">
+                TOTAL
+              </h3>
 
               <strong className="orderCard__price">
                 ${order.totalPrice.toFixed(2)}
