@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { fileURLToPath } from "url";
+// import { fileURLToPath } from "url";
 import path from "path";
 
 import cors from "cors";
@@ -35,9 +35,7 @@ app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
 });
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
+const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "/client/build")));
 app.get("*", (req, res) =>
   res.sendFile(path.join(__dirname, "/client/build/index.html"))
