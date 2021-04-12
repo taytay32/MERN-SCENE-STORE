@@ -108,6 +108,20 @@
   background-color: white;
 }
 
+@mixin searchInput {
+  height: 3.6rem;
+  border-radius: 0.3rem;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+  max-width: 46rem;
+  background-image: url("../assets/icons/search-24px.svg");
+  background-position: calc(100% - 1rem), center;
+  background-repeat: no-repeat;
+  font-size: 1.4rem;
+  color: $primary-black;
+  border: 1px solid $primary-dark-blue;
+}
+
 @mixin label {
   @include M-montserrat-header;
   font-size: 1.5rem;

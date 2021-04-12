@@ -33,35 +33,35 @@ const Header = () => {
     setBurger(!burger);
   };
 
+  //MOBILE MENU
   let showBurger;
-
   if (burger) {
     showBurger = (
-      <div className="menuExpand">
-        <ul className="mobileList">
+      <div className="burger">
+        <ul className="burger__list">
           {userInfo ? (
             <>
-              <li className="mobileList__item">
+              <li className="burger__listItem">
                 <Link
-                  className="mobileList__item__link"
+                  className="burger__link"
                   to="/profile"
                   onClick={burgerHandler}
                 >
                   {userInfo.firstName}'s Profile
                 </Link>
               </li>
-              <li className="mobileList__item">
+              <li className="burger__listItem">
                 <Link
                   onClick={burgerHandler}
-                  className="mobileList__item__link"
+                  className="burger__link"
                   to="/orderhistory"
                 >
                   Order History
                 </Link>
               </li>
-              <li className="mobileList__item">
+              <li className="burger__listItem">
                 <Link
-                  className="mobileList__item__link"
+                  className="burger__link"
                   to="/signin"
                   onClick={signoutHandler}
                 >
@@ -71,19 +71,19 @@ const Header = () => {
             </>
           ) : (
             <>
-              <li className="mobileList__item">
+              <li className="burger__listItem">
                 <Link
                   onClick={burgerHandler}
-                  className="mobileList__item__link"
+                  className="burger__link"
                   to="/signin"
                 >
                   Sign In
                 </Link>
               </li>
-              <li className="mobileList__item">
+              <li className="burger__listItem">
                 <Link
                   onClick={burgerHandler}
-                  className="mobileList__item__link"
+                  className="burger__link"
                   to="/register"
                 >
                   Register
@@ -94,38 +94,40 @@ const Header = () => {
 
           {userInfo && userInfo.isAdmin && (
             <>
-              <li className="mobileList__item underline">Admin</li>
-              {/* <li className="mobileList__item">
+              <li className="burger__listItem burger__listItem--underline">
+                Admin
+              </li>
+              {/* <li className="burger__listItem">
                 <Link
                   onClick={burgerHandler}
-                  className="mobileList__item__link"
+                  className="burger__link"
                   to="/dashboard"
                 >
                   Dashboard
                 </Link>
               </li> */}
-              <li className="mobileList__item">
+              <li className="burger__listItem">
                 <Link
                   onClick={burgerHandler}
-                  className="mobileList__item__link"
+                  className="burger__link"
                   to="/productlist"
                 >
                   Products
                 </Link>
               </li>
-              {/* <li className="mobileList__item">
+              {/* <li className="burger__listItem">
                 <Link
                   onClick={burgerHandler}
-                  className="mobileList__item__link"
+                  className="burger__link"
                   to="/orderlist"
                 >
                   Orders
                 </Link>
               </li>
-              <li className="mobileList__item">
+              <li className="burger__listItem">
                 <Link
                   onClick={burgerHandler}
-                  className="mobileList__item__link"
+                  className="burger__link"
                   to="/userlist"
                 >
                   Users
@@ -141,26 +143,32 @@ const Header = () => {
   return (
     <>
       <header className="header">
-        <Link to="/" className="logo" onClick={() => setBurger(false)}>
-          <img src={logo} alt="" className="logo__logo" />
-          <h1 className="logo__title">.STORE</h1>
+        <Link to="/" className="header__logo" onClick={() => setBurger(false)}>
+          <img src={logo} alt="" className="header__logoImg" />
+          <h1 className="header__title">.STORE</h1>
         </Link>
-        <nav className="mobileNav">
-          <div className="mobileNavWrap">
-            <div className="mobileCartWrap">
+        <nav className="navMobile">
+          <div className="navMobile__container">
+            <div className="navMobile__cartContainer">
               <Link
-                className="mobileCartLink"
+                className="navMobile__cartLink"
                 to="/cart"
                 onClick={() => setBurger(false)}
               >
-                <img className="cartIcon" src={shoppingCart} alt="" />
+                <img
+                  className="navMobile__cartIcon"
+                  src={shoppingCart}
+                  alt=""
+                />
                 {cartItems.length > 0 && (
-                  <span className="cartBadgeMobile">{cartItems.length}</span>
+                  <span className="navMobile__cartBadge">
+                    {cartItems.length}
+                  </span>
                 )}
               </Link>
             </div>
             <input
-              className="mobileNavWrap__search"
+              className="navMobile__search"
               type="text"
               name="searchMerch"
               value={search}
@@ -172,39 +180,48 @@ const Header = () => {
         </nav>
         <div>{showBurger}</div>
 
-        <nav className="desktopNav">
-          <div className="desktopNavWrap">
-            <div className="deskCartWrap">
-              <Link className="deskCartLink" to="/cart">
-                <img className="deskCartIcon" src={shoppingCart} alt="" />
+        <nav className="navDesktop">
+          <div className="navDesktop__container">
+            <div className="navDesktop__cartContainer">
+              <Link className="navDesktop__cartLink" to="/cart">
+                <img
+                  className="navDesktop__cartIcon"
+                  src={shoppingCart}
+                  alt=""
+                />
                 {cartItems.length > 0 && (
-                  <span className="cartBadgeDesk">{cartItems.length}</span>
+                  <span className="navDesktop__cartBadge">
+                    {cartItems.length}
+                  </span>
                 )}
               </Link>
             </div>
             <input
-              className="desktopNavWrap__search"
+              className="navDesktop__search"
               type="text"
               name="searchMerch"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search..."
             />
-            <div className="userDropDowns">
+            <div className="navDesktop__dropdownsContainer">
               {userInfo ? (
-                <div className="dropdown">
-                  <Link className="dropdown__link" to="#">
+                <div className="navDesktop__dropdown">
+                  <Link className="navDesktop__link" to="#">
                     {userInfo.firstName} <i className="fa fa-caret-down"></i>{" "}
                   </Link>
-                  <div className="dropdown-content">
-                    <Link className="dropdown-content__link" to="/profile">
+                  <div className="navDesktop__dropdownContent">
+                    <Link className="navDesktop__dropdownLink" to="/profile">
                       User Profile
                     </Link>
-                    <Link className="dropdown-content__link" to="/orderhistory">
+                    <Link
+                      className="navDesktop__dropdownLink"
+                      to="/orderhistory"
+                    >
                       Order History
                     </Link>
                     <Link
-                      className="dropdown-content__link"
+                      className="navDesktop__dropdownLink"
                       to="/signin"
                       onClick={signoutHandler}
                     >
@@ -214,30 +231,33 @@ const Header = () => {
                 </div>
               ) : (
                 <>
-                  <Link className="signInLink" to="/register">
+                  <Link className="navDesktop__link signInLink" to="/register">
                     Register
                   </Link>
-                  <Link className="signInLink" to="/signin">
+                  <Link className="navDesktop__link signInLink" to="/signin">
                     Sign In
                   </Link>
                 </>
               )}
               {userInfo && userInfo.isAdmin && (
-                <div className="dropdown dropdown-2">
-                  <Link className="dropdown__link" to="#admin">
+                <div className="navDesktop__dropdown dropdown-2">
+                  <Link className="navDesktop__link" to="#admin">
                     Admin <i className="fa fa-caret-down"></i>{" "}
                   </Link>
-                  <div className="dropdown-content dropdown-content-2">
-                    <Link className="dropdown-content__link" to="/dashboard">
+                  <div className="navDesktop__dropdownContent">
+                    <Link className="navDesktop__dropdownLink" to="/dashboard">
                       Dashboard
                     </Link>
-                    <Link className="dropdown-content__link" to="/productlist">
+                    <Link
+                      className="navDesktop__dropdownLink"
+                      to="/productlist"
+                    >
                       Products
                     </Link>
-                    <Link className="dropdown-content__link" to="/orderlist">
+                    <Link className="navDesktop__dropdownLink" to="/orderlist">
                       Orders
                     </Link>
-                    <Link className="dropdown-content__link" to="/userlist">
+                    <Link className="navDesktop__dropdownLink" to="/userlist">
                       Users
                     </Link>
                   </div>

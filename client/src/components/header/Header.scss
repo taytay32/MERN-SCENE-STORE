@@ -4,24 +4,66 @@
 @use '../../partials/typography' as *;
 
 .header {
-  .logo {
+  &__logo {
     display: flex;
     align-items: flex-end;
     justify-content: center;
     padding: 1.5rem 1.6rem;
     background-color: $background-grey;
-    &__logo {
-      height: 8rem;
+  }
+
+  &__logoImg {
+    height: 8rem;
+  }
+
+  &__title {
+    @include M-bebas-header;
+    line-height: 65%;
+    margin-left: 0.2rem;
+  }
+
+  //MOBILE MENU (BURGER)
+  .burger {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 16rem;
+    left: 0;
+    background-color: $primary-dark-blue;
+    z-index: 10;
+
+    &__list {
+      box-shadow: 0px 5px 5px $primary-dark-blue;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      @include M-bebas-header;
     }
 
-    &__title {
-      @include M-bebas-header;
-      line-height: 65%;
-      margin-left: 0.2rem;
+    &__listItem {
+      margin: 2rem 0;
+
+      &--underline {
+        text-decoration: underline;
+        text-align: center;
+        border-top: 1px solid $background-grey;
+        padding-top: 2rem;
+        display: block;
+        width: 30%;
+      }
+    }
+    &__link {
+      color: white;
+    }
+
+    @include desktop {
+      display: none;
     }
   }
 
-  .mobileNav {
+  //MOBILE NAV
+  .navMobile {
     background-color: $primary-yellow;
     position: relative;
 
@@ -33,227 +75,138 @@
       display: none;
     }
 
-    .mobileNavWrap {
+    &__container {
       padding: 0 2rem;
       height: 5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
+    }
 
-      &__search {
-        height: 3.6rem;
-        border-radius: 0.3rem;
-        padding-left: 1.6rem;
-        padding-right: 1.6rem;
-        width: 70%;
-        max-width: 50rem;
+    &__cartLink {
+      position: relative;
+      z-index: 1;
+      top: 0.7rem;
+    }
 
-        background-image: url("../../assets/icons/search-24px.svg");
-        background-position: calc(100% - 1rem), center;
-        background-repeat: no-repeat;
-        font-size: 1.4rem;
-        color: $primary-black;
-        border: 1px solid $primary-dark-blue;
-      }
+    &__cartBadge {
+      position: absolute;
+      top: -2.1rem;
+      left: -0.25rem;
+      background-color: white;
+      z-index: -1;
+      @include M-montserrat-header;
+      color: $primary-red;
+      border-radius: 50%;
+      padding: 0.2rem 0.6rem;
+      font-size: 1rem;
+      margin-left: 0.2rem;
+    }
+
+    &__search {
+      @include searchInput;
+      width: 70%;
     }
   }
 
-  //BURGER
-  .menuExpand {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 16rem;
-    left: 0;
-    background-color: $primary-dark-blue;
-    z-index: 10;
-
-    .mobileList {
-      width: 100%;
-
-      box-shadow: 0px 5px 5px $primary-dark-blue;
-
-      border-radius: 5px;
-
-      display: flex;
-      align-items: center;
-      // justify-content: space-around;
-      flex-direction: column;
-      @include M-bebas-header;
-      overflow: hidden;
-
-      &__item {
-        margin: 2rem 0;
-        &__link {
-          color: white;
-        }
-      }
-    }
-  }
-  .underline {
-    text-decoration: underline;
-    text-align: center;
-    border-top: 1px solid $background-grey;
-    padding-top: 2rem;
-    display: block;
-    width: 100%;
-  }
-  .mobileCartLink {
-    position: relative;
-    z-index: 50;
-    top: 0.7rem;
-  }
-
-  .cartIcon {
-    z-index: 70;
-  }
-
-  .cartBadgeMobile {
-    position: absolute;
-    top: -2.1rem;
-    left: -0.25rem;
-    background-color: white;
-    z-index: -1;
-    @include M-montserrat-header;
-    color: $primary-red;
-    border-radius: 50%;
-    padding: 0.2rem 0.6rem;
-    font-size: 1rem;
-    margin-left: 0.2rem;
-  }
-
-  //DESKTOP NAV
-
-  .desktopNav {
+  //DESKTOP/TABLET NAV
+  .navDesktop {
     display: none;
 
     @include desktop {
       display: flex;
       align-items: center;
-
       background-color: $primary-yellow;
       height: 5rem;
 
-      .desktopNavWrap {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+      &__container {
+        @include flex-center;
         margin: 0 auto;
         width: 90%;
+      }
+      &__cartContainer {
+        flex: 1;
+      }
+      &__cartLink {
+        display: flex;
+        position: relative;
+        top: 0.45rem;
+        z-index: 50;
+      }
+      &__cartIcon {
+        height: 3rem;
+        z-index: 70;
+      }
 
-        .deskCartWrap {
-          flex: 1;
-          .deskCartLink {
-            display: flex;
-            position: relative;
-            top: 0.45rem;
-            z-index: 50;
-            .deskCartIcon {
-              height: 3rem;
-              z-index: 70;
-            }
+      &__cartBadge {
+        background-color: white;
+        position: absolute;
+        left: -0.25rem;
+        top: -0.8rem;
+        @include M-montserrat-header;
+        color: $primary-red;
+        border-radius: 50%;
+        padding: 0.4rem 1rem;
+        font-size: 1rem;
+        margin-left: 0.2rem;
+      }
 
-            .cartBadgeDesk {
-              background-color: white;
-              position: absolute;
-              left: -0.25rem;
-              top: -0.8rem;
-              @include M-montserrat-header;
-              color: $primary-red;
-              border-radius: 50%;
-              padding: 0.4rem 1rem;
-              font-size: 1rem;
-              margin-left: 0.2rem;
-            }
-          }
-        }
+      &__search {
+        @include searchInput;
+        flex: 1;
+        min-width: 46rem;
+      }
 
-        &__search {
-          flex: 1;
-          position: relative;
-          right: 5rem;
-          height: 3.6rem;
-          border-radius: 0.3rem;
-          padding-left: 1.6rem;
-          padding-right: 1.6rem;
-          width: 70%;
-          min-width: 50rem;
-          background-image: url("../../assets/icons/search-24px.svg");
-          background-position: calc(100% - 1rem), center;
-          background-repeat: no-repeat;
-          font-size: 1.4rem;
-          color: $primary-black;
-          border: 1px solid $primary-dark-blue;
-        }
+      &__dropdownsContainer {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
 
-        .userDropDowns {
-          flex: 1;
+      &__dropdown {
+        position: relative;
+        text-align: center;
+
+        &:hover .navDesktop__dropdownContent {
           display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          // width: 40rem;
+          flex-direction: column;
+        }
+      }
+
+      &__link {
+        @include M-bebas-header;
+        font-size: 2rem;
+        display: block;
+        width: 11.2rem;
+        text-align: right;
+
+        &:hover {
+          color: $primary-dark-blue;
+        }
+      }
+
+      &__dropdownContent {
+        position: absolute;
+        display: none;
+        right: -2rem;
+        top: 2rem;
+        width: 100%;
+        background-color: $primary-yellow;
+        border-radius: 0.3rem;
+        padding: 1rem;
+        box-shadow: 0px 2px 2px rgb(230, 184, 98);
+      }
+
+      &__dropdownLink {
+        @include M-bebas-header;
+        margin-top: 1.5rem;
+        font-size: 1.4rem;
+
+        &:hover {
+          color: $primary-dark-blue;
         }
       }
     }
-  }
-}
-
-.dropdown {
-  position: relative;
-  text-align: center;
-
-  .dropdown:hover {
-    color: $primary-dark-blue;
-  }
-
-  &__link {
-    @include M-bebas-header;
-    font-size: 2rem;
-    display: block;
-    width: 12rem;
-
-    &:hover {
-      color: $primary-dark-blue;
-    }
-  }
-
-  .dropdown-content {
-    position: absolute;
-    display: none;
-    right: 0;
-    top: 2rem;
-    z-index: 1;
-    width: 100%;
-    background-color: $primary-yellow;
-    border-radius: 0.3rem;
-    padding: 1rem;
-    box-shadow: 0px 2px 2px rgb(230, 184, 98);
-
-    &__link {
-      @include M-bebas-header;
-      margin-top: 1.5rem;
-      font-size: 1.4rem;
-
-      &:hover {
-        color: $primary-dark-blue;
-      }
-    }
-  }
-}
-
-.dropdown:hover .dropdown-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.signInLink {
-  @include M-bebas-header;
-  margin: 0 2rem;
-  font-size: 2rem;
-
-  text-align: center;
-  &:hover {
-    color: $primary-dark-blue;
   }
 }
