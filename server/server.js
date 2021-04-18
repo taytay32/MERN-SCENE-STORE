@@ -35,8 +35,10 @@ app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
 });
 
+//serve frontend
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "/client/build")));
+//serve index.html
 app.get("*", (req, res) =>
   res.sendFile(path.join(__dirname, "/client/build/index.html"))
 );
