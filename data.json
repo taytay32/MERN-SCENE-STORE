@@ -1,0 +1,35 @@
+{
+  "products": [
+    {
+      "type": "Apparel",
+      "name": "Crow Hoodie",
+      "category": "Hoodies",
+      "image": "/images/merch/hoodie_edit-1.png",
+      "imageDetail": "/images/merch/hoodie-pam-removebg.png",
+      "price": 35,
+      "sizesOb": {
+        "S": 20,
+        "M": 15,
+        "L": 3,
+        " XL": 18
+      },
+      "description": "Stylish, flexible, and warm!"
+    },
+    {
+      "type": "Apparel",
+      "name": "Horse Tee",
+      "category": "Tees",
+      "image": "/images/merch/tee_edit.jpg",
+      "imageDetail": "/images/merch/tee-primz-removebg.png",
+      "price": 20,
+      "countInStock": 5,
+      "sizesOb": {
+        "S": 20,
+        "M": 15,
+        "L": 3,
+        "XL": 18
+      },
+      "description": "Standard emo t-shirt, for you."
+    }
+  ]
+}

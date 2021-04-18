@@ -23,8 +23,9 @@ export const listProducts = (search) => async (dispatch) => {
     type: PRODUCT_LIST_REQUEST,
   });
   try {
+    console.log("I am Here, line 26 of product actions");
     const { data } = await axios.get(`${API_URL}/api/products`);
-    console.log(data);
+    console.log(data, "IAM TH#E DATA");
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
