@@ -25,13 +25,14 @@ const LandingPage = () => {
   //SEARCH FUNCTIONALITY
   useEffect(() => {
     if (products) {
-      setFilteredProducts(
-        products.filter((product) => {
-          return product.name
-            .toLowerCase()
-            .includes(searchProduct.toLowerCase());
-        })
-      );
+      setFilteredProducts([]);
+      // setFilteredProducts(
+      //   products.filter((product) => {
+      //     return product.name
+      //       .toLowerCase()
+      //       .includes(searchProduct.toLowerCase());
+      //   })
+      // );
     }
   }, [products, searchProduct]);
 
