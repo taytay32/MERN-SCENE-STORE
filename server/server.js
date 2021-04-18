@@ -17,11 +17,26 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/gurthstore2", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
+const dbUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.MONGODB_URL
+    : "mongodb://localhost/gurthstore2";
+
+mongoose.connect(
+  dbUrl,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  },
+  (err) => {
+    if (err) {
+      console.log(error);
+    } else {
+      console.log("all good");
+    }
+  }
+);
 
 app.use(cors());
 

@@ -9,7 +9,7 @@ import { listProducts } from "../../redux/actions/productActions";
 const LandingPage = () => {
   //PULL IN FROM STORE
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const { loading, error, products = [] } = productList;
 
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -25,14 +25,13 @@ const LandingPage = () => {
   //SEARCH FUNCTIONALITY
   useEffect(() => {
     if (products) {
-      setFilteredProducts([]);
-      // setFilteredProducts(
-      //   products.filter((product) => {
-      //     return product.name
-      //       .toLowerCase()
-      //       .includes(searchProduct.toLowerCase());
-      //   })
-      // );
+      setFilteredProducts(
+        products.filter((product) => {
+          return product.name
+            .toLowerCase()
+            .includes(searchProduct.toLowerCase());
+        })
+      );
     }
   }, [products, searchProduct]);
 

@@ -60,14 +60,14 @@ productRouter.post(
   })
 );
 
-// productRouter.get(
-//   "/seed",
-//   expressAsyncHandler(async (req, res) => {
-//     // await Product.remove({});
-//     const createdProducts = await Product.insertMany(data.products);
-//     res.send({ createdProducts });
-//   })
-// );
+productRouter.get(
+  "/seed",
+  expressAsyncHandler(async (req, res) => {
+    // await Product.remove({});
+    const createdProducts = await Product.insertMany(data.products);
+    res.send({ createdProducts });
+  })
+);
 
 /* =======================
  * PUT EDIT PRODUCT
