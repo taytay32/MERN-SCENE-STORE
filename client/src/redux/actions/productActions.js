@@ -24,8 +24,12 @@ export const listProducts = (search) => async (dispatch) => {
   });
   try {
     console.log("I am Here, line 26 of product actions");
-    const { data } = await axios.get(`${API_URL}/api/products`);
-    console.log(data, "IAM TH#E DATA");
+    // const { data } = await axios.get(`${API_URL}/api/products`);
+    const { data } = await axios.get(
+      `https://gurth-store-app.herokuapp.com/api/products`
+    );
+
+    console.log(data, "IAM THE DATA");
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
