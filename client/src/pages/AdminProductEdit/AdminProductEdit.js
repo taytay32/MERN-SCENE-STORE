@@ -114,13 +114,19 @@ const AdminProductEdit = (props) => {
 
   //UPLOAD FILE
   const uploadFileHandler = async (e) => {
+    console.log("im here");
+
     const file = e.target.files[0];
     const bodyFormData = new FormData();
 
     bodyFormData.append("image", file);
 
     setLoadingUpload(true);
+
+    console.log("im here");
+
     try {
+      console.log("im here");
       const { data } = await axios.post(
         `${API_URL}/api/uploads`,
         bodyFormData,

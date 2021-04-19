@@ -23,19 +23,7 @@ export const listProducts = (search) => async (dispatch) => {
     type: PRODUCT_LIST_REQUEST,
   });
   try {
-    console.log("I am Here, line 26 of product actions");
-
-    console.log(API_URL);
     const { data } = await axios.get(`${API_URL}/api/products`);
-
-    //using proxy
-    // const { data } = await axios.get("/api/products");
-
-    // const { data } = await axios.get(
-    //   `https://gurth-store-app.herokuapp.com/api/products`
-    // );
-
-    console.log("the data ", data);
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
