@@ -1,4 +1,20 @@
 {
+  "users": [
+    {
+      "firstName": "Taylor",
+      "lastName": "Martin",
+      "email": "admin@example.com",
+      "password": "bcrypt.hashSync('1234', 8)",
+      "isAdmin": true
+    },
+    {
+      "firstName": "Friendo",
+      "lastName": "Briendo",
+      "email": "user@example.com",
+      "password": "bcrypt.hashSync('1234', 8)",
+      "isAdmin": true
+    }
+  ],
   "products": [
     {
       "type": "Apparel",
@@ -30,6 +46,93 @@
         "XL": 18
       },
       "description": "Standard emo t-shirt, for you."
+    },
+    {
+      "type": "Apparel",
+      "name": "Dear Hair Tank",
+      "category": "Tanks",
+      "image": "/images/merch/tank_edit-bg.png",
+      "imageDetail": "/images/merch/tank-pam-removebg.png",
+      "price": 25,
+      "countInStock": 12,
+
+      "sizesOb": {
+        "S": 20,
+        "M": 15,
+        "L": 3,
+        "XL": 18
+      },
+      "description": "Oh, what a day!"
+    },
+    {
+      "type": "Music",
+      "name": "CD - Autophage",
+      "category": "CD",
+      "image": "/images/merch/cd-auto-front.jpeg",
+      "imageDetail": "/images/merch/auto-cd-full-2.png",
+      "price": 5,
+      "countInStock": 10,
+      "releaseDate": "Mar 31, 2018",
+      "artwork": "Artwork by Geoff Watson",
+      "trackList": ["1. Dear Hair", "2. Caskets", "3. Trappist", "4. Breathe"],
+      "trackLength": ["(4:26)", "(4:52)", "(5:23)", "(3:44)"]
+    },
+    {
+      "type": "Music",
+      "name": "CD - A Better End",
+      "category": "CD",
+      "image": "/images/merch/cd-abe-front.jpeg",
+      "imageDetail": "/images/merch/cd-abe-full.png",
+      "price": 5,
+      "countInStock": 20,
+      "releaseDate": "Oct 19, 2019",
+      "trackList": [
+        "1. Concluding",
+        "2. Young Punk",
+        "3. The Great Grey Yawning"
+      ],
+      "trackLength": ["(4:29)", "(5:02)", "(6:15)"]
+    },
+    {
+      "type": "Music",
+      "name": "7' Vinyl",
+      "category": "Vinyl",
+      "image": "/images/merch/vinyls.png",
+      "imageDetail": "/images/merch/vinyls.png",
+      "price": 15,
+      "countInStock": 30,
+      "releaseDate": "Oct 19, 2019",
+      "trackList": ["Side A: Concluding", "Side B: Dear Hair"],
+      "trackLength": ["(4:29)", "(4:26)"]
+    },
+
+    {
+      "type": "Button",
+      "name": "Sons Btn",
+      "category": "Buttons",
+      "image": "/images/merch/logo-hockey-puck.png",
+      "imageDetail": "/images/merch/logo-hockey-puck.png",
+      "price": 1,
+      "countInStock": 30,
+      "description": "For styling up your denim jacket"
+    },
+    {
+      "type": "Tab",
+      "name": "Autophage Tab",
+      "category": "Digital Download",
+      "image": "/images/merch/tab-auto.png",
+      "imageDetail": "/images/merch/tab-auto.png",
+      "price": 5,
+      "description": "Full digital tab transcription (GP 7) of Autophage EP, including drums, bass, and guitars.  Link to downloadable zip file provided."
+    },
+    {
+      "type": "Tab",
+      "name": "A Better End Tab",
+      "category": "Digital Download",
+      "image": "/images/merch/tab-abe.png",
+      "imageDetail": "/images/merch/tab-abe.png",
+      "price": 5,
+      "description": "Full digital tab transcription (GP 7) of A Better End EP, including drums, bass, and guitars.   Link to downloadable zip file provided."
     }
   ]
 }

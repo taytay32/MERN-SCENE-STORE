@@ -50,14 +50,6 @@ app.get("/api/config/paypal", (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || "sb");
 });
 
-//serve frontend
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "/client/build")));
-//serve index.html
-app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "/client/build/index.html"))
-);
-
 app.use("/uploads", express.static("uploads"));
 
 // app.get("/", (req, res) => {
@@ -66,6 +58,14 @@ app.use("/uploads", express.static("uploads"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("../client/build"));
+
+  //serve frontend
+  const __dirname = path.resolve();
+  app.use(express.static(path.join(__dirname, "/client/build")));
+  //serve index.html
+  app.get("*", (req, res) =>
+    res.sendFile(path.join(__dirname, "/client/build/index.html"))
+  );
 }
 
 //PORT SETUP

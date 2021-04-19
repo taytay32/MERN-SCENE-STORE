@@ -56,5 +56,5 @@ export const seedUsers = async () => {
   }
 };
 
-// seedUsers();
-// seedProducts();
+seedUsers();
+seedProducts();

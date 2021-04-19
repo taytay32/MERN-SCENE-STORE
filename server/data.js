@@ -57,7 +57,7 @@ const data = {
       imageDetail: "/images/merch/tank-pam-removebg.png",
       price: 25,
       countInStock: 12,
-      sizes: ["S", "M", "L", "XL"],
+
       sizesOb: {
         S: 20,
         M: 15,
