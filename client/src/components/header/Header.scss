@@ -6,7 +6,7 @@
 .header {
   &__logo {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     padding: 1.5rem 1.6rem;
     background-color: $background-grey;
@@ -18,8 +18,9 @@
 
   &__title {
     @include M-bebas-header;
-    line-height: 65%;
-    margin-left: 0.2rem;
+    // line-height: 65%;
+    color: black;
+    font-size: 4rem;
   }
 
   //MOBILE MENU (BURGER)

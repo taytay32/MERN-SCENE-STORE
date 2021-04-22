@@ -144,8 +144,9 @@ const Header = () => {
     <>
       <header className="header">
         <Link to="/" className="header__logo" onClick={() => setBurger(false)}>
-          <img src={logo} alt="" className="header__logoImg" />
-          <h1 className="header__title">.STORE</h1>
+          {/* <img src={logo} alt="" className="header__logoImg" /> */}
+
+          <h1 className="header__title">SCENE.STORE</h1>
         </Link>
 
         <nav className="navMobile">
